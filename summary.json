@@ -1,10 +1,10 @@
 {
   "k": 4,
   "k_run_metrics": {
-    "pass@1": 0.2238,
-    "pass@k": 0.3714,
-    "pass^k": 0.1333,
-    "avg@k": 0.2429
+    "pass@1": 0.2381,
+    "pass@k": 0.3952,
+    "pass^k": 0.1429,
+    "avg@k": 0.2571
   },
   "k_run_service_model_breakdown": {
     "filesystem_claude-4-sonnet": {
@@ -51,26 +51,26 @@
     },
     "filesystem_qwen-3-coder": {
       "total_tasks": 30,
-      "pass@1": 0.0,
-      "pass@k": 0.0,
-      "pass^k": 0.0,
-      "avg@k": 0.0
+      "pass@1": 0.1,
+      "pass@k": 0.1667,
+      "pass^k": 0.0667,
+      "avg@k": 0.1
     }
   },
-  "generated_at": "2025-08-21T10:12:26.098141",
+  "generated_at": "2025-08-21T19:19:25.580080",
   "overview": {
     "total_service_model_combinations": 7,
     "valid_combinations": 7,
     "total_tasks_across_all": 210,
-    "total_successful_across_all": 47,
-    "overall_success_rate": 22.38,
+    "total_successful_across_all": 50,
+    "overall_success_rate": 23.81,
     "total_execution_time": 0,
     "total_token_usage": {
-      "input_tokens": 70484667,
-      "output_tokens": 1478469,
-      "total_tokens": 71963136
+      "input_tokens": 78560588,
+      "output_tokens": 1575310,
+      "total_tokens": 80135898
     },
-    "total_turns": 3461
+    "total_turns": 4094
   },
   "services": {
     "filesystem": {
@@ -461,41 +461,41 @@
         }
       },
       "qwen-3-coder": {
-        "model": "qwen3-coder-480b-a35b-instruct",
+        "model": "qwen-3-coder-480b",
         "total_tasks": 30,
-        "successful_tasks": 0,
-        "failed_tasks": 30,
-        "success_rate": 0.0,
+        "successful_tasks": 3,
+        "failed_tasks": 27,
+        "success_rate": 10.0,
         "total_execution_time": 0,
         "average_execution_time": 0.0,
         "token_usage": {
-          "total_input_tokens": 0,
-          "total_output_tokens": 0,
-          "total_tokens": 0,
-          "avg_input_tokens": 0.0,
-          "avg_output_tokens": 0.0,
-          "avg_total_tokens": 0.0
+          "total_input_tokens": 8075921,
+          "total_output_tokens": 96841,
+          "total_tokens": 8172762,
+          "avg_input_tokens": 269197.37,
+          "avg_output_tokens": 3228.03,
+          "avg_total_tokens": 272425.4
         },
         "turn_usage": {
-          "total_turns": 60,
-          "avg_turns": 2.0
+          "total_turns": 693,
+          "avg_turns": 23.1
         },
         "category_breakdown": {
           "file_property": {
             "total": 2,
-            "success_rate": 0.0,
+            "success_rate": 100.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 346694,
+              "total_output": 6436,
+              "total": 353130,
+              "avg_input": 173347.0,
+              "avg_output": 3218.0,
+              "avg_total": 176565.0
             },
             "turn_usage": {
-              "total_turns": 4,
-              "avg_turns": 2.0
+              "total_turns": 64,
+              "avg_turns": 32.0
             }
           },
           "file_context": {
@@ -503,16 +503,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 738494,
+              "total_output": 14549,
+              "total": 753043,
+              "avg_input": 147698.8,
+              "avg_output": 2909.8,
+              "avg_total": 150608.6
             },
             "turn_usage": {
-              "total_turns": 10,
-              "avg_turns": 2.0
+              "total_turns": 109,
+              "avg_turns": 21.8
             }
           },
           "votenet": {
@@ -520,16 +520,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 934324,
+              "total_output": 4862,
+              "total": 939186,
+              "avg_input": 311441.33,
+              "avg_output": 1620.67,
+              "avg_total": 313062.0
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 43,
+              "avg_turns": 14.33
             }
           },
           "papers": {
@@ -537,33 +537,33 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 336064,
+              "total_output": 3341,
+              "total": 339405,
+              "avg_input": 112021.33,
+              "avg_output": 1113.67,
+              "avg_total": 113135.0
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 17,
+              "avg_turns": 5.67
             }
           },
           "threestudio": {
             "total": 3,
-            "success_rate": 0.0,
+            "success_rate": 33.33,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 1058745,
+              "total_output": 6737,
+              "total": 1065482,
+              "avg_input": 352915.0,
+              "avg_output": 2245.67,
+              "avg_total": 355160.67
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 61,
+              "avg_turns": 20.33
             }
           },
           "desktop": {
@@ -571,16 +571,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 690285,
+              "total_output": 13257,
+              "total": 703542,
+              "avg_input": 230095.0,
+              "avg_output": 4419.0,
+              "avg_total": 234514.0
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 101,
+              "avg_turns": 33.67
             }
           },
           "student_database": {
@@ -588,16 +588,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 1435847,
+              "total_output": 20445,
+              "total": 1456292,
+              "avg_input": 478615.67,
+              "avg_output": 6815.0,
+              "avg_total": 485430.67
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 43,
+              "avg_turns": 14.33
             }
           },
           "desktop_template": {
@@ -605,16 +605,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 1006086,
+              "total_output": 11779,
+              "total": 1017865,
+              "avg_input": 335362.0,
+              "avg_output": 3926.33,
+              "avg_total": 339288.33
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 118,
+              "avg_turns": 39.33
             }
           },
           "folder_structure": {
@@ -622,16 +622,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 1187952,
+              "total_output": 13347,
+              "total": 1201299,
+              "avg_input": 593976.0,
+              "avg_output": 6673.5,
+              "avg_total": 600649.5
             },
             "turn_usage": {
-              "total_turns": 4,
-              "avg_turns": 2.0
+              "total_turns": 118,
+              "avg_turns": 59.0
             }
           },
           "legal_document": {
@@ -639,16 +639,16 @@
             "success_rate": 0.0,
             "avg_time": 0.0,
             "token_usage": {
-              "total_input": 0,
-              "total_output": 0,
-              "total": 0,
-              "avg_input": 0.0,
-              "avg_output": 0.0,
-              "avg_total": 0.0
+              "total_input": 341430,
+              "total_output": 2088,
+              "total": 343518,
+              "avg_input": 113810.0,
+              "avg_output": 696.0,
+              "avg_total": 114506.0
             },
             "turn_usage": {
-              "total_turns": 6,
-              "avg_turns": 2.0
+              "total_turns": 19,
+              "avg_turns": 6.33
             }
           }
         }
@@ -1450,13 +1450,13 @@
     },
     "qwen-3-coder": {
       "total_tasks": 30,
-      "successful_tasks": 0,
+      "successful_tasks": 3,
       "services": [
         "filesystem"
       ],
-      "avg_success_rate": 0.0,
-      "total_tokens": 0,
-      "total_turns": 60
+      "avg_success_rate": 10.0,
+      "total_tokens": 8172762,
+      "total_turns": 693
     },
     "o3": {
       "total_tasks": 30,
@@ -1502,7 +1502,7 @@
   "services_comparison": {
     "filesystem": {
       "total_tasks": 210,
-      "successful_tasks": 47,
+      "successful_tasks": 50,
       "models": [
         "gemini-2-5-pro",
         "deepseek-chat",
@@ -1512,9 +1512,9 @@
         "k2",
         "claude-4-sonnet"
       ],
-      "avg_success_rate": 22.38,
-      "total_tokens": 71963136,
-      "total_turns": 3461
+      "avg_success_rate": 23.81,
+      "total_tokens": 80135898,
+      "total_turns": 4094
     }
   }
 }
