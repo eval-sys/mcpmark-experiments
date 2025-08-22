@@ -1,0 +1,35 @@
+{
+  "task_name": "shopping/task_advanced_product_analysis",
+  "service": "playwright",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nGingerAleSKU: B071KC37VD\nIntelNUCSKU: B01DJ9XID4\nCartTotal: $668.49\nReviewCount: 12\nLatestReviewer: A Customer\n\n=== Answer Comparison Mismatches ===\n✗ LatestReviewer: expected 'jwm', got 'A Customer'\n\nModel answer does not match expected answer\n",
+      "tokens": 1036018,
+      "time": 0,
+      "turns": 17
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nGingerAleSKU: B071KC37VD\nIntelNUCSKU: B01DJ9XID4\nCartTotal: $668.49\nReviewCount: 12\nLatestReviewer: Tester\n\n=== Answer Comparison Mismatches ===\n✗ LatestReviewer: expected 'jwm', got 'Tester'\n\nModel answer does not match expected answer\n",
+      "tokens": 2010043,
+      "time": 0,
+      "turns": 24
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "tokens": 1731250,
+      "time": 0,
+      "turns": 21
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "tokens": 1187435,
+      "time": 0,
+      "turns": 18
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_name": "eval_web/cloudflare_turnstile_challenge",
+  "service": "playwright",
+  "model": "o3",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": null,
+      "tokens": 322417,
+      "time": 0,
+      "turns": 27
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Automation attempt failed – Cloudflare Turnstile widget blocked scripted completion.   \nSign-in could not be completed because the page requires the interactive Turnstile challenge to be solved by a human user (error message: “Please complete the security challenge first.”)....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 697757,
+      "time": 0,
+      "turns": 16
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Unable to complete Cloudflare Turnstile programmatically – the page enforces an interactive, third-party challenge that cannot be solved with the available automation tools....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 727906,
+      "time": 0,
+      "turns": 40
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Unable to fully bypass and satisfy the Cloudflare Turnstile security check programmatically with the given tools; the widget’s state (`cf-turnstile-response` token) is validated inside a React component’s closure and is required before the form’s submit handler proceeds, so the form cannot be submitted (and success message cannot appear) without a legitimate, interactive Turnstile completion....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 1443386,
+      "time": 0,
+      "turns": 56
+    }
+  }
+}

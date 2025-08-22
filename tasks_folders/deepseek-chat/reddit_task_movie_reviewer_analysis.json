@@ -1,0 +1,35 @@
+{
+  "task_name": "reddit/task_movie_reviewer_analysis",
+  "service": "playwright",
+  "model": "deepseek-chat",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as movie_reviewer_2024\nNavigating to movies forum...\nLooking for submission 'Wonderful Movies Analysis: Community Favorites [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_Year_Posts|1\nTop1_Title|Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?\nTop1_Upvotes|9933\nTop1_Comments|23\nTop2_Title|Who will win the Oscar for FILM EDITING?\nTop2_Upvotes|7720\nTop2_Com...\nExtracted data: {'Total_Year_Posts': '1', 'Top1_Title': 'Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?', 'Top1_Upvotes': '9933', 'Top1_Comments': '23', 'Top2_Title': 'Who will win the Oscar for FILM EDITING?', 'Top2_Upvotes': '7720', 'Top2_Comments': '20', 'Top3_Title': \"Cindy Williams Dies: 'Laverne & Shirley' Star Who Appeared In 'American Graffiti' & 'The Conversation' Was 75\", 'Top3_Upvotes': '5268', 'Top3_Comments': '190', 'Rittenhouse_Upvotes': '2761', 'Rittenhouse_Comments': '182', 'Total_Image_Posts_5Pages': '3'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Total_Image_Posts_5Pages mismatch: got 3, expected 6\n",
+      "tokens": 1073762,
+      "time": 0,
+      "turns": 20
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 132333 tokens (132333 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082016331212923407012815389)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "tokens": 577435,
+      "time": 0,
+      "turns": 15
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 143208 tokens (143208 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082019474294712954110071654)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "tokens": 688232,
+      "time": 0,
+      "turns": 16
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nError: Login failed for movie_reviewer_2024\n",
+      "tokens": 47586,
+      "time": 0,
+      "turns": 8
+    }
+  }
+}

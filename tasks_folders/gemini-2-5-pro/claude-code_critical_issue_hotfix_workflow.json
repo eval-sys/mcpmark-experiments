@@ -1,0 +1,35 @@
+{
+  "task_name": "claude-code/critical_issue_hotfix_workflow",
+  "service": "github",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": null,
+      "tokens": 270116,
+      "time": 0,
+      "turns": 11
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "Invalid JSON input for tool get_pull_request: {\"body\":\"## Critical Issues\\n- Issue #49\\n- Issue #46\\n\\n## Impact Assessment\\nThe identified memory exhaustion and context management failures are causing significant user impact, including application crashes and unresponsiveness, particularly on macOS platforms. These issues make the tool unreliable for large-scale operations.\\n\\n## Resolution Strategy\\nThe planned approach involves implementing a hotfix (v1.0.72) that introduces progressive context cleanup, streaming data processing for large operations, and optimized garbage collection. This will be tracked in a dedicated hotfix branch and merged into main upon successful validation.\\n\\n### Related Issues\\n- #49\\n- #46\\n- #47\\n\\n### Keywords\\nmemory exhaustion, context auto-compact, JavaScript heap, hotfix priority\",\"owner\":\"mcpmark-eval\",\"repo\":\"claude-code\",\"title\":\"CRITICAL: Memory and Context Management Issues - Hotfix Tracking\"}{\"branch\":\"hotfix/memory-optimization-v1.0.72\",\"from_branch\":\"main\",\"owner\":\"mcpmark-eval\",\"repo\":\"claude-code\"}{\"owner\":\"mcpmark-eval\",\"pullNumber\":51,\"repo\":\"claude-code\"}",
+      "tokens": 0,
+      "time": 0,
+      "turns": 0
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "Invalid JSON input for tool get_pull_request: {\"branch\":\"hotfix/memory-optimization-v1.0.72\",\"from_branch\":\"main\",\"owner\":\"mcpmark-eval\",\"repo\":\"claude-code\"}{\"owner\":\"mcpmark-eval\",\"pullNumber\":51,\"repo\":\"claude-code\"}",
+      "tokens": 7205,
+      "time": 0,
+      "turns": 1
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "tokens": 0,
+      "time": 0,
+      "turns": 1
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_name": "reddit/task_ai_data_analyst",
+  "service": "playwright",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "Navigating to forum...\nStep 1: Verifying account creation...\nAttempting to login with AIDataAnalyst2025...\nPASSED: Successfully logged in as AIDataAnalyst2025\n\nStep 2: Verifying submission creation...\nNavigating to MachineLearning forum...\nLooking for submission with title 'MachineLearning_Extraction'...\nPASSED: Found submission 'MachineLearning_Extraction' in MachineLearning forum\n\nStep 3: Verifying submission content...\nFound submission content using selector: .submission__body\nFound submission body content\nRaw content preview: Deeplearning_Post_Count|25\nChatGPT_Tool_Vote_Count|2655\nTransformer_Third_Result|[R] The Table Feature Transformation Library Release\nPage2_Top_Post_Title|[D]GPT-4 might be able to tell you if it hall...\nExtracted data: {'Deeplearning_Post_Count': '25', 'ChatGPT_Tool_Vote_Count': '2655', 'Transformer_Third_Result': '[R] The Table Feature Transformation Library Release', 'Page2_Top_Post_Title': '[D]GPT-4 might be able to tell you if it hallucinated', 'Page2_Top_Post_Votes': '634', 'Page2_Last_Comment_Username': 'A_normal_guy_1', 'Page2_Last_Comment_Text': 'Can you explain how this works?'}\nLoaded expected values from label.txt\nFAILED: Content validation failed with the following issues:\n  - Page2_Last_Comment_Username mismatch: got 'A_normal_guy_1', expected 'Nous_AI'\n  - Page2_Last_Comment_Text mismatch: got 'Can you explain how this works?', expected 'Fascinating.'\n\nExpected values from label.txt:\n  Deeplearning_Post_Count: 25\n  ChatGPT_Tool_Vote_Count: 2655\n  Transformer_Third_Result: [R] The Table Feature Transformation Library Release\n  Page2_Top_Post_Title: [D]GPT-4 might be able to tell you if it hallucinated\n  Page2_Top_Post_Votes: 634\n  Page2_Last_Comment_Username: Nous_AI\n  Page2_Last_Comment_Text: Fascinating.\n",
+      "tokens": 3752387,
+      "time": 0,
+      "turns": 31
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "Navigating to forum...\nStep 1: Verifying account creation...\nAttempting to login with AIDataAnalyst2025...\nPASSED: Successfully logged in as AIDataAnalyst2025\n\nStep 2: Verifying submission creation...\nNavigating to MachineLearning forum...\nLooking for submission with title 'MachineLearning_Extraction'...\nPASSED: Found submission 'MachineLearning_Extraction' in MachineLearning forum\n\nStep 3: Verifying submission content...\nFound submission content using selector: .submission__body\nFound submission body content\nRaw content preview: Deeplearning_Post_Count|25\nChatGPT_Tool_Vote_Count|2655\nTransformer_Third_Result|[R] The Table Feature Transformation Library Release\nPage2_Top_Post_Title|[D] GPT4 and coding problems\nPage2_Top_Post_V...\nExtracted data: {'Deeplearning_Post_Count': '25', 'ChatGPT_Tool_Vote_Count': '2655', 'Transformer_Third_Result': '[R] The Table Feature Transformation Library Release', 'Page2_Top_Post_Title': '[D] GPT4 and coding problems', 'Page2_Top_Post_Votes': '351', 'Page2_Last_Comment_Username': 'WokeAssBaller', 'Page2_Last_Comment_Text': \"They will absolutely reshape the world in the next 5 years, all I'm saying is in its current state I haven't found it helpful. I'm sure in the next couple of years it's the main thing I will use\"}\nLoaded expected values from label.txt\nFAILED: Content validation failed with the following issues:\n  - Page2_Top_Post_Title mismatch: got '[D] GPT4 and coding problems', expected '[D]GPT-4 might be able to tell you if it hallucinated'\n  - Page2_Top_Post_Votes mismatch: got 351, expected 634\n  - Page2_Last_Comment_Username mismatch: got 'WokeAssBaller', expected 'Nous_AI'\n  - Page2_Last_Comment_Text mismatch: got 'They will absolutely reshape the world in the next 5 years, all I'm saying is in its current state I haven't found it helpful. I'm sure in the next couple of years it's the main thing I will use', expected 'Fascinating.'\n\nExpected values from label.txt:\n  Deeplearning_Post_Count: 25\n  ChatGPT_Tool_Vote_Count: 2655\n  Transformer_Third_Result: [R] The Table Feature Transformation Library Release\n  Page2_Top_Post_Title: [D]GPT-4 might be able to tell you if it hallucinated\n  Page2_Top_Post_Votes: 634\n  Page2_Last_Comment_Username: Nous_AI\n  Page2_Last_Comment_Text: Fascinating.\n",
+      "tokens": 3322966,
+      "time": 0,
+      "turns": 26
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "tokens": 3199241,
+      "time": 0,
+      "turns": 27
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "Navigating to forum...\nStep 1: Verifying account creation...\nAttempting to login with AIDataAnalyst2025...\nPASSED: Successfully logged in as AIDataAnalyst2025\n\nStep 2: Verifying submission creation...\nNavigating to MachineLearning forum...\nLooking for submission with title 'MachineLearning_Extraction'...\nFAILED: Could not find submission with title 'MachineLearning_Extraction' in MachineLearning forum\n",
+      "tokens": 6039154,
+      "time": 0,
+      "turns": 32
+    }
+  }
+}

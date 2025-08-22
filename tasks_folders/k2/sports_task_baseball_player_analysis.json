@@ -1,0 +1,35 @@
+{
+  "task_name": "sports/task_baseball_player_analysis",
+  "service": "postgres",
+  "model": "k2",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": null,
+      "tokens": 1366568,
+      "time": 0,
+      "turns": 49
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "tokens": 809524,
+      "time": 0,
+      "turns": 49
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "Invalid JSON input for tool execute_sql: {\"sql\": \"INSERT INTO baseball_player_analysis (\\n    player_id,\\n    player_name,\\n    team_name,\\n    games_played,\\n    at_bats,\\n    hits,\\n    runs_scored,\\n    rbi,\\n    home_runs,\\n    batting_average,\\n    defensive_games,\\n    putouts,\\n    assists,\\n    errors,\\n    fielding_percentage\\n)\\nSELECT \\n    p.id AS player_id,\\n    COALESCE(dn.full_name, 'Unknown Player') AS player_name,\\n    'Unknown' AS team_name,\\n    cps.events_played AS games_played,\\n    COALESCE(bos.at_bats, 0) AS at_bats,\\n    COALESCE(bos.hits, 0) AS hits,\\n    COALESCE(bos.runs_scored, 0) AS runs_scored,\\n    COALESCE(bos.rbi, 0) AS rbi,\\n    COALESCE(bos.home_runs, 0) AS home_runs,\\n    CASE \\n        WHEN COALESCE(bos.at_bats, 0) > 0 THEN \\n            CAST(COALESCE(bos.hits, 0) AS DECIMAL) / CAST(COALESCE(bos.at_bats, 1) AS DECIMAL)\\n        ELSE 0\\n    END AS batting_average,\\n    cps.events_played AS defensive_games,\\n    COALESCE(bds.putouts, 0) AS putouts,\\n    COALESCE(bds.assists, 0) AS assists,\\n    COALESCE(bds.errors, 0) AS errors,\\n    CASE \\n        WHEN (COALESCE(bds.putouts, 0) + COALESCE(bds.assists, 0) + COALESCE(bds.errors, 0)) > 0 THEN \\n            CAST(COALESCE(bds.putouts, 0) + COALESCE(bds.assists, 0) AS DECIMAL) / \\n            CAST(COALESCE(bds.putouts, 0) + COALESCE(bds.assists, 0) + COALESCE(bds.errors, 0) AS DECIMAL)\\n        ELSE 0\\n    END AS fielding_percentage\\nFROM persons p\\nINNER JOIN display_names dn ON p.id = dn.entity_id AND dn.entity_type = 'persons'\\nINNER JOIN core_person_stats cps ON p.id = cps.id\\nINNER JOIN (\\n    SELECT \\n        s.stat_holder_id,\\n        s.stat_repository_id,\\n        COUNT(DISTINCT s.stat_coverage_id) as games_count\\n    FROM stats s\\n    INNER JOIN events e ON s.stat_coverage_id = e.id\\n    INNER JOIN events_sub_seasons ess ON e.id = ess.event_id\\n    INNER JOIN sub_seasons ss ON ess.sub_season_id = ss.id\\n    WHERE s.stat_holder_type = 'persons'\\n    AND s.stat_repository_type = 'baseball_offensive_stats'\\n    AND ss.sub_season_type = 'season-regular'\\n    GROUP BY s.stat_holder_id, s.stat_repository_id\\n) offensive_games ON p.id = offensive_games.stat_holder_id\\nINNER JOIN stats s_off ON p.id = s_off.stat_holder_id \\n    AND s_off.stat_holder_type = 'persons' \\n    AND s_off.stat_repository_type = 'baseball_offensive_stats'\\n    AND s_off.stat_repository_id = offensive_games.stat_repository_id\\nINNER JOIN baseball_offensive_stats bos ON s_off.stat_repository_id = bos.id\\nLEFT JOIN (\\n    SELECT \\n        s.stat_holder_id,\\n        s.stat_repository_id,\\n        COUNT(DISTINCT s.stat_coverage_id) as games_count\\n    FROM stats s\\n    INNER JOIN events e ON s.stat_coverage_id = e.id\\n    INNER JOIN events_sub_seasons ess ON e.id = ess.event_id\\n    INNER JOIN sub_seasons ss ON ess.sub_season_id = ss.id\\n    WHERE s.stat_holder_type = 'persons'\\n    AND s.stat_repository_type = 'baseball_defensive_stats'\\n    AND ss.sub_season_type = 'season-regular'\\n    GROUP BY s.stat_holder_id, s.stat_repository_id\\n) defensive_games ON p.id = defensive_games.stat_holder_id\\nLEFT JOIN stats s_def ON p.id = s_def.stat_holder_id \\n    AND s_def.stat_holder_type = 'persons' \\n    AND s_def.stat_repository_type = 'baseball_defensive_stats'\\n    AND s_def.stat_repository_id = defensive_games.stat_repository_id\\nLEFT JOIN baseball_defensive_stats bds ON s_def.stat_repository_id",
+      "tokens": 294497,
+      "time": 0,
+      "turns": 27
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "tokens": 798641,
+      "time": 0,
+      "turns": 44
+    }
+  }
+}

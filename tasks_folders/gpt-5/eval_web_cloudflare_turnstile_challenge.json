@@ -1,0 +1,35 @@
+{
+  "task_name": "eval_web/cloudflare_turnstile_challenge",
+  "service": "playwright",
+  "model": "gpt-5",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Result summary:\n- Navigated to https://mcp-eval-website.vercel.app/auth/turnstile\n- Entered credentials:\n  - Username: testuser\n  - Password: password123\n- Waited for the Cloudflare Turnstile widget to load (window.turnstile API detected and widget container present)\n- Attempted to complete the Turnstile challenge using the on-page API (execute/render). The page’s script uses the test sitekey “3x00000000000000000000FF” which is an “always fail” test key. As a result, the application’s internal t...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 820998,
+      "time": 0,
+      "turns": 38
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Please complete the security challenge first....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 352930,
+      "time": 0,
+      "turns": 24
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "tokens": 1112368,
+      "time": 0,
+      "turns": 43
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): Result: Could not complete authentication. The Cloudflare Turnstile widget failed to initialize, so the form never reached a success state.\n\nKey details:\n- Filled credentials: testuser / password123\n- Turnstile widget did not complete; console showed: “Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter ‘sitekey’”\n- “Sign In” remained disabled until forcibly enabled, and submission returned the inline error:\n  “Please complete the security challenge first.”\n\nCap...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 1782562,
+      "time": 0,
+      "turns": 36
+    }
+  }
+}

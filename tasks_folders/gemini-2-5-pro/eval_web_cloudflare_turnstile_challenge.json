@@ -1,0 +1,35 @@
+{
+  "task_name": "eval_web/cloudflare_turnstile_challenge",
+  "service": "playwright",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): I am unable to complete the Cloudflare Turnstile authentication challenge. The website is not properly configured, as indicated by the browser console message: \"Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter \"sitekey\"\". This error prevents the Turnstile widget from loading, and as a result, the \"Sign In\" button remains disabled, blocking any further progress....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 32339,
+      "time": 0,
+      "turns": 8
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "No model response found\n",
+      "tokens": 11505,
+      "time": 0,
+      "turns": 5
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): The Cloudflare Turnstile challenge is not loading on the page due to a configuration error on the website. The browser console shows the error \"Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter 'sitekey'\". Because of this error, the turnstile widget does not appear, and I cannot complete the challenge and sign in....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 27100,
+      "time": 0,
+      "turns": 7
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "\nModel response (first 500 chars): The Cloudflare Turnstile challenge cannot be completed because the widget is not loading. The browser console shows the following error: \"Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter \\\"sitekey\\\"\". This indicates a configuration issue with the website, which prevents the Turnstile widget from appearing. Therefore, I am unable to proceed with the authentication....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
+      "tokens": 20744,
+      "time": 0,
+      "turns": 6
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_name": "mcpmark-cicd/deployment_status_workflow",
+  "service": "github",
+  "model": "k2",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "Github MCP service error",
+      "tokens": 12408,
+      "time": 0,
+      "turns": 1
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "Github Resource not found",
+      "tokens": 51904,
+      "time": 0,
+      "turns": 3
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"mcpmark-cicd\", \"path\": \".github/workflows/deployment-status.yml\", \"content\": \"name: Deployment Status Workflow\\n\\non:\\n  push:\\n    branches:\\n      - main\\n\\nenv:\\n  NODE_VERSION: '18'\\n\\njobs:\\n  pre-deployment:\\n    name: pre-deployment\\n    runs-on: ubuntu-latest\\n    outputs:\\n      issue-number: ${{ steps.create-issue.outputs.issue-number }}\\n      previous-sha: ${{ steps.get-info.outputs.previous-sha }}\\n      current-sha: ${{ steps.get-info.outputs.current-sha }}\\n      package-version: ${{ steps.get-info.outputs.package-version }}\\n    steps:\\n      - name: Checkout repository\\n        uses: actions/checkout@v4\\n        with:\\n          fetch-depth: 2\\n\\n      - name: Setup Node.js\\n        uses: actions/setup-node@v4\\n        with:\\n          node-version: ${{ env.NODE_VERSION }}\\n          cache: 'npm'\\n\\n      - name: Install dependencies\\n        run: npm ci\\n\\n      - name: Run lint\\n        run: npm run lint --if-present\\n\\n      - name: Run tests\\n        run: npm test --if-present\\n\\n      - name: Get commit and package info\\n        id: get-info\\n        run: |\\n          PREVIOUS_SHA=$(git rev-parse HEAD^)\\n          CURRENT_SHA=$(git rev-parse HEAD)\\n          PACKAGE_VERSION=$(node -p \\\"require('./package.json').version\\\" || echo \\\"1.0.0\\\")\\n          \\n          echo \\\"previous-sha=$PREVIOUS_SHA\\\" >> $GITHUB_OUTPUT\\n          echo \\\"current-sha=$CURRENT_SHA\\\" >> $GITHUB_OUTPUT\\n          echo \\\"package-version=$PACKAGE_VERSION\\\" >> $GITHUB_OUTPUT\\n          \\n          echo \\\"Previous SHA: $PREVIOUS_SHA\\\"\\n          echo \\\"Current SHA: $CURRENT_SHA\\\"\\n          echo \\\"Package Version: $PACKAGE_VERSION\\\"\\n\\n      - name: Create deployment tracking issue\\n        id: create-issue\\n        uses: actions/github-script@v7\\n        with:\\n          script: |\\n            const shortSha = '${{ steps.get-info.outputs.current-sha }}'.substring(0, 7);\\n            const issue = await github.rest.issues.create({\\n              owner: context.repo.owner,\\n              repo: context.repo.repo,\\n              title: `Deployment Tracking - ${shortSha}`,\\n              body: `## Deployment Tracking\\n              \\n              **Commit:** ${{ steps.get-info.outputs.current-sha }}\\n              **Previous Commit:** ${{ steps.get-info.outputs.previous-sha }}\\n              **Package Version:** ${{ steps.get-info.outputs.package-version }}\\n              \\n              This issue tracks the deployment process for commit ${{ steps.get-info.outputs.current-sha }}.\\n              \\n              ### Status\\n              - [x] Pre-deployment checks initiated\\n              - [ ] Rollback preparation\\n              - [ ] Deployment completion`,\\n              labels: ['deployment', 'in-progress']\\n            });\\n            \\n            core.setOutput('issue-number', issue.data.number);\\n            return issue.data.number;\\n\\n      - name: Post pre-deployment comment\\n        uses: actions/github-script@v7\\n        with:\\n          script: |\\n            const issueNumber = ${{ steps.create-issue.outputs.issue-number }};\\n            \\n            await github.rest.issues.createComment({\\n              owner: context.repo.owner,\\n              repo: context.repo.repo,\\n              issue_number: issueNumber,\\n              body: '## ✅ Pre-deployment checks completed\\\\n\\\\nAll basic quality checks have passed successfully. Ready to proceed with rollback preparation.'\\n            });\\n\\n  rollback-preparation:\\n    name: rollback-preparation\\n    runs-on: ubuntu-latest\\n    needs: pre-deployment\\n    outputs:\\n      artifact-name: ${{ steps.create-artifacts.outputs.artifact-name }}\\n      checksum: ${{ steps.create-artifacts.outputs.checksum }}\\n    steps:\\n      - name: Checkout repository\\n        uses: actions/checkout@v4\\n        with:\\n          fetch-depth: 2\\n\\n      - name: Setup Node.js\\n        uses: actions/setup-node@v4\\n        with:\\n          node-version: ${{ env.NODE_VERSION }}\\n\\n      - name: Create rollback artifacts\\n        id: create-artifacts\\n        run: |\\n          # Create rollback directory structure\\n          mkdir -p rollback-artifacts/{scripts,backups,docs}\\n          \\n          # Get commit information\\n          PREVIOUS_SHA=\\\"${{ needs.pre-deployment.outputs.previous-sha }}\\\"\\n          CURRENT_SHA=\\\"${{ needs.pre-deployment.outputs.current-sha }}\\\"\\n          PACKAGE_VERSION=\\\"${{ needs.pre-deployment.outputs",
+      "tokens": 12408,
+      "time": 0,
+      "turns": 1
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "tokens": 112458,
+      "time": 0,
+      "turns": 5
+    }
+  }
+}
