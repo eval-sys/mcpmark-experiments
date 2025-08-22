@@ -4,32 +4,60 @@
   "model": "gemini-2-5-pro",
   "runs": {
     "run-1": {
-      "success": false,
-      "error_message": null,
-      "tokens": 17059,
-      "time": 0,
-      "turns": 2
+      "agent_execution_time": 28.434012174606323,
+      "task_execution_time": 78.08109855651855,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 14693,
+        "output_tokens": 2366,
+        "total_tokens": 17059
+      },
+      "turn_count": 2
     },
     "run-2": {
-      "success": false,
-      "error_message": null,
-      "tokens": 16661,
-      "time": 0,
-      "turns": 2
+      "agent_execution_time": 25.47991418838501,
+      "task_execution_time": 76.43373417854309,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 14813,
+        "output_tokens": 1848,
+        "total_tokens": 16661
+      },
+      "turn_count": 2
     },
     "run-3": {
-      "success": false,
-      "error_message": null,
-      "tokens": 4952,
-      "time": 0,
-      "turns": 1
+      "agent_execution_time": 22.01718807220459,
+      "task_execution_time": 72.06943798065186,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 4952,
+        "output_tokens": 0,
+        "total_tokens": 4952
+      },
+      "turn_count": 1
     },
     "run-4": {
-      "success": false,
-      "error_message": "Invalid JSON input for tool add_issue_comment: {\"body\":\"After a thorough investigation, it's clear that this migration is not feasible due to several technical barriers. The harmony core's dependency on a specific `require` pattern for its tokenization logic means that a pure ESM environment is **breaking compatibility**. Our analysis shows that the **core tokenization** process is tightly coupled with a dynamic `require` that cannot be replicated with static ESM imports.\\n\\nFurthermore, we've encountered significant **build system constraints**. The webpack configuration required for ESM bundling conflicts with the assumptions made by the harmony core's build process. The core library is fundamentally **CommonJS required**, and any attempt to shim or polyfill this behavior introduces unacceptable complexity and performance overhead.\\n\\nGiven these findings, this **approach is not viable** without a major refactoring of the harmony core itself. The existing CommonJS dependencies are too deeply integrated to be easily replaced. We recommend pausing this effort until the core library is updated to support modern module systems.\",\"issue_number\":28,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"body\":\"The attempt to migrate the JavaScript demo to ESM has been blocked by significant **technical constraints**. Our investigation, detailed in PR #28, revealed that the harmony core has a hard **CommonJS dependency** that is incompatible with an ESM-only environment.\\n\\nThe primary issue stems from **harmony core limitations**, where the tokenization logic relies on a dynamic `require` pattern that cannot be replicated with static ESM imports. This creates a fundamental conflict in **build system compatibility** between the modern ESM approach and the legacy CommonJS requirements of the core library.\\n\\nUnfortunately, this means the proposed ESM migration is **not viable at this time**. We will be closing the associated pull request and this issue until the core library is updated to support modern module systems.\",\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"owner\":\"mcpmark-eval\",\"pullNumber\":28,\"repo\":\"harmony\",\"state\":\"closed\"}{\"issue_number\":28,\"labels\":[\"enhancement\",\"needs-investigation\",\"wontfix\"],\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"body\":\"Due to the **architectural limitations** discovered during the implementation, this pull request **cannot be merged**. The core issue is that a significant **core refactoring required** to make the harmony library compatible with ESM modules.\\n\\nThis migration will be revisited for **future consideration** once the underlying dependencies are updated. For now, we are closing this PR and marking it as 'wontfix'. All findings have been documented in issue #27.\",\"issue_number\":28,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\",\"state\":\"closed\"}{\"body\":\"After a thorough investigation, we are **closing as not planned** due to insurmountable **architectural constraints**. The **future implementation blocked** until the harmony core library is redesigned to support modern module systems. This **requires core redesign** to address the hard dependency on CommonJS. All findings are documented in PR #28.\",\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}",
-      "tokens": 39437,
-      "time": 0,
-      "turns": 4
+      "agent_execution_time": 75.55894351005554,
+      "task_execution_time": 124.08110165596008,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool add_issue_comment: {\"body\":\"After a thorough investigation, it's clear that this migration is not feasible due to several technical barriers. The harmony core's dependency on a specific `require` pattern for its tokenization logic means that a pure ESM environment is **breaking compatibility**. Our analysis shows that the **core tokenization** process is tightly coupled with a dynamic `require` that cannot be replicated with static ESM imports.\\n\\nFurthermore, we've encountered significant **build system constraints**. The webpack configuration required for ESM bundling conflicts with the assumptions made by the harmony core's build process. The core library is fundamentally **CommonJS required**, and any attempt to shim or polyfill this behavior introduces unacceptable complexity and performance overhead.\\n\\nGiven these findings, this **approach is not viable** without a major refactoring of the harmony core itself. The existing CommonJS dependencies are too deeply integrated to be easily replaced. We recommend pausing this effort until the core library is updated to support modern module systems.\",\"issue_number\":28,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"body\":\"The attempt to migrate the JavaScript demo to ESM has been blocked by significant **technical constraints**. Our investigation, detailed in PR #28, revealed that the harmony core has a hard **CommonJS dependency** that is incompatible with an ESM-only environment.\\n\\nThe primary issue stems from **harmony core limitations**, where the tokenization logic relies on a dynamic `require` pattern that cannot be replicated with static ESM imports. This creates a fundamental conflict in **build system compatibility** between the modern ESM approach and the legacy CommonJS requirements of the core library.\\n\\nUnfortunately, this means the proposed ESM migration is **not viable at this time**. We will be closing the associated pull request and this issue until the core library is updated to support modern module systems.\",\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"owner\":\"mcpmark-eval\",\"pullNumber\":28,\"repo\":\"harmony\",\"state\":\"closed\"}{\"issue_number\":28,\"labels\":[\"enhancement\",\"needs-investigation\",\"wontfix\"],\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"body\":\"Due to the **architectural limitations** discovered during the implementation, this pull request **cannot be merged**. The core issue is that a significant **core refactoring required** to make the harmony library compatible with ESM modules.\\n\\nThis migration will be revisited for **future consideration** once the underlying dependencies are updated. For now, we are closing this PR and marking it as 'wontfix'. All findings have been documented in issue #27.\",\"issue_number\":28,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}{\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\",\"state\":\"closed\"}{\"body\":\"After a thorough investigation, we are **closing as not planned** due to insurmountable **architectural constraints**. The **future implementation blocked** until the harmony core library is redesigned to support modern module systems. This **requires core redesign** to address the hard dependency on CommonJS. All findings are documented in PR #28.\",\"issue_number\":27,\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}"
+      },
+      "token_usage": {
+        "input_tokens": 35663,
+        "output_tokens": 3774,
+        "total_tokens": 39437
+      },
+      "turn_count": 4
     }
   }
 }

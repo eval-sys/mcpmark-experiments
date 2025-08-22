@@ -4,32 +4,56 @@
   "model": "gemini-2-5-pro",
   "runs": {
     "run-1": {
-      "success": true,
-      "error_message": null,
-      "tokens": 157387,
-      "time": 0,
-      "turns": 10
+      "agent_execution_time": 78.8399384021759,
+      "task_execution_time": 129.76492190361023,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 153091,
+        "output_tokens": 4296,
+        "total_tokens": 157387
+      },
+      "turn_count": 10
     },
     "run-2": {
-      "success": false,
-      "error_message": "Invalid JSON input for tool create_branch: {\"body\":\"## Problem\\nThis issue addresses a race condition that occurs when multiple threads attempt to download and load HarmonyEncoding tokenizers simultaneously. The current implementation is not thread-safe, leading to corrupted tokenizer file downloads and unpredictable behavior under concurrent access.\\n\\n## Root Cause\\nThe root cause of this bug is the lack of a file locking mechanism to protect the tokenizer download and initialization process. When multiple threads execute this critical section at the same time, they can interfere with each other's file operations.\\n\\n## Expected Solution\\n- Implement a mutex-based file locking mechanism to ensure that only one thread can download and load a tokenizer at a time.\\n- Use a thread-safe initialization pattern to prevent redundant downloads and ensure the tokenizer is loaded only once.\\n- Provide an offline loading API to allow users to load tokenizers from a local file path, as requested in issue #1.\\n\\nThis bug is related to the feature request in #1 and the original race condition report in #6.\\nKeywords: \\\"multiple threads\\\", \\\"tokenizer file downloads\\\", \\\"mutex-based file locking\\\"\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\",\"title\":\"Bug: race condition in HarmonyEncoding during concurrent access\"}{\"branch\":\"fix/race-condition-tokenizer-loading\",\"from_branch\":\"main\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}",
-      "tokens": 0,
-      "time": 0,
-      "turns": 0
+      "agent_execution_time": 25.608145236968994,
+      "task_execution_time": 79.36013698577881,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_branch: {\"body\":\"## Problem\\nThis issue addresses a race condition that occurs when multiple threads attempt to download and load HarmonyEncoding tokenizers simultaneously. The current implementation is not thread-safe, leading to corrupted tokenizer file downloads and unpredictable behavior under concurrent access.\\n\\n## Root Cause\\nThe root cause of this bug is the lack of a file locking mechanism to protect the tokenizer download and initialization process. When multiple threads execute this critical section at the same time, they can interfere with each other's file operations.\\n\\n## Expected Solution\\n- Implement a mutex-based file locking mechanism to ensure that only one thread can download and load a tokenizer at a time.\\n- Use a thread-safe initialization pattern to prevent redundant downloads and ensure the tokenizer is loaded only once.\\n- Provide an offline loading API to allow users to load tokenizers from a local file path, as requested in issue #1.\\n\\nThis bug is related to the feature request in #1 and the original race condition report in #6.\\nKeywords: \\\"multiple threads\\\", \\\"tokenizer file downloads\\\", \\\"mutex-based file locking\\\"\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\",\"title\":\"Bug: race condition in HarmonyEncoding during concurrent access\"}{\"branch\":\"fix/race-condition-tokenizer-loading\",\"from_branch\":\"main\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}"
+      },
+      "token_usage": {},
+      "turn_count": 0
     },
     "run-3": {
-      "success": false,
-      "error_message": null,
-      "tokens": 4811,
-      "time": 0,
-      "turns": 1
+      "agent_execution_time": 16.823817253112793,
+      "task_execution_time": 62.437233209609985,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 4811,
+        "output_tokens": 0,
+        "total_tokens": 4811
+      },
+      "turn_count": 1
     },
     "run-4": {
-      "success": false,
-      "error_message": null,
-      "tokens": 4811,
-      "time": 0,
-      "turns": 1
+      "agent_execution_time": 17.65077304840088,
+      "task_execution_time": 67.38040494918823,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 4811,
+        "output_tokens": 0,
+        "total_tokens": 4811
+      },
+      "turn_count": 1
     }
   }
 }

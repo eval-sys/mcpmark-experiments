@@ -4,32 +4,60 @@
   "model": "k2",
   "runs": {
     "run-1": {
-      "success": false,
-      "error_message": null,
-      "tokens": 506094,
-      "time": 0,
-      "turns": 11
+      "agent_execution_time": 191.7838704586029,
+      "task_execution_time": 299.18451857566833,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 504328,
+        "output_tokens": 1766,
+        "total_tokens": 506094
+      },
+      "turn_count": 11
     },
     "run-2": {
-      "success": false,
-      "error_message": "Error code: 400 - {'error': {'message': 'Invalid request: Your request exceeded model token limit: 131072 (tid: 2025082016183319473951608011164)', 'type': 'invalid_request_error', 'param': '', 'code': None}}",
-      "tokens": 167158,
-      "time": 0,
-      "turns": 6
+      "agent_execution_time": 151.0162546634674,
+      "task_execution_time": 266.73462772369385,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Invalid request: Your request exceeded model token limit: 131072 (tid: 2025082016183319473951608011164)', 'type': 'invalid_request_error', 'param': '', 'code': None}}"
+      },
+      "token_usage": {
+        "input_tokens": 166775,
+        "output_tokens": 383,
+        "total_tokens": 167158
+      },
+      "turn_count": 6
     },
     "run-3": {
-      "success": false,
-      "error_message": "Github Operation timed out",
-      "tokens": 129355,
-      "time": 0,
-      "turns": 5
+      "agent_execution_time": 230.08510828018188,
+      "task_execution_time": 336.1684093475342,
+      "execution_result": {
+        "success": false,
+        "error_message": "Github Operation timed out"
+      },
+      "token_usage": {
+        "input_tokens": 127291,
+        "output_tokens": 2064,
+        "total_tokens": 129355
+      },
+      "turn_count": 5
     },
     "run-4": {
-      "success": false,
-      "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"claude-code\", \"path\": \"docs/MIGRATION_GUIDE.md\", \"content\": \"# Migration Guide for Pending Features\\n\\nThis guide provides comprehensive information about all open pull requests and their impact on the codebase. Use this document to understand upcoming changes and prepare for integration.\\n\\n## PR #53: Automate Docker Image Builds with GitHub Actions\\n\\n**Title**: 【Feat】Automate Docker Image Builds with GitHub Actions\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR introduces automated Docker image building through GitHub Actions. The workflow will trigger automatically on branch updates, ensuring fresh Docker images are built for the latest code changes.\\n\\n### Key Features\\n- **Automated CI/CD**: New GitHub Actions workflow for Docker builds\\n- **Continuous Integration**: Automatic builds on push events\\n- **Best Practices**: Leverages GitHub Action templates for reliability\\n- **Early Issue Detection**: Catches build issues early in development cycle\\n\\n### New Configuration\\n- **File**: `.github/workflows/docker-build.yml` (or similar)\\n- **Trigger**: `push` events to branches\\n- **Action**: Automated Docker image building\\n\\n### Environment Variables\\n- No new environment variables required\\n- Uses standard GitHub Actions context variables\\n\\n### Installation/Usage Instructions\\n1. **Testing**: Push a new commit to any branch\\n2. **Monitoring**: Check GitHub Actions tab for workflow execution\\n3. **Validation**: Confirm workflow completes successfully\\n4. **Integration**: Docker images will be available for deployment\\n\\n### Migration Impact\\n- **Risk Level**: Low - additive feature\\n- **Dependencies**: GitHub Actions infrastructure\\n- **Breaking Changes**: None\\n\\n---\\n\\n## PR #52: Add Shell Completions (bash, zsh, fish)\\n\\n**Title**: feat: add shell completions (bash, zsh, fish)\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR adds static shell completion scripts for improved command-line experience across different shells. Provides tab autocompletion for Claude Code commands.\\n\\n### Key Features\\n- **Multi-shell Support**: bash, zsh, and fish completions\\n- **Static Scripts**: Pre-built completion files\\n- **Enhanced UX**: Tab autocompletion for commands\\n- **No Binary Changes**: Works with existing Claude Code binary\\n\\n### New Files Added\\n- `shell-completions/claude-completions.bash`\\n- `shell-completions/claude-completions.zsh`\\n- `shell-completions/claude-completions.fish`\\n\\n### Installation Instructions\\n1. **Manual Installation**: Copy appropriate completion file to shell configuration\\n2. **Bash**: `source shell-completions/claude-completions.bash`\\n3. **Zsh**: `source shell-completions/claude-completions.zsh`\\n4. **Fish**: `source shell-completions/claude-completions.fish`\\n\\n### Alternative Usage (if supported)\\n```bash\\nsource <(claude completion $SHELL)\\n```\\n*Note: This requires upstream integration which is not currently possible*\\n\\n### Migration Impact\\n- **Risk Level**: Very Low - additive feature\\n- **Dependencies**: None\\n- **Breaking Changes**: None\\n- **User Benefit**: Improved CLI experience\\n\\n---\\n\\n## PR #51: Enhance Statsig Event Logging in GitHub Workflows\\n\\n**Title**: Enhance Statsig event logging in GitHub workflows\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR enhances the existing Statsig event logging system by adding additional events for issue management workflows. Specifically tracks duplicate issue handling and comment additions.\\n\\n### Key Features\\n- **Enhanced Logging**: Additional Statsig events for issue management\\n- **Duplicate Tracking**: Logs when issues are closed as duplicates\\n- **Comment Monitoring**: Tracks duplicate comment additions\\n- **Consistency**: Maintains existing logging patterns\\n\\n### New Events Logged\\n- Issue closed as duplicate events\\n- Duplicate comment addition events\\n- Enhanced issue lifecycle tracking\\n\\n### Configuration Changes\\n- **Location**: GitHub workflow files\\n- **Integration**: Statsig event logging system\\n- **Pattern**: Consistent with existing logging approaches\\n\\n### Migration Impact\\n- **Risk Level**: Low - logging enhancement\\n- **Dependencies**: Statsig integration\\n- **Breaking Changes**: None\\n- **Performance**: Minimal impact on workflow execution\\n\\n### Testing Requirements\\n1. **Event Validation**: Verify new events are properly logged\\n2. **Statsig Integration**: Confirm events appear in Statsig dashboard\\n3. **Workflow Testing**: Ensure GitHub Actions complete successfully\\n4. **Data Consistency**: Validate event data accuracy",
-      "tokens": 120224,
-      "time": 0,
-      "turns": 5
+      "agent_execution_time": 186.36135172843933,
+      "task_execution_time": 293.1698331832886,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"claude-code\", \"path\": \"docs/MIGRATION_GUIDE.md\", \"content\": \"# Migration Guide for Pending Features\\n\\nThis guide provides comprehensive information about all open pull requests and their impact on the codebase. Use this document to understand upcoming changes and prepare for integration.\\n\\n## PR #53: Automate Docker Image Builds with GitHub Actions\\n\\n**Title**: 【Feat】Automate Docker Image Builds with GitHub Actions\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR introduces automated Docker image building through GitHub Actions. The workflow will trigger automatically on branch updates, ensuring fresh Docker images are built for the latest code changes.\\n\\n### Key Features\\n- **Automated CI/CD**: New GitHub Actions workflow for Docker builds\\n- **Continuous Integration**: Automatic builds on push events\\n- **Best Practices**: Leverages GitHub Action templates for reliability\\n- **Early Issue Detection**: Catches build issues early in development cycle\\n\\n### New Configuration\\n- **File**: `.github/workflows/docker-build.yml` (or similar)\\n- **Trigger**: `push` events to branches\\n- **Action**: Automated Docker image building\\n\\n### Environment Variables\\n- No new environment variables required\\n- Uses standard GitHub Actions context variables\\n\\n### Installation/Usage Instructions\\n1. **Testing**: Push a new commit to any branch\\n2. **Monitoring**: Check GitHub Actions tab for workflow execution\\n3. **Validation**: Confirm workflow completes successfully\\n4. **Integration**: Docker images will be available for deployment\\n\\n### Migration Impact\\n- **Risk Level**: Low - additive feature\\n- **Dependencies**: GitHub Actions infrastructure\\n- **Breaking Changes**: None\\n\\n---\\n\\n## PR #52: Add Shell Completions (bash, zsh, fish)\\n\\n**Title**: feat: add shell completions (bash, zsh, fish)\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR adds static shell completion scripts for improved command-line experience across different shells. Provides tab autocompletion for Claude Code commands.\\n\\n### Key Features\\n- **Multi-shell Support**: bash, zsh, and fish completions\\n- **Static Scripts**: Pre-built completion files\\n- **Enhanced UX**: Tab autocompletion for commands\\n- **No Binary Changes**: Works with existing Claude Code binary\\n\\n### New Files Added\\n- `shell-completions/claude-completions.bash`\\n- `shell-completions/claude-completions.zsh`\\n- `shell-completions/claude-completions.fish`\\n\\n### Installation Instructions\\n1. **Manual Installation**: Copy appropriate completion file to shell configuration\\n2. **Bash**: `source shell-completions/claude-completions.bash`\\n3. **Zsh**: `source shell-completions/claude-completions.zsh`\\n4. **Fish**: `source shell-completions/claude-completions.fish`\\n\\n### Alternative Usage (if supported)\\n```bash\\nsource <(claude completion $SHELL)\\n```\\n*Note: This requires upstream integration which is not currently possible*\\n\\n### Migration Impact\\n- **Risk Level**: Very Low - additive feature\\n- **Dependencies**: None\\n- **Breaking Changes**: None\\n- **User Benefit**: Improved CLI experience\\n\\n---\\n\\n## PR #51: Enhance Statsig Event Logging in GitHub Workflows\\n\\n**Title**: Enhance Statsig event logging in GitHub workflows\\n**Status**: Open\\n**Author**: zjwu0522\\n\\n### Summary of Changes\\nThis PR enhances the existing Statsig event logging system by adding additional events for issue management workflows. Specifically tracks duplicate issue handling and comment additions.\\n\\n### Key Features\\n- **Enhanced Logging**: Additional Statsig events for issue management\\n- **Duplicate Tracking**: Logs when issues are closed as duplicates\\n- **Comment Monitoring**: Tracks duplicate comment additions\\n- **Consistency**: Maintains existing logging patterns\\n\\n### New Events Logged\\n- Issue closed as duplicate events\\n- Duplicate comment addition events\\n- Enhanced issue lifecycle tracking\\n\\n### Configuration Changes\\n- **Location**: GitHub workflow files\\n- **Integration**: Statsig event logging system\\n- **Pattern**: Consistent with existing logging approaches\\n\\n### Migration Impact\\n- **Risk Level**: Low - logging enhancement\\n- **Dependencies**: Statsig integration\\n- **Breaking Changes**: None\\n- **Performance**: Minimal impact on workflow execution\\n\\n### Testing Requirements\\n1. **Event Validation**: Verify new events are properly logged\\n2. **Statsig Integration**: Confirm events appear in Statsig dashboard\\n3. **Workflow Testing**: Ensure GitHub Actions complete successfully\\n4. **Data Consistency**: Validate event data accuracy"
+      },
+      "token_usage": {
+        "input_tokens": 119167,
+        "output_tokens": 1057,
+        "total_tokens": 120224
+      },
+      "turn_count": 5
     }
   }
 }

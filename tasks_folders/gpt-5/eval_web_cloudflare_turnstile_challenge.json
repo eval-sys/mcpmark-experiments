@@ -4,32 +4,60 @@
   "model": "gpt-5",
   "runs": {
     "run-1": {
-      "success": false,
-      "error_message": "\nModel response (first 500 chars): Result summary:\n- Navigated to https://mcp-eval-website.vercel.app/auth/turnstile\n- Entered credentials:\n  - Username: testuser\n  - Password: password123\n- Waited for the Cloudflare Turnstile widget to load (window.turnstile API detected and widget container present)\n- Attempted to complete the Turnstile challenge using the on-page API (execute/render). The page’s script uses the test sitekey “3x00000000000000000000FF” which is an “always fail” test key. As a result, the application’s internal t...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
-      "tokens": 820998,
-      "time": 0,
-      "turns": 38
+      "agent_execution_time": 1285.1537477970123,
+      "task_execution_time": 1285.1778061389923,
+      "execution_result": {
+        "success": false,
+        "error_message": "\nModel response (first 500 chars): Result summary:\n- Navigated to https://mcp-eval-website.vercel.app/auth/turnstile\n- Entered credentials:\n  - Username: testuser\n  - Password: password123\n- Waited for the Cloudflare Turnstile widget to load (window.turnstile API detected and widget container present)\n- Attempted to complete the Turnstile challenge using the on-page API (execute/render). The page’s script uses the test sitekey “3x00000000000000000000FF” which is an “always fail” test key. As a result, the application’s internal t...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n"
+      },
+      "token_usage": {
+        "input_tokens": 764669,
+        "output_tokens": 56329,
+        "total_tokens": 820998
+      },
+      "turn_count": 38
     },
     "run-2": {
-      "success": false,
-      "error_message": "\nModel response (first 500 chars): Please complete the security challenge first....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
-      "tokens": 352930,
-      "time": 0,
-      "turns": 24
+      "agent_execution_time": 629.3331234455109,
+      "task_execution_time": 629.356523513794,
+      "execution_result": {
+        "success": false,
+        "error_message": "\nModel response (first 500 chars): Please complete the security challenge first....\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n"
+      },
+      "token_usage": {
+        "input_tokens": 316121,
+        "output_tokens": 36809,
+        "total_tokens": 352930
+      },
+      "turn_count": 24
     },
     "run-3": {
-      "success": true,
-      "error_message": null,
-      "tokens": 1112368,
-      "time": 0,
-      "turns": 43
+      "agent_execution_time": 1327.820603609085,
+      "task_execution_time": 1327.8449223041534,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 1044571,
+        "output_tokens": 67797,
+        "total_tokens": 1112368
+      },
+      "turn_count": 43
     },
     "run-4": {
-      "success": false,
-      "error_message": "\nModel response (first 500 chars): Result: Could not complete authentication. The Cloudflare Turnstile widget failed to initialize, so the form never reached a success state.\n\nKey details:\n- Filled credentials: testuser / password123\n- Turnstile widget did not complete; console showed: “Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter ‘sitekey’”\n- “Sign In” remained disabled until forcibly enabled, and submission returned the inline error:\n  “Please complete the security challenge first.”\n\nCap...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n",
-      "tokens": 1782562,
-      "time": 0,
-      "turns": 36
+      "agent_execution_time": 691.2457087039948,
+      "task_execution_time": 691.2712600231171,
+      "execution_result": {
+        "success": false,
+        "error_message": "\nModel response (first 500 chars): Result: Could not complete authentication. The Cloudflare Turnstile widget failed to initialize, so the form never reached a success state.\n\nKey details:\n- Filled credentials: testuser / password123\n- Turnstile widget did not complete; console showed: “Uncaught TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter ‘sitekey’”\n- “Sign In” remained disabled until forcibly enabled, and submission returned the inline error:\n  “Please complete the security challenge first.”\n\nCap...\n\n✗ Success message NOT found: 'Authentication successful! Security challenge verified.'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1750163,
+        "output_tokens": 32399,
+        "total_tokens": 1782562
+      },
+      "turn_count": 36
     }
   }
 }
