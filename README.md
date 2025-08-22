@@ -1,5 +1,19 @@
 # consolidated-all-services-0822 - Evaluation Results
 
+## Overall Models Performance
+
+Performance of each model across all MCP services combined:
+
+| Model | Total Tasks | Pass@1 | Pass@4 | Pass^4 | Avg@4 |
+|-------|-------------|--------|----------|----------|---------|
+| gpt-5 | 125 | 44.1% | 63.6% | 24.4% | 46.4% |
+| o3 | 125 | 27.5% | 42.2% | 12.4% | 25.1% |
+| claude-4-sonnet | 125 | 26.1% | 43.2% | 12.6% | 28.2% |
+| k2 | 121 | 20.2% | 30.0% | 9.6% | 17.4% |
+| deepseek-chat | 125 | 19.5% | 29.8% | 8.5% | 17.9% |
+| gemini-2-5-pro | 125 | 15.6% | 24.5% | 4.2% | 12.5% |
+| qwen-3-coder | 72 | 4.8% | 11.4% | 3.7% | 7.0% |
+
 ## Models Performance on Each MCP Service
 
 ### Filesystem
