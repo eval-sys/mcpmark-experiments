@@ -1,0 +1,20 @@
+{
+  "task_id": "find_math_paper",
+  "task_name": "Find Math Paper",
+  "category_id": "papers",
+  "category_name": "Papers",
+  "description": "Search through academic papers to identify and locate mathematics-related content that satisfies specific mathematical criteria and research requirements.",
+  "author": "Xiangyan Liu",
+  "created_at": "2025-08-12",
+  "difficulty": "L3",
+  "tags": [
+    "pattern analysis",
+    "data extraction"
+  ],
+  "mcp": [
+    "filesystem"
+  ],
+  "metadata": {},
+  "instruction": "You are given a directory containing multiple paper files. Please help me find a math-related benchmark paper. I don’t remember its name, but I remember it not only checks whether the answer is correct, but also analyzes whether the model suffers from insufficient knowledge, lacks generalization ability, or relies on rote memorization. After finding this paper, rename its corresponding HTML file to `answer.html`.",
+  "verify": "#!/usr/bin/env python3\n\"\"\"\nVerification script for Find Math Paper Task\n\"\"\"\n\nimport sys\nfrom pathlib import Path\nimport os\n\ndef get_test_directory() -> Path:\n    \"\"\"Get the test directory from FILESYSTEM_TEST_DIR env var.\"\"\"\n    test_root = os.environ.get(\"FILESYSTEM_TEST_DIR\")\n    if not test_root:\n        raise ValueError(\"FILESYSTEM_TEST_DIR environment variable is required\")\n    return Path(test_root)\n\ndef verify_answer_file_exists(test_dir: Path) -> bool:\n    \"\"\"Verify that answer.html exists in the papers directory.\"\"\"\n    answer_file = test_dir  / \"answer.html\"\n    \n    if not answer_file.exists():\n        print(\"❌ File 'answer.html' not found\")\n        return False\n    \n    print(\"✅ answer.html found\")\n    return True\n\ndef verify_original_file_removed(test_dir: Path) -> bool:\n    \"\"\"Verify that the original file (2407.01284.html) no longer exists.\"\"\"\n    original_file = test_dir  / \"2407.01284.html\"\n    \n    if original_file.exists():\n        print(\"❌ Original file 2407.01284.html still exists\")\n        return False\n    \n    print(\"✅ Original file has been renamed\")\n    return True\n\ndef main():\n    \"\"\"Main verification function.\"\"\"\n    test_dir = get_test_directory()\n    print(\"🔍 Verifying Find Math Paper Task...\")\n    \n    # Define verification steps\n    verification_steps = [\n        (\"Answer File Exists\", verify_answer_file_exists),\n        (\"Original File Renamed\", verify_original_file_removed),\n    ]\n    \n    # Run all verification steps\n    all_passed = True\n    for step_name, verify_func in verification_steps:\n        print(f\"\\n--- {step_name} ---\")\n        if not verify_func(test_dir):\n            all_passed = False\n    \n    # Final result\n    print(\"\\n\" + \"=\"*50)\n    if all_passed:\n        print(\"✅ Paper correctly renamed to answer.html!\")\n        print(\"🎉 Task verification: PASS\")\n        sys.exit(0)\n    else:\n        print(\"❌ Task verification: FAIL\")\n        sys.exit(1)\n\nif __name__ == \"__main__\":\n    main()"
+}
