@@ -1,0 +1,63 @@
+{
+  "task_name": "harmony__release_management_workflow",
+  "service": "github",
+  "model": "claude-4-sonnet",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 187.9323947429657,
+      "task_execution_time": 238.67810535430908,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"harmony\", \"branch\": \"release-v1.1.0\", \"path\": \"src/encoding.rs\", \"message\": \"Fix MetaSep token mapping bug - change from channel to meta_sep\""
+      },
+      "token_usage": {
+        "input_tokens": 565378,
+        "output_tokens": 1229,
+        "total_tokens": 566607
+      },
+      "turn_count": 9
+    },
+    "run-2": {
+      "agent_execution_time": 105.18294501304626,
+      "task_execution_time": 161.1246600151062,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"harmony\", \"path\": \"src/encoding.rs\", \"branch\": \"release-v1.1.0\", \"message\": \"fix: correct MetaSep token mapping to use <|meta_sep|>\\n\\nPreviously MetaSep was incorrectly mapped to <|channel|> token.\\nThis fix ensures MetaSep formatting token maps to the correct <|meta_sep|> value.\""
+      },
+      "token_usage": {
+        "input_tokens": 333759,
+        "output_tokens": 917,
+        "total_tokens": 334676
+      },
+      "turn_count": 6
+    },
+    "run-3": {
+      "agent_execution_time": 156.90018510818481,
+      "task_execution_time": 203.4497046470642,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"harmony\", \"branch\": \"release-v1.1.0\", \"path\": \"src/encoding.rs\", \"message\": \"Fix MetaSep token mapping from channel to meta_sep\""
+      },
+      "token_usage": {
+        "input_tokens": 359595,
+        "output_tokens": 881,
+        "total_tokens": 360476
+      },
+      "turn_count": 7
+    },
+    "run-4": {
+      "agent_execution_time": 125.62383913993835,
+      "task_execution_time": 172.56596183776855,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool create_or_update_file: {\"owner\": \"mcpmark-eval\", \"repo\": \"harmony\", \"path\": \"src/encoding.rs\", \"branch\": \"release-v1.1.0\", \"sha\": \"afe1fce7b01641d088e4e4fbf9ae442616f2f91b\", \"message\": \"fix: correct MetaSep token mapping to use <|meta_sep|> instead of <|channel|>\""
+      },
+      "token_usage": {
+        "input_tokens": 450646,
+        "output_tokens": 1011,
+        "total_tokens": 451657
+      },
+      "turn_count": 8
+    }
+  }
+}

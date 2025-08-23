@@ -1,0 +1,63 @@
+{
+  "task_name": "shopping__task_multi_category_budget_analysis",
+  "service": "playwright",
+  "model": "gpt-5",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 1392.8006353378296,
+      "task_execution_time": 1454.7161333560944,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: 1.04:B071954ZDC;1.89:B07ND598N3;2.50:B01G26DMSC\nchocolate_sum: 5.43\ntabletop_search_count: 60\ntabletop_product: 169.99:B09NPX5CDP\ntabletop_reviews: 4:95\ncheapest_computer_accessory: 1.17\nprice_difference: 168.82\ncomparison_count: 3\ncart_subtotal: 2.21\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ chocolate_products: product 1 price format error - expected '$XX.XX' format, got '1.04'\n✗ chocolate_products: product 2 price format error - expected '$XX.XX' format, got '1.89'\n✗ chocolate_products: product 3 price format error - expected '$XX.XX' format, got '2.50'\n✗ chocolate_sum: incorrect format - expected '$XX.XX' format, got '5.43'\n✗ tabletop_product: price format error - expected '$XX.XX' format, got '169.99'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '4:95'\n✗ cheapest_computer_accessory: incorrect format - expected '$XX.XX' format, got '1.17'\n✗ price_difference: incorrect format - expected '$XX.XX' format, got '168.82'\n✗ cart_subtotal: incorrect format - expected '$XX.XX' format, got '2.21'\n\nModel answer does not match expected answer\n"
+      },
+      "token_usage": {
+        "input_tokens": 5150269,
+        "output_tokens": 44905,
+        "total_tokens": 5195174
+      },
+      "turn_count": 39
+    },
+    "run-2": {
+      "agent_execution_time": 1158.042664527893,
+      "task_execution_time": 1220.9282944202423,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: $1.04:B071954ZDC;$1.89:B07ND598N3;$2.50:B01G26DMSC\nchocolate_sum: $5.43\ntabletop_search_count: 60\ntabletop_product: $110.99:B09C5WZ2MW\ntabletop_reviews: 12:93%\ncheapest_computer_accessory: $1.17\nprice_difference: $109.82\ncomparison_count: 3\ncart_subtotal: $2.21\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ tabletop_product: mismatch - expected '$169.99:B09NPX5CDP', got '$110.99:B09C5WZ2MW'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '12:93%'\n✗ price_difference: expected '$168.82', got '$109.82'\n\nModel answer does not match expected answer\n"
+      },
+      "token_usage": {
+        "input_tokens": 4806917,
+        "output_tokens": 35609,
+        "total_tokens": 4842526
+      },
+      "turn_count": 38
+    },
+    "run-3": {
+      "agent_execution_time": 1277.9391300678253,
+      "task_execution_time": 1342.2250032424927,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 277658 tokens. Please reduce the length of the messages. (tid: 202508201901329783669292509124)', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+      },
+      "token_usage": {
+        "input_tokens": 4918456,
+        "output_tokens": 41608,
+        "total_tokens": 4960064
+      },
+      "turn_count": 39
+    },
+    "run-4": {
+      "agent_execution_time": 1302.9111015796661,
+      "task_execution_time": 1368.1457834243774,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 276221 tokens. Please reduce the length of the messages. (tid: 2025082022500362319685879199467)', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+      },
+      "token_usage": {
+        "input_tokens": 5558463,
+        "output_tokens": 54479,
+        "total_tokens": 5612942
+      },
+      "turn_count": 41
+    }
+  }
+}
