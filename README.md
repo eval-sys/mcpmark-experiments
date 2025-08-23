@@ -1,6 +1,6 @@
 # consolidated-all-services-0822 - Evaluation Results
 
-Generated: 2025-08-22T15:24:54.814013
+Generated: 2025-08-23T05:55:45.014223
 
 ## Overall Models Performance
 
@@ -8,7 +8,6 @@ Performance across all MCP services combined:
 
 | Model | Total Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------------|--------|----------|----------|-------------------|
-| grok-4 | 19 | 55.3% ± 6.8% | 73.7% | 21.1% | 162.91 |
 | gpt-5 | 125 | 46.4% ± 5.9% | 63.6% | 24.4% | 384.08 |
 | claude-4-sonnet | 125 | 28.2% ± 6.3% | 43.2% | 12.6% | 211.25 |
 | o3 | 125 | 25.3% ± 5.9% | 42.9% | 12.4% | 170.68 |
@@ -71,7 +70,6 @@ Performance across all MCP services combined:
 | Model | Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------|--------|----------|----------|-------------------|
 | gpt-5 | 19 | 75.0% ± 9.0% | 100.0% | 36.8% | 249.87 |
-| grok-4 | 19 | 55.3% ± 6.8% | 73.7% | 21.1% | 162.91 |
 | claude-4-sonnet | 19 | 52.6% ± 9.6% | 68.4% | 36.8% | 234.67 |
 | deepseek-chat | 19 | 47.4% ± 6.1% | 68.4% | 31.6% | 368.83 |
 | o3 | 19 | 39.5% ± 10.1% | 68.4% | 15.8% | 74.51 |
