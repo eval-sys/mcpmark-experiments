@@ -1,0 +1,63 @@
+{
+  "task_name": "easyr1__performance_regression_investigation",
+  "service": "github",
+  "model": "k2",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 336.2731695175171,
+      "task_execution_time": 443.37725591659546,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 239122,
+        "output_tokens": 3606,
+        "total_tokens": 242728
+      },
+      "turn_count": 10
+    },
+    "run-2": {
+      "agent_execution_time": 230.51100325584412,
+      "task_execution_time": 328.8384339809418,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool add_issue_comment: {\"owner\": \"mcpmark-eval\", \"repo\": \"EasyR1\", \"issue_number\": 51, \"body\": \"## Performance Regression Hypotheses\\n\\nBased on the detailed file analysis, here are the key areas where performance regressions might occur:\\n\\n### 1. **Batch Size Impact (HIGH PRIORITY)**\\nThe dramatic reduction in micro-batch sizes (75-87.5% reduction) in `examples/config.yaml` is the most likely source of performance regression:\\n- **Throughput Impact**: Smaller batches = more iterations = potentially slower training\\n- **GPU Utilization**: Risk of GPU underutilization with very small batch sizes\\n- **Memory vs Speed Trade-off**: While memory usage decreases, training speed may suffer significantly\\n\\n### 2. **Protocol Serialization Changes (MEDIUM PRIORITY)**\\nChanges in `verl/protocol.py` to handle `None` batch cases:\\n- **Memory Efficiency**: Should improve memory usage for edge cases\\n- **Serialization Overhead**: New TensorDict operations might add slight overhead\\n- **Edge Case Performance**: Better handling of None batches but potential overhead for normal cases\\n\\n### 3. **Configuration Consistency (MEDIUM PRIORITY)**\\nRemoval of explicit parameters in shell scripts means all configurations now flow through the reduced batch sizes in config.yaml, amplifying the batch size impact across all training runs.\\n\\n### Testing Recommendations\\n1. **Baseline Comparison**: Compare training speed before/after commit with identical hardware\\n2. **Batch Size Ablation**: Test intermediate batch sizes (e.g., 2, 4, 8) to find optimal balance\\n"
+      },
+      "token_usage": {
+        "input_tokens": 95076,
+        "output_tokens": 1482,
+        "total_tokens": 96558
+      },
+      "turn_count": 5
+    },
+    "run-3": {
+      "agent_execution_time": 155.48047828674316,
+      "task_execution_time": 252.51095414161682,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 466799,
+        "output_tokens": 4298,
+        "total_tokens": 471097
+      },
+      "turn_count": 17
+    },
+    "run-4": {
+      "agent_execution_time": 143.43009233474731,
+      "task_execution_time": 241.13845372200012,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 281644,
+        "output_tokens": 3846,
+        "total_tokens": 285490
+      },
+      "turn_count": 10
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "task_name": "papers__find_math_paper",
+  "service": "filesystem",
+  "model": "qwen-3-coder",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 29.55411386489868,
+      "task_execution_time": 29.60527014732361,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Please reduce the length of the messages or completion. Current length is 78289 while limit is 65536 (tid: 2025082104153950709346820050925) (tid: 2025082104153758948626992885505)', 'type': 'upstream_error', 'param': '400', 'code': 'bad_response_status_code'}}"
+      },
+      "token_usage": {
+        "input_tokens": 135335,
+        "output_tokens": 684,
+        "total_tokens": 136019
+      },
+      "turn_count": 6
+    },
+    "run-2": {
+      "agent_execution_time": 125.86548686027527,
+      "task_execution_time": 125.94656991958618,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 548320,
+        "output_tokens": 958,
+        "total_tokens": 549278
+      },
+      "turn_count": 10
+    },
+    "run-3": {
+      "agent_execution_time": 204.4408369064331,
+      "task_execution_time": 204.51852297782898,
+      "execution_result": {
+        "success": false,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 1271440,
+        "output_tokens": 3608,
+        "total_tokens": 1275048
+      },
+      "turn_count": 28
+    },
+    "run-4": {
+      "agent_execution_time": 865.7324991226196,
+      "task_execution_time": 865.7881269454956,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'This endpoint\\'s maximum context length is 262144 tokens. However, you requested about 268551 tokens (266531 of text input, 2020 of tool input). Please reduce the length of either one, or use the \"middle-out\" transform to compress your prompt automatically.', 'code': 400, 'metadata': {'provider_name': None}}}"
+      },
+      "token_usage": {
+        "input_tokens": 4221037,
+        "output_tokens": 2511,
+        "total_tokens": 4223548
+      },
+      "turn_count": 26
+    }
+  }
+}
