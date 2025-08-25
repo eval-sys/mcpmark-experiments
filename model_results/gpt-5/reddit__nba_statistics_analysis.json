@@ -1,0 +1,63 @@
+{
+  "task_name": "reddit__nba_statistics_analysis",
+  "service": "playwright",
+  "model": "gpt-5",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 651.9661951065063,
+      "task_execution_time": 721.7005591392517,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 279286 tokens. Please reduce the length of the messages. (tid: 2025082013060983346140995493757)', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+      },
+      "token_usage": {
+        "input_tokens": 2012083,
+        "output_tokens": 22913,
+        "total_tokens": 2034996
+      },
+      "turn_count": 21
+    },
+    "run-2": {
+      "agent_execution_time": 658.1592319011688,
+      "task_execution_time": 702.4481685161591,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 278471 tokens. Please reduce the length of the messages. (tid: 2025082015242357799459306078359)', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+      },
+      "token_usage": {
+        "input_tokens": 3125193,
+        "output_tokens": 21736,
+        "total_tokens": 3146929
+      },
+      "turn_count": 26
+    },
+    "run-3": {
+      "agent_execution_time": 470.40280652046204,
+      "task_execution_time": 516.793577671051,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 277931 tokens. Please reduce the length of the messages. (tid: 2025082018372943515758605367219)', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+      },
+      "token_usage": {
+        "input_tokens": 1400911,
+        "output_tokens": 17079,
+        "total_tokens": 1417990
+      },
+      "turn_count": 18
+    },
+    "run-4": {
+      "agent_execution_time": 761.6677465438843,
+      "task_execution_time": 840.5085470676422,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as NBA_DataAnalyst_2024\nNavigating to sports forum to check submission...\nLooking for submission 'Statistical Analysis: NBA Content Engagement on This Forum'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_NBA_Posts|20\nTop1_Title|Heat place literally every player on injury report after receiving NBA fine ahead of Mexico City game\nTop1_Votes|1266\nTop1_Comments|145\nTop1_Author|XXmynameisNeganXX\nTop2...\nExtracted data: {'Total_NBA_Posts': '20', 'Top1_Title': 'Heat place literally every player on injury report after receiving NBA fine ahead of Mexico City game', 'Top1_Votes': '1266', 'Top1_Comments': '145', 'Top1_Author': 'XXmynameisNeganXX', 'Top2_Title': \"[ESPN] Announced attendance at the Alamodome tonight: 68,323, a new single-game NBA record, in the Spurs' first game there since Game 4 of the 2002 Western Conference Semifinals.\", 'Top2_Votes': '1511', 'Top2_Comments': '101', 'Top2_Author': 'dragon8811', 'Top3_Title': 'Perspective | Kyrie Irving lit a flame. The NBA, top to bottom, watched the fire spread.', 'Top3_Votes': '74', 'Top3_Comments': '32', 'Top3_Author': 'tomyland', 'Top4_Title': 'How LeBron James became the NBA all-time scoring leader', 'Top4_Votes': '0', 'Top4_Comments': '27', 'Top4_Author': 'JeanineMiguel', 'Top5_Title': 'Former NBA great Allen Iverson to visit Taiwan', 'Top5_Votes': '14', 'Top5_Comments': '22', 'Top5_Author': 'Agent14557', 'BCLetsRide69_Total_Posts': '48'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Top1_Title mismatch: got 'Heat place literally every player on injury report after receiving NBA fine ahead of Mexico City game', expected 'Hamby claims [WNBA Champ] Aces 'unprofessional' after trade'\n  - Top1_Votes mismatch: got 1266, expected 614\n  - Top1_Comments mismatch: got 145, expected 170\n  - Top1_Author mismatch: got 'XXmynameisNeganXX', expected 'Responsible-Lunch815'\n  - Top2_Title mismatch: got '[ESPN] Announced attendance at the Alamodome tonight: 68,323, a new single-game NBA record, in the Spurs' first game there since Game 4 of the 2002 Western Conference Semifinals.', expected 'Heat place literally every player on injury report after receiving NBA fine ahead of Mexico City game'\n  - Top2_Votes mismatch: got 1511, expected 1266\n  - Top2_Comments mismatch: got 101, expected 145\n  - Top2_Author mismatch: got 'dragon8811', expected 'XXmynameisNeganXX'\n  - Top3_Title mismatch: got 'Perspective | Kyrie Irving lit a flame. The NBA, top to bottom, watched the fire spread.', expected '[ESPN] Announced attendance at the Alamodome tonight|68,323, a new single-game NBA record, in the Spurs' first game there since Game 4 of the 2002 Western Conference Semifinals.'\n  - Top3_Votes mismatch: got 74, expected 1511\n  - Top3_Comments mismatch: got 32, expected 101\n  - Top3_Author mismatch: got 'tomyland', expected 'dragon8811'\n  - Top4_Title mismatch: got 'How LeBron James became the NBA all-time scoring leader', expected 'Phoenix Mercury confirm Brittney Griner's return to WNBA'\n  - Top4_Comments mismatch: got 27, expected 42\n  - Top4_Author mismatch: got 'JeanineMiguel', expected 'rejs7'\n  - Top5_Title mismatch: got 'Former NBA great Allen Iverson to visit Taiwan', expected 'Perspective | Kyrie Irving lit a flame. The NBA, top to bottom, watched the fire spread.'\n  - Top5_Votes mismatch: got 14, expected 74\n  - Top5_Comments mismatch: got 22, expected 32\n  - Top5_Author mismatch: got 'Agent14557', expected 'tomyland'\n"
+      },
+      "token_usage": {
+        "input_tokens": 2488242,
+        "output_tokens": 26165,
+        "total_tokens": 2514407
+      },
+      "turn_count": 24
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "task_name": "reddit__llm_research_summary",
+  "service": "playwright",
+  "model": "k2",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 290.41045570373535,
+      "task_execution_time": 337.1690638065338,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as llm_analyst_2024\nNavigating to MachineLearning forum...\nLooking for submission 'LLM Research Summary: GPT Discussions Analysis [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_LLM_Posts|8\nTop1_Title|[P] I made a command-line tool that explains your errors using ChatGPT\nTop1_Upvotes|2655\nTop1_Date|3 years ago\nTop2_Title|[P] I built Adrenaline, a debugger that fixes err...\nExtracted data: {'Total_LLM_Posts': '8', 'Top1_Title': '[P] I made a command-line tool that explains your errors using ChatGPT', 'Top1_Upvotes': '2655', 'Top1_Date': '3 years ago', 'Top2_Title': '[P] I built Adrenaline, a debugger that fixes errors and explains them with GPT-3', 'Top2_Upvotes': '1542', 'Top2_Date': '3 years ago', 'Top3_Title': \"[N] OpenAI may have benchmarked GPT-4's coding ability on it's own training data\", 'Top3_Upvotes': '925', 'Top3_Date': '2 years ago', 'Deeplearning_MostDiscussed': \"Do companies actually care about their model's training/inference speed?\", 'Deeplearning_Comments': '39'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Total_LLM_Posts mismatch: got 8, expected 9\n  - Total_LLM_Posts mismatch: got 8, expected 9\n  - Top1_Title mismatch: got '[P] I made a command-line tool that explains your errors using ChatGPT', expected '[P] I made a command-line tool that explains your errors using ChatGPT (link in comments)'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1202022,
+        "output_tokens": 2593,
+        "total_tokens": 1204615
+      },
+      "turn_count": 23
+    },
+    "run-2": {
+      "agent_execution_time": 194.58524203300476,
+      "task_execution_time": 242.4220097064972,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as llm_analyst_2024\nNavigating to MachineLearning forum...\nLooking for submission 'LLM Research Summary: GPT Discussions Analysis [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_LLM_Posts|9\nTop1_Title|[P] I made a command-line tool that explains your errors using ChatGPT\nTop1_Upvotes|2655\nTop1_Date|3 years ago\nTop2_Title|[P] I built Adrenaline, a debugger that fixes err...\nExtracted data: {'Total_LLM_Posts': '9', 'Top1_Title': '[P] I made a command-line tool that explains your errors using ChatGPT', 'Top1_Upvotes': '2655', 'Top1_Date': '3 years ago', 'Top2_Title': '[P] I built Adrenaline, a debugger that fixes errors and explains them with GPT-3', 'Top2_Upvotes': '1542', 'Top2_Date': '3 years ago', 'Top3_Title': \"[N] OpenAI may have benchmarked GPT-4's coding ability on it's own training data\", 'Top3_Upvotes': '925', 'Top3_Date': '2 years ago', 'Deeplearning_MostDiscussed': 'Do we really need 100B+ parameters in a large language model?', 'Deeplearning_Comments': '54'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Top1_Title mismatch: got '[P] I made a command-line tool that explains your errors using ChatGPT', expected '[P] I made a command-line tool that explains your errors using ChatGPT (link in comments)'\n  - Deeplearning_MostDiscussed mismatch: got 'Do we really need 100B+ parameters in a large language model?', expected 'Do companies actually care about their model's training/inference speed?'\n  - Deeplearning_Comments mismatch: got 54, expected 39\n"
+      },
+      "token_usage": {
+        "input_tokens": 794904,
+        "output_tokens": 2154,
+        "total_tokens": 797058
+      },
+      "turn_count": 20
+    },
+    "run-3": {
+      "agent_execution_time": 203.7995617389679,
+      "task_execution_time": 250.57404947280884,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as llm_analyst_2024\nNavigating to MachineLearning forum...\nLooking for submission 'LLM Research Summary: GPT Discussions Analysis [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_LLM_Posts|9\nTop1_Title|[P] I made a command-line tool that explains your errors using ChatGPT (link in comments)\nTop1_Upvotes|2655\nTop1_Date|3 years ago\nTop2_Title|[P] I built Adrenaline, a debu...\nExtracted data: {'Total_LLM_Posts': '9', 'Top1_Title': '[P] I made a command-line tool that explains your errors using ChatGPT (link in comments)', 'Top1_Upvotes': '2655', 'Top1_Date': '3 years ago', 'Top2_Title': '[P] I built Adrenaline, a debugger that fixes errors and explains them with GPT-3', 'Top2_Upvotes': '1542', 'Top2_Date': '3 years ago', 'Top3_Title': \"[N] OpenAI may have benchmarked GPT-4's coding ability on it's own training data\", 'Top3_Upvotes': '925', 'Top3_Date': '2 years ago', 'Deeplearning_MostDiscussed': 'Do we really need 100B+ parameters in a large language model?', 'Deeplearning_Comments': '54'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Deeplearning_MostDiscussed mismatch: got 'Do we really need 100B+ parameters in a large language model?', expected 'Do companies actually care about their model's training/inference speed?'\n  - Deeplearning_Comments mismatch: got 54, expected 39\n"
+      },
+      "token_usage": {
+        "input_tokens": 745254,
+        "output_tokens": 2061,
+        "total_tokens": 747315
+      },
+      "turn_count": 20
+    },
+    "run-4": {
+      "agent_execution_time": 253.28439044952393,
+      "task_execution_time": 298.4329717159271,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as llm_analyst_2024\nNavigating to MachineLearning forum...\nLooking for submission 'LLM Research Summary: GPT Discussions Analysis [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_LLM_Posts|10\nTop1_Title|[P] I made a command-line tool that explains your errors using ChatGPT\nTop1_Upvotes|2655\nTop1_Date|3 years ago\nTop2_Title|[P] I built Adrenaline, a debugger that fixes er...\nExtracted data: {'Total_LLM_Posts': '10', 'Top1_Title': '[P] I made a command-line tool that explains your errors using ChatGPT', 'Top1_Upvotes': '2655', 'Top1_Date': '3 years ago', 'Top2_Title': '[P] I built Adrenaline, a debugger that fixes errors and explains them with GPT-3', 'Top2_Upvotes': '1542', 'Top2_Date': '3 years ago', 'Top3_Title': \"[N] OpenAI may have benchmarked GPT-4's coding ability on it's own training data\", 'Top3_Upvotes': '925', 'Top3_Date': '2 years ago', 'Deeplearning_MostDiscussed': 'Do we really need 100B+ parameters in a large language model?', 'Deeplearning_Comments': '54'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Total_LLM_Posts mismatch: got 10, expected 9\n  - Total_LLM_Posts mismatch: got 10, expected 9\n  - Top1_Title mismatch: got '[P] I made a command-line tool that explains your errors using ChatGPT', expected '[P] I made a command-line tool that explains your errors using ChatGPT (link in comments)'\n  - Deeplearning_MostDiscussed mismatch: got 'Do we really need 100B+ parameters in a large language model?', expected 'Do companies actually care about their model's training/inference speed?'\n  - Deeplearning_Comments mismatch: got 54, expected 39\n"
+      },
+      "token_usage": {
+        "input_tokens": 693892,
+        "output_tokens": 2201,
+        "total_tokens": 696093
+      },
+      "turn_count": 19
+    }
+  }
+}

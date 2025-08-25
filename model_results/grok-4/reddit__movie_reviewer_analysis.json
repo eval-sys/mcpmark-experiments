@@ -1,0 +1,55 @@
+{
+  "task_name": "reddit__movie_reviewer_analysis",
+  "service": "playwright",
+  "model": "grok-4",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 155.6331136226654,
+      "task_execution_time": 200.99914050102234,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"\\\"Title\\\" textbox\",\"ref\":\"e58\",\"text\":\"Wonderful Movies Analysis: Community Favorites [2024]\"}{\"element\":\"\\\"Body\\\" textbox\",\"ref\":\"e63\",\"text\":\"- Total_Year_Posts|1\\n- Top1_Title|Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?\\n- Top1_Upvotes|9933\\n- Top1_Comments|23\\n- Top2_Title|Who will win the Oscar for FILM EDITING?\\n- Top2_Upvotes|7720\\n- Top2_Comments|20\\n- Top3_Title|Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\n- Top3_Upvotes|5268\\n- Top3_Comments|190\\n- Rittenhouse_Upvotes|2761\\n- Rittenhouse_Comments|182\\n- Total_Image_Posts_5Pages|6\"}{\"element\":\"\\\"Create submission\\\" button\",\"ref\":\"e82\"}"
+      },
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "turn_count": 13
+    },
+    "run-2": {
+      "agent_execution_time": 197.0825479030609,
+      "task_execution_time": 244.19049882888794,
+      "execution_result": {
+        "success": false,
+        "error_message": "Navigating to forum...\nNot logged in, attempting to login...\nSuccessfully logged in as movie_reviewer_2024\nNavigating to movies forum...\nLooking for submission 'Wonderful Movies Analysis: Community Favorites [2024]'...\nFound submission content using selector: .submission__body\nSubmission content found, parsing data...\nRaw content: Total_Year_Posts|1\\n- Top1_Title|Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?\\n- Top1_Upvotes|9933\\n- Top1_Comments|23\\n- Top2_Title|Who will win the Oscar for FILM EDITING?\\n- Top2_Upvote...\nExtracted data: {'Total_Year_Posts': '1', 'Top1_Title': 'Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?\\\\n- Top1_Upvotes|9933\\\\n- Top1_Comments|23\\\\n- Top2_Title|Who will win the Oscar for FILM EDITING?\\\\n- Top2_Upvotes|7720\\\\n- Top2_Comments|20\\\\n- Top3_Title|Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\\\n- Top3_Upvotes|5268\\\\n- Top3_Comments|190\\\\n- Rittenhouse_Upvotes|2761\\\\n- Rittenhouse_Comments|182\\\\n- Total_Image_Posts_5Pages|6', 'Top1_Upvotes': '9933', 'Top1_Comments': '23', 'Top2_Title': 'Who will win the Oscar for FILM EDITING?\\\\n- Top2_Upvotes|7720\\\\n- Top2_Comments|20\\\\n- Top3_Title|Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\\\n- Top3_Upvotes|5268\\\\n- Top3_Comments|190\\\\n- Rittenhouse_Upvotes|2761\\\\n- Rittenhouse_Comments|182\\\\n- Total_Image_Posts_5Pages|6', 'Top2_Upvotes': '7720', 'Top2_Comments': '20', 'Top3_Title': 'Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\\\n- Top3_Upvotes|5268\\\\n- Top3_Comments|190\\\\n- Rittenhouse_Upvotes|2761\\\\n- Rittenhouse_Comments|182\\\\n- Total_Image_Posts_5Pages|6', 'Top3_Upvotes': '5268', 'Top3_Comments': '190', 'Rittenhouse_Upvotes': '2761', 'Rittenhouse_Comments': '182', 'Total_Image_Posts_5Pages': '6'}\nLoaded expected values from label.txt\nError: Validation failed with the following issues:\n  - Top1_Title mismatch: got 'Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?\\n- Top1_Upvotes|9933\\n- Top1_Comments|23\\n- Top2_Title|Who will win the Oscar for FILM EDITING?\\n- Top2_Upvotes|7720\\n- Top2_Comments|20\\n- Top3_Title|Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\n- Top3_Upvotes|5268\\n- Top3_Comments|190\\n- Rittenhouse_Upvotes|2761\\n- Rittenhouse_Comments|182\\n- Total_Image_Posts_5Pages|6', expected 'Who will win the Oscar for ACTRESS IN A SUPPORTING ROLE?'\n  - Top2_Title mismatch: got 'Who will win the Oscar for FILM EDITING?\\n- Top2_Upvotes|7720\\n- Top2_Comments|20\\n- Top3_Title|Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\n- Top3_Upvotes|5268\\n- Top3_Comments|190\\n- Rittenhouse_Upvotes|2761\\n- Rittenhouse_Comments|182\\n- Total_Image_Posts_5Pages|6', expected 'Who will win the Oscar for FILM EDITING?'\n  - Top3_Title mismatch: got 'Cindy Williams Dies: ‘Laverne & Shirley‘ Star Who Appeared In ’American Graffiti’ & ‘The Conversation’ Was 75\\n- Top3_Upvotes|5268\\n- Top3_Comments|190\\n- Rittenhouse_Upvotes|2761\\n- Rittenhouse_Comments|182\\n- Total_Image_Posts_5Pages|6', expected 'Cindy Williams Dies: 'Laverne & Shirley' Star Who Appeared In 'American Graffiti' & 'The Conversation' Was 75'\n"
+      },
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "turn_count": 17
+    },
+    "run-3": {
+      "agent_execution_time": 22.4955575466156,
+      "task_execution_time": 65.78385305404663,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool browser_snapshot: {\"url\":\"http://localhost:9999\"}{}"
+      },
+      "token_usage": {},
+      "turn_count": 0
+    },
+    "run-4": {
+      "agent_execution_time": 41.234108448028564,
+      "task_execution_time": 82.03440737724304,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool browser_click: {\"url\":\"http://localhost:9999\"}{}{\"element\":\"link labeled Register\",\"ref\":\"1\"}{}{\"element\":\"textbox labeled Username\",\"ref\":\"2\",\"text\":\"movie_reviewer_2024\"}{\"element\":\"textbox labeled Password\",\"ref\":\"3\",\"text\":\"movie_reviewer_2024\"}{\"element\":\"textbox labeled Confirm password\",\"ref\":\"4\",\"text\":\"movie_reviewer_2024\"}{\"element\":\"button labeled Register\",\"ref\":\"5\"}{\"url\":\"http://localhost:9999/f/movies\"}{}{\"function\":\"() => { const posts = Array.from(document.querySelectorAll('.submission')); return posts.map(p => ({title: p.querySelector('.submission__link').textContent, upvotes: parseInt(p.querySelector('.submission__score').textContent), comments: parseInt(p.querySelector('.submission__comments').textContent), isImage: !!p.querySelector('.submission__image')})); }\"}{\"element\":\"link labeled 2\",\"ref\":\"100\"}{}{\"function\":\"() => { const posts = Array.from(document.querySelectorAll('.submission')); return posts.map(p => ({title: p.querySelector('.submission__link').textContent, upvotes: parseInt(p.querySelector('.submission__score').textContent), comments: parseInt(p.querySelector('.submission__comments').textContent), isImage: !!p.querySelector('.submission__image')})); }\"}{\"element\":\"link labeled 3\",\"ref\":\"101\"}{}{\"function\":\"() => { const posts = Array.from(document.querySelectorAll('.submission')); return posts.map(p => ({title: p.querySelector('.submission__link').textContent, upvotes: parseInt(p.querySelector('.submission__score').textContent), comments: parseInt(p.querySelector('.submission__comments').textContent), isImage: !!p.querySelector('.submission__image')})); }\"}{\"element\":\"link labeled 4\",\"ref\":\"102\"}{}{\"function\":\"() => { const posts = Array.from(document.querySelectorAll('.submission')); return posts.map(p => ({title: p.querySelector('.submission__link').textContent, upvotes: parseInt(p.querySelector('.submission__score').textContent), comments: parseInt(p.querySelector('.submission__comments').textContent), isImage: !!p.querySelector('.submission__image')})); }\"}{\"element\":\"link labeled 5\",\"ref\":\"103\"}{}{\"function\":\"() => { const posts = Array.from(document.querySelectorAll('.submission')); return posts.map(p => ({title: p.querySelector('.submission__link').textContent, upvotes: parseInt(p.querySelector('.submission__score').textContent), comments: parseInt(p.querySelector('.submission__comments').textContent), isImage: !!p.querySelector('.submission__image')})); }\"}{\"url\":\"http://localhost:9999/f/movies\"}{\"element\":\"button labeled Create submission\",\"ref\":\"10\"}{}{\"element\":\"textbox labeled Title\",\"ref\":\"11\",\"text\":\"Wonderful Movies Analysis: Community Favorites [2024]\"}{\"element\":\"textarea labeled Body\",\"ref\":\"12\",\"text\":\"- Total_Year_Posts|15\\\\n- Top1_Title|Inception (2010) Discussion\\\\n- Top1_Upvotes|250\\\\n- Top1_Comments|120\\\\n- Top2_Title|The Matrix Revisited\\\\n- Top2_Upvotes|200\\\\n- Top2_Comments|95\\\\n- Top3_Title|Best Movies of 2023\\\\n- Top3_Upvotes|180\\\\n- Top3_Comments|80\\\\n- Rittenhouse_Upvotes|45\\\\n- Rittenhouse_Comments|20\\\\n- Total_Image_Posts_5Pages|25\"}{\"element\":\"button labeled Submit\",\"ref\":\"13\"}"
+      },
+      "token_usage": {},
+      "turn_count": 0
+    }
+  }
+}

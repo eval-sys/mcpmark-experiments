@@ -1,0 +1,63 @@
+{
+  "task_name": "shopping_admin__products_sales_analysis",
+  "service": "playwright",
+  "model": "deepseek-chat",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 244.31063556671143,
+      "task_execution_time": 298.6934926509857,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nYogaProducts: Unable to login - credentials invalid\nWH11Price: Unable to login - credentials invalid\nZeroQuantityProducts: Unable to login - credentials invalid\nLowestProduct: Unable to login - credentials invalid\nQuestLumaflexQuantity: Unable to login - credentials invalid\nDashboardRevenue: Unable to login - credentials invalid\nSarahMillerEmail: Unable to login - credentials invalid\nTotalCustomers: Unable to login - credentials invalid\nPendingOrders: Unable to login - credentials invalid\nGraceNguyenOrderID: Unable to login - credentials invalid\n\n=== Answer Comparison Mismatches ===\n✗ YogaProducts: expected '171', got 'Unable to login - credentials invalid'\n✗ WH11Price: expected '$54.00', got 'Unable to login - credentials invalid'\n✗ ZeroQuantityProducts: expected '150', got 'Unable to login - credentials invalid'\n✗ LowestProduct: expected 'Sprite Stasis Ball 55 cm foot:5', got 'Unable to login - credentials invalid'\n✗ QuestLumaflexQuantity: expected '6', got 'Unable to login - credentials invalid'\n✗ DashboardRevenue: expected '$0.00', got 'Unable to login - credentials invalid'\n✗ SarahMillerEmail: expected 'helloworld@yahoo.com', got 'Unable to login - credentials invalid'\n✗ TotalCustomers: expected '72', got 'Unable to login - credentials invalid'\n✗ PendingOrders: expected '10', got 'Unable to login - credentials invalid'\n✗ GraceNguyenOrderID: expected '000000189', got 'Unable to login - credentials invalid'\n\nModel answer does not match expected answer\n"
+      },
+      "token_usage": {
+        "input_tokens": 223139,
+        "output_tokens": 1844,
+        "total_tokens": 224983
+      },
+      "turn_count": 20
+    },
+    "run-2": {
+      "agent_execution_time": 209.36176586151123,
+      "task_execution_time": 239.31959223747253,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 198090 tokens (198090 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082103382242609482893194361)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
+      },
+      "token_usage": {
+        "input_tokens": 211639,
+        "output_tokens": 1691,
+        "total_tokens": 213330
+      },
+      "turn_count": 16
+    },
+    "run-3": {
+      "agent_execution_time": 116.38552069664001,
+      "task_execution_time": 156.8491599559784,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 188466 tokens (188466 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202508210619167008461578928901)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
+      },
+      "token_usage": {
+        "input_tokens": 82507,
+        "output_tokens": 833,
+        "total_tokens": 83340
+      },
+      "turn_count": 8
+    },
+    "run-4": {
+      "agent_execution_time": 133.62674689292908,
+      "task_execution_time": 164.47282433509827,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 185355 tokens (185355 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082108573470988465350614577)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
+      },
+      "token_usage": {
+        "input_tokens": 93226,
+        "output_tokens": 504,
+        "total_tokens": 93730
+      },
+      "turn_count": 9
+    }
+  }
+}

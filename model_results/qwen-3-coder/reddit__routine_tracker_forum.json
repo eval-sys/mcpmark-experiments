@@ -1,0 +1,63 @@
+{
+  "task_name": "reddit__routine_tracker_forum",
+  "service": "playwright",
+  "model": "qwen-3-coder",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 274.6726350784302,
+      "task_execution_time": 319.2775602340698,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 1680261,
+        "output_tokens": 1981,
+        "total_tokens": 1682242
+      },
+      "turn_count": 18
+    },
+    "run-2": {
+      "agent_execution_time": 686.4852554798126,
+      "task_execution_time": 728.268301486969,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'error': {'message': 'This endpoint\\'s maximum context length is 262144 tokens. However, you requested about 269470 tokens (266919 of text input, 2551 of tool input). Please reduce the length of either one, or use the \"middle-out\" transform to compress your prompt automatically.', 'code': 400, 'metadata': {'provider_name': None}}}"
+      },
+      "token_usage": {
+        "input_tokens": 3813125,
+        "output_tokens": 2386,
+        "total_tokens": 3815511
+      },
+      "turn_count": 26
+    },
+    "run-3": {
+      "agent_execution_time": 222.2871925830841,
+      "task_execution_time": 268.8601725101471,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 1702239,
+        "output_tokens": 2083,
+        "total_tokens": 1704322
+      },
+      "turn_count": 19
+    },
+    "run-4": {
+      "agent_execution_time": 216.30731105804443,
+      "task_execution_time": 261.70722460746765,
+      "execution_result": {
+        "success": false,
+        "error_message": "Step 1: Verifying account login...\nNot logged in, attempting to login...\n✓ Account login successful\nStep 2: Verifying post in LifeProTips forum...\nError: Post content does not match expected content\nExpected: As a college student, having a visible reminder of the assignments I have and when they are due is super helpful for me. It also just feels good to erase them from the board once they are completed.\n"
+      },
+      "token_usage": {
+        "input_tokens": 1411098,
+        "output_tokens": 1916,
+        "total_tokens": 1413014
+      },
+      "turn_count": 17
+    }
+  }
+}

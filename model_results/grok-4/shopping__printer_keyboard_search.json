@@ -1,0 +1,59 @@
+{
+  "task_name": "shopping__printer_keyboard_search",
+  "service": "playwright",
+  "model": "grok-4",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 293.40596890449524,
+      "task_execution_time": 363.12191677093506,
+      "execution_result": {
+        "success": false,
+        "error_message": "Error code: 400 - {'code': 'Client specified an invalid argument', 'error': \"This model's maximum prompt length is 256000 but the request contains 268664 tokens.\"}"
+      },
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "turn_count": 17
+    },
+    "run-2": {
+      "agent_execution_time": 178.23843622207642,
+      "task_execution_time": 237.013977766037,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nPrinterSKUID: B09BDR4DLY\nPrinterPrice: $7.03\nKeyboardSKUID: B098JF32PT\nKeyboardPrice: $98.99\nKeyboardReviews: 12\nKeyboardRating: 75%\n\n=== Answer Comparison Mismatches ===\n✗ PrinterSKUID: expected 'B09J8KQX6V', got 'B09BDR4DLY'\n✗ PrinterPrice: expected '$248.04', got '$7.03'\n✗ KeyboardSKUID: expected 'B08JD7F3F5', got 'B098JF32PT'\n✗ KeyboardPrice: expected '$85.99', got '$98.99'\n✗ KeyboardRating: expected '77%', got '75%'\n\nModel answer does not match expected answer\n"
+      },
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "turn_count": 15
+    },
+    "run-3": {
+      "agent_execution_time": 407.77663350105286,
+      "task_execution_time": 474.35239720344543,
+      "execution_result": {
+        "success": true,
+        "error_message": null
+      },
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "turn_count": 27
+    },
+    "run-4": {
+      "agent_execution_time": 128.94197344779968,
+      "task_execution_time": 193.95071649551392,
+      "execution_result": {
+        "success": false,
+        "error_message": "Invalid JSON input for tool browser_snapshot: {\"url\":\"http://localhost:7770\"}{}"
+      },
+      "token_usage": {},
+      "turn_count": 0
+    }
+  }
+}

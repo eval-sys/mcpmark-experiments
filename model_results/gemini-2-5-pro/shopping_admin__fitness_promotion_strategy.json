@@ -1,0 +1,63 @@
+{
+  "task_name": "shopping_admin__fitness_promotion_strategy",
+  "service": "playwright",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 119.42888641357422,
+      "task_execution_time": 150.80093240737915,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nBestseller1: Quest Lumaflex™ Band:$19.00:6:24-UG03:100:Enabled\nBestseller2: Sprite Yoga Strap 6 foot:$14.00:6:24-UG07:100:Enabled\nBestseller3: Sprite Stasis Ball 65 cm:$27.00:6:24-UG02:100:Enabled\nTotalRevenue: $0.00\nBestsellerInSearch: No:0\nPercentageDiscountRule: 10% off on fitness/yoga products:10%\nActiveRulesCount: 2\nTotalOrders: 5\nMostRecentOrderID: 000000005\nTopCustomer: Sarah Miller:sarah.miller@example.com:General\nSameGroupCustomers: 4\n\n=== Answer Comparison Mismatches ===\n✗ Bestseller1 part 0: expected 'Sprite Stasis Ball 65 cm', got 'Quest Lumaflex™ Band'\n✗ Bestseller1 price: expected '$27.00', got '$19.00'\n✗ Bestseller1 part 3: expected '24-WG082-blue', got '24-UG03'\n✗ Bestseller2 part 0: expected 'Quest Lumaflex™ Band', got 'Sprite Yoga Strap 6 foot'\n✗ Bestseller2 price: expected '$19.00', got '$14.00'\n✗ Bestseller2 part 3: expected '24-UG01', got '24-UG07'\n✗ Bestseller3 part 0: expected 'Sprite Yoga Strap 6 foot', got 'Sprite Stasis Ball 65 cm'\n✗ Bestseller3 price: expected '$14.00', got '$27.00'\n✗ Bestseller3 part 3: expected '24-WG085', got '24-UG02'\n✗ PercentageDiscountRule name: expected '20% OFF Ever $200-plus purchase!*', got '10% off on fitness/yoga products'\n✗ PercentageDiscountRule percentage: expected '20%', got '10%'\n✗ ActiveRulesCount: expected '4', got '2'\n✗ TotalOrders: expected '308', got '5'\n✗ MostRecentOrderID: expected '000000299', got '000000005'\n✗ SameGroupCustomers: expected '70', got '4'\n\nModel answer does not match expected answer\n"
+      },
+      "token_usage": {
+        "input_tokens": 893367,
+        "output_tokens": 4707,
+        "total_tokens": 898074
+      },
+      "turn_count": 11
+    },
+    "run-2": {
+      "agent_execution_time": 186.89860653877258,
+      "task_execution_time": 221.20886659622192,
+      "execution_result": {
+        "success": false,
+        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nBestseller1: Sprite Stasis Ball 65 cm:$27.00:6:24-WG082-gray:96:Enabled\nBestseller2: Quest Lumaflex™ Band:$19.00:6:N/A:N/A:Enabled\nBestseller3: Sprite Yoga Strap 6 foot:$14.00:6:24-WG085:88:Enabled\nTotalRevenue: $0.00\nBestsellerInSearch: No:0\nPercentageDiscountRule: 20% OFF Fitness Collection:20%\nActiveRulesCount: 1\nTotalOrders: 20\nMostRecentOrderID: 18\nTopCustomer: Sarah Miller:sarah.miller@example.com:General\nSameGroupCustomers: 19\nTraceback (most recent call last):\n  File \"/home/liuxiangyan6/xiangyan/mcpmark/tasks/playwright_webarena/shopping_admin/fitness_promotion_strategy/verify.py\", line 263, in <module>\n    main()\n  File \"/home/liuxiangyan6/xiangyan/mcpmark/tasks/playwright_webarena/shopping_admin/fitness_promotion_strategy/verify.py\", line 259, in main\n    result = asyncio.run(verify())\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liuxiangyan6/miniconda3/envs/mcparena-py312/lib/python3.12/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n           ^^^^^^^^^^^^^^^^\n  File \"/home/liuxiangyan6/miniconda3/envs/mcparena-py312/lib/python3.12/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liuxiangyan6/miniconda3/envs/mcparena-py312/lib/python3.12/asyncio/base_events.py\", line 691, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/home/liuxiangyan6/xiangyan/mcpmark/tasks/playwright_webarena/shopping_admin/fitness_promotion_strategy/verify.py\", line 242, in verify\n    answer_match = compare_answers(model_answer, expected_answer)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/liuxiangyan6/xiangyan/mcpmark/tasks/playwright_webarena/shopping_admin/fitness_promotion_strategy/verify.py\", line 117, in compare_answers\n    mod_float = float(mod.replace(',', ''))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: could not convert string to float: 'N/A'\n"
+      },
+      "token_usage": {
+        "input_tokens": 2198837,
+        "output_tokens": 7641,
+        "total_tokens": 2206478
+      },
+      "turn_count": 18
+    },
+    "run-3": {
+      "agent_execution_time": 84.87049007415771,
+      "task_execution_time": 115.79348707199097,
+      "execution_result": {
+        "success": false,
+        "error_message": "No model response found\n"
+      },
+      "token_usage": {
+        "input_tokens": 1088908,
+        "output_tokens": 1966,
+        "total_tokens": 1090874
+      },
+      "turn_count": 11
+    },
+    "run-4": {
+      "agent_execution_time": 8.687036752700806,
+      "task_execution_time": 38.261269330978394,
+      "execution_result": {
+        "success": false,
+        "error_message": "No model response found\n"
+      },
+      "token_usage": {
+        "input_tokens": 2438,
+        "output_tokens": 0,
+        "total_tokens": 2438
+      },
+      "turn_count": 1
+    }
+  }
+}

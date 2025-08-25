@@ -1,0 +1,63 @@
+{
+  "task_name": "reddit__buyitforlife_research",
+  "service": "playwright",
+  "model": "gemini-2-5-pro",
+  "runs": {
+    "run-1": {
+      "agent_execution_time": 123.4877986907959,
+      "task_execution_time": 177.1274778842926,
+      "execution_result": {
+        "success": false,
+        "error_message": "=== Step 1: Checking account creation ===\nSuccessfully logged in as buyitforlife_researcher\n\n=== Step 2: Checking submission ===\nLooking for post 'Research Report for BuyItForLife'...\nFound post content using selector: div:has-text(\"Post1_Title\") (element 0)\nPost content found:\n/f/BuyItForLife\nResearch Report for BuyItForLife\n\nSubmitted by buyitforlife_researcher 11 seconds ago in BuyItForLife\n\nPost1_Title|Hand me down name tag trail on this child’s jacket\nPost1_Upvotes|1448...\nExtracted data: {'Post1_Title': 'Hand me down name tag trail on this child’s jacket', 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': 'Mr_Roboto', 'Post3_Author': 'dezualy'}\n\n=== Step 3: Validating submission content ===\nExpected data from label.txt: {'Post1_Title': \"Hand me down name tag trail on this child's jacket\", 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': \"My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!\", 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': '_Mr_Roboto_', 'Post3_Author': 'dezualy'}\nError: Validation failed with the following issues:\n  - Post1_Title mismatch: got 'Hand me down name tag trail on this child’s jacket', expected 'Hand me down name tag trail on this child's jacket'\n  - Post2_Title mismatch: got 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', expected 'My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1170718,
+        "output_tokens": 2980,
+        "total_tokens": 1173698
+      },
+      "turn_count": 16
+    },
+    "run-2": {
+      "agent_execution_time": 141.92233395576477,
+      "task_execution_time": 192.0307195186615,
+      "execution_result": {
+        "success": false,
+        "error_message": "=== Step 1: Checking account creation ===\nSuccessfully logged in as buyitforlife_researcher\n\n=== Step 2: Checking submission ===\nLooking for post 'Research Report for BuyItForLife'...\nFound post content using selector: div:has-text(\"Post1_Title\") (element 0)\nPost content found:\n/f/BuyItForLife\nResearch Report for BuyItForLife\n\nSubmitted by buyitforlife_researcher 18 seconds ago in BuyItForLife\n\nPost1_Title|Hand me down name tag trail on this child’s jacket\nPost1_Upvotes|1448...\nExtracted data: {'Post1_Title': 'Hand me down name tag trail on this child’s jacket', 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': 'Mr_Roboto', 'Post3_Author': 'dezualy'}\n\n=== Step 3: Validating submission content ===\nExpected data from label.txt: {'Post1_Title': \"Hand me down name tag trail on this child's jacket\", 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': \"My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!\", 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': '_Mr_Roboto_', 'Post3_Author': 'dezualy'}\nError: Validation failed with the following issues:\n  - Post1_Title mismatch: got 'Hand me down name tag trail on this child’s jacket', expected 'Hand me down name tag trail on this child's jacket'\n  - Post2_Title mismatch: got 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', expected 'My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1587820,
+        "output_tokens": 2855,
+        "total_tokens": 1590675
+      },
+      "turn_count": 19
+    },
+    "run-3": {
+      "agent_execution_time": 142.2552888393402,
+      "task_execution_time": 194.2095057964325,
+      "execution_result": {
+        "success": false,
+        "error_message": "=== Step 1: Checking account creation ===\nSuccessfully logged in as buyitforlife_researcher\n\n=== Step 2: Checking submission ===\nLooking for post 'Research Report for BuyItForLife'...\nFound post content using selector: div:has-text(\"Post1_Title\") (element 0)\nPost content found:\n/f/BuyItForLife\nResearch Report for BuyItForLife\n\nSubmitted by buyitforlife_researcher 20 seconds ago in BuyItForLife\n\nPost1_Title|Hand me down name tag trail on this child’s jacket\nPost1_Upvotes|1448...\nExtracted data: {'Post1_Title': 'Hand me down name tag trail on this child’s jacket', 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': 'Mr_Roboto', 'Post3_Author': 'dezualy'}\n\n=== Step 3: Validating submission content ===\nExpected data from label.txt: {'Post1_Title': \"Hand me down name tag trail on this child's jacket\", 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': \"My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!\", 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': '_Mr_Roboto_', 'Post3_Author': 'dezualy'}\nError: Validation failed with the following issues:\n  - Post1_Title mismatch: got 'Hand me down name tag trail on this child’s jacket', expected 'Hand me down name tag trail on this child's jacket'\n  - Post2_Title mismatch: got 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', expected 'My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1289185,
+        "output_tokens": 3413,
+        "total_tokens": 1292598
+      },
+      "turn_count": 18
+    },
+    "run-4": {
+      "agent_execution_time": 141.64581656455994,
+      "task_execution_time": 190.8797619342804,
+      "execution_result": {
+        "success": false,
+        "error_message": "=== Step 1: Checking account creation ===\nSuccessfully logged in as buyitforlife_researcher\n\n=== Step 2: Checking submission ===\nLooking for post 'Research Report for BuyItForLife'...\nFound post content using selector: div:has-text(\"Post1_Title\") (element 0)\nPost content found:\n/f/BuyItForLife\nResearch Report for BuyItForLife\n\nSubmitted by buyitforlife_researcher 12 seconds ago in BuyItForLife\n\nPost1_Title|Hand me down name tag trail on this child’s jacket\nPost1_Upvotes|1448...\nExtracted data: {'Post1_Title': 'Hand me down name tag trail on this child’s jacket', 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': 'Mr_Roboto', 'Post3_Author': 'dezualy'}\n\n=== Step 3: Validating submission content ===\nExpected data from label.txt: {'Post1_Title': \"Hand me down name tag trail on this child's jacket\", 'Post1_Upvotes': '14487', 'Post1_Comments': '163', 'Post2_Title': \"My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!\", 'Post2_Upvotes': '6413', 'Post2_Comments': '205', 'Post3_Title': '1956 Frigidaire Range', 'Post3_Upvotes': '5797', 'Post3_Comments': '190', 'TopComment_Text': 'Rei does this too', 'TopComment_Username': 'ATeaformeplease', 'Post1_Author': 'Mofomania', 'Post2_Author': '_Mr_Roboto_', 'Post3_Author': 'dezualy'}\nError: Validation failed with the following issues:\n  - Post1_Title mismatch: got 'Hand me down name tag trail on this child’s jacket', expected 'Hand me down name tag trail on this child's jacket'\n  - Post2_Title mismatch: got 'My Grandmother’s oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!', expected 'My Grandmother's oven, circa 1966. Many holiday meals were cooked with love here, right up until the day she passed. Aside from one shattered glass door that was replaced, everything still works!'\n"
+      },
+      "token_usage": {
+        "input_tokens": 1389787,
+        "output_tokens": 3073,
+        "total_tokens": 1392860
+      },
+      "turn_count": 19
+    }
+  }
+}
