@@ -4,24 +4,24 @@
   "model": "grok-4",
   "runs": {
     "run-1": {
-      "agent_execution_time": 131.19912195205688,
-      "task_execution_time": 131.75122356414795,
+      "agent_execution_time": 336.929762840271,
+      "task_execution_time": 337.55233454704285,
       "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool execute_sql: {\"sql\":\"CREATE TABLE vector_analysis_columns ( schema VARCHAR(50), table_name VARCHAR(100), column_name VARCHAR(100), dimensions INTEGER, data_type VARCHAR(50), has_constraints BOOLEAN, rows BIGINT );\"}{\"sql\":\"CREATE TABLE vector_analysis_storage_consumption ( schema VARCHAR(50), table_name VARCHAR(100), total_size_bytes BIGINT, vector_data_bytes BIGINT, regular_data_bytes BIGINT, vector_storage_pct NUMERIC(5,2), row_count BIGINT );\"}{\"sql\":\"CREATE TABLE vector_analysis_indices ( schema VARCHAR(50), table_name VARCHAR(100), column_name VARCHAR(100), index_name VARCHAR(100), index_type VARCHAR(50), index_size_bytes BIGINT );\"}"
+        "success": true,
+        "error_message": null
       },
       "token_usage": {
         "input_tokens": 0,
         "output_tokens": 0,
         "total_tokens": 0
       },
-      "turn_count": 5
+      "turn_count": 46
     },
     "run-2": {
-      "agent_execution_time": 279.5292844772339,
-      "task_execution_time": 280.0961260795593,
+      "agent_execution_time": 236.72972536087036,
+      "task_execution_time": 237.37306785583496,
       "execution_result": {
-        "success": false,
+        "success": true,
         "error_message": null
       },
       "token_usage": {
@@ -29,13 +29,13 @@
         "output_tokens": 0,
         "total_tokens": 0
       },
-      "turn_count": 44
+      "turn_count": 35
     },
     "run-3": {
-      "agent_execution_time": 417.97695112228394,
-      "task_execution_time": 418.5843861103058,
+      "agent_execution_time": 322.6636793613434,
+      "task_execution_time": 323.27867698669434,
       "execution_result": {
-        "success": false,
+        "success": true,
         "error_message": null
       },
       "token_usage": {
@@ -43,21 +43,21 @@
         "output_tokens": 0,
         "total_tokens": 0
       },
-      "turn_count": 56
+      "turn_count": 47
     },
     "run-4": {
-      "agent_execution_time": 171.54734587669373,
-      "task_execution_time": 172.13999962806702,
+      "agent_execution_time": 60.90577554702759,
+      "task_execution_time": 61.47858953475952,
       "execution_result": {
         "success": false,
-        "error_message": null
+        "error_message": "Invalid JSON input for tool execute_sql: {\"sql\":\"SELECT COUNT(*) FROM public.documents;\"}{\"sql\":\"SELECT COUNT(*) FROM public.document_chunks;\"}{\"sql\":\"SELECT COUNT(*) FROM public.user_queries;\"}"
       },
       "token_usage": {
         "input_tokens": 0,
         "output_tokens": 0,
         "total_tokens": 0
       },
-      "turn_count": 24
+      "turn_count": 9
     }
   }
 }
