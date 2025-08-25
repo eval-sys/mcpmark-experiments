@@ -1,6 +1,6 @@
 # consolidated-all-services-0823 - Evaluation Results
 
-Generated: 2025-08-25T08:18:27.166931
+Generated: 2025-08-25T08:26:13.711518
 
 ## Note on Evaluation Runs
 
@@ -17,7 +17,7 @@ Performance across all MCP services combined:
 | Model | Total Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------------|--------|----------|----------|-------------------|
 | gpt-5 | 127 | 45.2% ± 5.1% | 61.7% | 23.7% | 385.86 |
-| claude-4-1-opus | 127 | 28.7% | / | / | 83.40 |
+| claude-4-1-opus | 127 | 28.7% | / | / | 333.61 |
 | claude-4-sonnet | 127 | 26.9% ± 6.4% | 41.9% | 10.9% | 210.55 |
 | o3 | 127 | 24.1% ± 5.7% | 41.6% | 12.1% | 169.30 |
 | qwen-3-coder | 127 | 18.2% ± 5.5% | 31.1% | 7.1% | 191.91 |
