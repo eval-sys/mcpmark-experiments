@@ -1,6 +1,6 @@
 # consolidated-all-services-0823 - Evaluation Results
 
-Generated: 2025-08-25T07:28:45.472357
+Generated: 2025-08-25T08:05:18.521702
 
 ## Note on Evaluation Runs
 
@@ -23,7 +23,7 @@ Performance across all MCP services combined:
 | qwen-3-coder | 127 | 18.1% ± 5.8% | 30.4% | 7.1% | 191.39 |
 | k2 | 127 | 16.8% ± 5.4% | 29.2% | 8.9% | 214.95 |
 | deepseek-chat | 127 | 16.8% ± 4.8% | 28.5% | 7.9% | 271.90 |
-| grok-4 | 105 | 16.6% ± 4.4% | 27.6% | 6.8% | 131.04 |
+| grok-4 | 126 | 16.6% ± 4.4% | 27.6% | 6.8% | 110.38 |
 | gemini-2-5-pro | 127 | 12.0% ± 4.0% | 23.6% | 4.0% | 107.39 |
 
 ## Performance by MCP Service
@@ -68,7 +68,7 @@ Performance across all MCP services combined:
 | k2 | 28 | 10.8% ± 7.7% | 25.0% | 3.6% | 159.98 |
 | deepseek-chat | 28 | 10.7% ± 5.1% | 25.0% | 0.0% | 240.85 |
 | gemini-2-5-pro | 28 | 0.0% ± 0.0% | 0.0% | 0.0% | 78.32 |
-| grok-4 | 6 | 0.0% ± 0.0% | 0.0% | 0.0% | 8.25 |
+| grok-4 | 27 | 0.0% ± 0.0% | 0.0% | 0.0% | 7.33 |
 
 ### Playwright
 
