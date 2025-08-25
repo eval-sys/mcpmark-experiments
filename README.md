@@ -1,6 +1,14 @@
 # consolidated-all-services-0823 - Evaluation Results
 
-Generated: 2025-08-25T06:42:22.162037
+Generated: 2025-08-25T07:28:45.472357
+
+## Note on Evaluation Runs
+
+This evaluation includes Pass@4 metrics for most models. However, the following models were only evaluated with Pass@1 due to cost constraints:
+
+- claude-4-1-opus
+
+For these models, Pass@4 and Pass^4 metrics are shown as '/' in the tables below.
 
 ## Overall Models Performance
 
@@ -9,7 +17,7 @@ Performance across all MCP services combined:
 | Model | Total Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------------|--------|----------|----------|-------------------|
 | gpt-5 | 127 | 45.2% ± 5.1% | 61.7% | 23.7% | 385.86 |
-| claude-4-1-opus | 127 | 27.2% ± 0.0% | 27.2% | 0.0% | 81.82 |
+| claude-4-1-opus | 127 | 27.2% | / | / | 81.82 |
 | claude-4-sonnet | 127 | 26.9% ± 6.4% | 41.9% | 10.9% | 210.55 |
 | o3 | 127 | 24.1% ± 5.7% | 41.6% | 12.1% | 169.30 |
 | qwen-3-coder | 127 | 18.1% ± 5.8% | 30.4% | 7.1% | 191.39 |
@@ -26,7 +34,7 @@ Performance across all MCP services combined:
 |-------|-------|--------|----------|----------|-------------------|
 | gpt-5 | 30 | 54.2% ± 7.9% | 73.3% | 33.3% | 275.59 |
 | o3 | 30 | 35.8% ± 3.2% | 50.0% | 26.7% | 277.94 |
-| claude-4-1-opus | 30 | 33.3% ± 0.0% | 33.3% | 0.0% | 66.94 |
+| claude-4-1-opus | 30 | 33.3% | / | / | 267.78 |
 | claude-4-sonnet | 30 | 27.5% ± 3.2% | 50.0% | 6.7% | 193.15 |
 | grok-4 | 30 | 21.7% ± 6.9% | 43.3% | 10.0% | 205.54 |
 | k2 | 30 | 20.0% ± 2.7% | 30.0% | 13.3% | 220.38 |
@@ -39,7 +47,7 @@ Performance across all MCP services combined:
 | Model | Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------|--------|----------|----------|-------------------|
 | gpt-5 | 23 | 26.1% ± 3.5% | 39.1% | 13.0% | 262.86 |
-| claude-4-1-opus | 23 | 21.7% ± 0.0% | 21.7% | 0.0% | 66.35 |
+| claude-4-1-opus | 23 | 21.7% | / | / | 265.38 |
 | claude-4-sonnet | 23 | 14.1% ± 7.4% | 26.1% | 4.3% | 163.48 |
 | o3 | 23 | 13.0% ± 5.0% | 21.7% | 4.3% | 127.55 |
 | qwen-3-coder | 23 | 10.9% ± 5.6% | 17.4% | 4.3% | 205.19 |
@@ -53,7 +61,7 @@ Performance across all MCP services combined:
 | Model | Tasks | Pass@1 (avg ± std) | Pass@4 | Pass^4 | Avg Agent Time (s) |
 |-------|-------|--------|----------|----------|-------------------|
 | gpt-5 | 28 | 35.7% ± 7.1% | 53.6% | 10.7% | 563.48 |
-| claude-4-1-opus | 28 | 28.6% ± 0.0% | 28.6% | 0.0% | 66.36 |
+| claude-4-1-opus | 28 | 28.6% | / | / | 265.46 |
 | o3 | 28 | 24.1% ± 4.5% | 46.4% | 7.1% | 171.39 |
 | claude-4-sonnet | 28 | 20.5% ± 4.5% | 35.7% | 7.1% | 193.99 |
 | qwen-3-coder | 28 | 12.5% ± 4.6% | 25.0% | 7.1% | 156.48 |
@@ -68,7 +76,7 @@ Performance across all MCP services combined:
 |-------|-------|--------|----------|----------|-------------------|
 | gpt-5 | 25 | 41.0% ± 2.0% | 52.0% | 28.0% | 526.85 |
 | claude-4-sonnet | 25 | 26.0% ± 6.9% | 36.0% | 8.0% | 278.47 |
-| claude-4-1-opus | 25 | 24.0% ± 0.0% | 24.0% | 0.0% | 98.81 |
+| claude-4-1-opus | 25 | 24.0% | / | / | 395.23 |
 | qwen-3-coder | 25 | 20.0% ± 3.3% | 36.0% | 8.0% | 305.88 |
 | gemini-2-5-pro | 25 | 15.0% ± 2.0% | 32.0% | 4.0% | 170.45 |
 | o3 | 25 | 14.0% ± 6.9% | 28.0% | 8.0% | 153.92 |
@@ -87,5 +95,5 @@ Performance across all MCP services combined:
 | qwen-3-coder | 21 | 36.9% ± 12.5% | 57.1% | 9.5% | 152.46 |
 | k2 | 21 | 34.5% ± 6.0% | 61.9% | 23.8% | 325.14 |
 | o3 | 21 | 33.3% ± 8.7% | 61.9% | 14.3% | 75.34 |
-| claude-4-1-opus | 21 | 28.6% ± 0.0% | 28.6% | 0.0% | 120.38 |
+| claude-4-1-opus | 21 | 28.6% | / | / | 481.50 |
 | gemini-2-5-pro | 21 | 25.0% ± 11.2% | 42.9% | 9.5% | 96.78 |
