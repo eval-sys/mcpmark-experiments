@@ -1,63 +1,55 @@
 {
-  "task_name": "votenet__debugging",
-  "service": "filesystem",
   "model": "grok-4",
+  "service": "filesystem",
+  "task": "votenet__debugging",
   "runs": {
     "run-1": {
-      "agent_execution_time": 122.87672877311707,
-      "task_execution_time": 122.91297888755798,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool write_file: {\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/models/backbone_module.py\",\"edits\":[{\"oldText\":\"end_points['fp2_inds'] = end_points['sa1_inds'][:,0:num_seed] # indices among the entire input point clouds\",\"newText\":\"end_points['fp2_inds'] = torch.gather(end_points['sa1_inds'], 1, end_points['sa2_inds'].long()) # indices among the entire input point clouds\"}]}{\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/answer.txt\",\"content\":\"models/backbone_module.py\"}"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 249.54219722747803,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 9
-    },
-    "run-2": {
-      "agent_execution_time": 270.9947462081909,
-      "task_execution_time": 271.0325930118561,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool write_file: {\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/models/backbone_module.py\",\"edits\":[{\"oldText\":\"self.fp2 = PointnetFPModule(mlp=[256,256,256])\",\"newText\":\"self.fp2 = PointnetFPModule(mlp=[256+256,256,256])\"},{\"oldText\":\"end_points['fp2_inds'] = end_points['sa1_inds'][:,0:num_seed] # indices among the entire input point clouds\",\"newText\":\"end_points['fp2_inds'] = end_points['sa1_inds'].gather(1, end_points['sa2_inds'].long()) # indices among the entire input point clouds\"}]}{\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/answer.txt\",\"content\":\"models/backbone_module.py\"}"
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 15
-    },
-    "run-3": {
-      "agent_execution_time": 141.61766910552979,
-      "task_execution_time": 141.65252304077148,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool write_file: {\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/models/backbone_module.py\",\"edits\":[{\"oldText\":\"self.fp2 = PointnetFPModule(mlp=[256,256,256])\",\"newText\":\"self.fp2 = PointnetFPModule(mlp=[256+256,256,256])\"}]}{\"path\":\"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_votenet_debugging_37901/answer.txt\",\"content\":\"models/backbone_module.py\"}"
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 6
-    },
-    "run-4": {
-      "agent_execution_time": 175.88168287277222,
-      "task_execution_time": 175.9509048461914,
-      "execution_result": {
-        "success": true,
-        "error_message": null
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 185512,
+        "output_tokens": 12107,
+        "total_tokens": 197619,
+        "reasoning_tokens": 11198
       },
       "turn_count": 14
+    },
+    "run-2": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 181.62444639205933,
+      "token_usage": {
+        "input_tokens": 175795,
+        "output_tokens": 8277,
+        "total_tokens": 184072,
+        "reasoning_tokens": 7142
+      },
+      "turn_count": 14
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 129.83559203147888,
+      "token_usage": {
+        "input_tokens": 91157,
+        "output_tokens": 6052,
+        "total_tokens": 97209,
+        "reasoning_tokens": 5292
+      },
+      "turn_count": 11
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 292.51275157928467,
+      "token_usage": {
+        "input_tokens": 168259,
+        "output_tokens": 14560,
+        "total_tokens": 182819,
+        "reasoning_tokens": 13712
+      },
+      "turn_count": 13
     }
   }
 }

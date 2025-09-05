@@ -1,61 +1,53 @@
 {
-  "task_name": "shopping__advanced_product_analysis",
-  "service": "playwright",
   "model": "deepseek-chat",
+  "service": "playwright",
+  "task": "shopping__advanced_product_analysis",
   "runs": {
     "run-1": {
-      "agent_execution_time": 257.3642463684082,
-      "task_execution_time": 323.62214708328247,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 133344 tokens (133344 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082013343544449051516305729)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
-      },
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 133344 tokens (133344 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082013343544449051516305729)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "execution_time": 257.3642463684082,
       "token_usage": {
         "input_tokens": 905723,
         "output_tokens": 944,
-        "total_tokens": 906667
+        "total_tokens": 906667,
+        "reasoning_tokens": null
       },
       "turn_count": 17
     },
     "run-2": {
-      "agent_execution_time": 264.734744310379,
-      "task_execution_time": 351.42449474334717,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 138028 tokens (138028 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202508201624452305078956550104)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
-      },
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 138028 tokens (138028 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202508201624452305078956550104)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "execution_time": 264.734744310379,
       "token_usage": {
         "input_tokens": 882347,
         "output_tokens": 993,
-        "total_tokens": 883340
+        "total_tokens": 883340,
+        "reasoning_tokens": null
       },
       "turn_count": 17
     },
     "run-3": {
-      "agent_execution_time": 265.19385719299316,
-      "task_execution_time": 337.42402362823486,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element"
-      },
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 131172 tokens (131172 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 770.4495623111725,
       "token_usage": {
-        "input_tokens": 773523,
-        "output_tokens": 1063,
-        "total_tokens": 774586
+        "input_tokens": 734920,
+        "output_tokens": 872,
+        "total_tokens": 735792,
+        "reasoning_tokens": 0
       },
-      "turn_count": 16
+      "turn_count": 14
     },
     "run-4": {
-      "agent_execution_time": 235.076238155365,
-      "task_execution_time": 297.8391876220703,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 140648 tokens (140648 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202508210000361729638345341426)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
-      },
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 140648 tokens (140648 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202508210000361729638345341426)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "execution_time": 235.076238155365,
       "token_usage": {
         "input_tokens": 891543,
         "output_tokens": 954,
-        "total_tokens": 892497
+        "total_tokens": 892497,
+        "reasoning_tokens": null
       },
       "turn_count": 17
     }

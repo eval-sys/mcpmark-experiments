@@ -1,61 +1,53 @@
 {
-  "task_name": "shopping__multi_category_budget_analysis",
-  "service": "playwright",
   "model": "gemini-2-5-pro",
+  "service": "playwright",
+  "task": "shopping__multi_category_budget_analysis",
   "runs": {
     "run-1": {
-      "agent_execution_time": 276.67422676086426,
-      "task_execution_time": 344.4200990200043,
-      "execution_result": {
-        "success": false,
-        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: $1.04:B071954ZDC;$1.89:B07ND598N3;$2.50:B01G26DMSC\nchocolate_sum: $5.43\ntabletop_search_count: 60\ntabletop_product: $110.99:B09C5WZ2MW\ntabletop_reviews: 12:93%\ncheapest_computer_accessory: $0.01\nprice_difference: $110.98\ncomparison_count: 3\ncart_subtotal: $1.05\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ tabletop_product: mismatch - expected '$169.99:B09NPX5CDP', got '$110.99:B09C5WZ2MW'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '12:93%'\n✗ cheapest_computer_accessory: expected '$1.17', got '$0.01'\n✗ price_difference: expected '$168.82', got '$110.98'\n✗ cart_subtotal: expected '$2.21', got '$1.05'\n\nModel answer does not match expected answer\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 276.67422676086426,
       "token_usage": {
         "input_tokens": 2793520,
         "output_tokens": 13138,
-        "total_tokens": 2806658
+        "total_tokens": 2806658,
+        "reasoning_tokens": null
       },
       "turn_count": 28
     },
     "run-2": {
-      "agent_execution_time": 168.84732103347778,
-      "task_execution_time": 231.6445848941803,
-      "execution_result": {
-        "success": false,
-        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: 1.04:B071954ZDC;1.89:B07ND598N3;2.50:B01G26DMSC\nchocolate_sum: 5.43\ntabletop_search_count: 15\ntabletop_product: 100.86:B00176986S\ntabletop_reviews: 6:93%\ncheapest_computer_accessory: 0.01\nprice_difference: 100.85\ncomparison_count: 3\ncart_subtotal: 1.05\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ chocolate_products: product 1 price format error - expected '$XX.XX' format, got '1.04'\n✗ chocolate_products: product 2 price format error - expected '$XX.XX' format, got '1.89'\n✗ chocolate_products: product 3 price format error - expected '$XX.XX' format, got '2.50'\n✗ chocolate_sum: incorrect format - expected '$XX.XX' format, got '5.43'\n✗ tabletop_search_count: expected '60', got '15'\n✗ tabletop_product: price format error - expected '$XX.XX' format, got '100.86'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '6:93%'\n✗ cheapest_computer_accessory: incorrect format - expected '$XX.XX' format, got '0.01'\n✗ price_difference: incorrect format - expected '$XX.XX' format, got '100.85'\n✗ cart_subtotal: incorrect format - expected '$XX.XX' format, got '1.05'\n\nModel answer does not match expected answer\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 168.84732103347778,
       "token_usage": {
         "input_tokens": 1144764,
         "output_tokens": 8861,
-        "total_tokens": 1153625
+        "total_tokens": 1153625,
+        "reasoning_tokens": null
       },
       "turn_count": 16
     },
     "run-3": {
-      "agent_execution_time": 453.78591203689575,
-      "task_execution_time": 517.3912994861603,
-      "execution_result": {
-        "success": false,
-        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: $1.04:little-secrets-chocolate-pieces-peanut-butter-flavor-all-natural-fair-trade-certified-gourmet-dark-chocolate-candy-no-artificial-dyes-healthy-snacks-and-treats-5oz;$1.89:seattle-chocolates-popping-candy-truffle-chocolate-bar-70-gr;$2.50:urban-fruit-cherry-90g\nchocolate_sum: 5.43\ntabletop_search_count: 60\ntabletop_product: $110.99:barmi-vanity-mirror-with-lights-18-x22-lighting-dimmable-led-mirror-3-color-lighting-modes-tabletop-vanity-makeup-mirror-smart-touch-control-black\ntabletop_reviews: 12:93%\ncheapest_computer_accessory: $1.17\nprice_difference: 109.82\ncomparison_count: 3\ncart_subtotal: $2.21\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ chocolate_products: product 1 mismatch - expected '$1.04:B071954ZDC', got '$1.04:little-secrets-chocolate-pieces-peanut-butter-flavor-all-natural-fair-trade-certified-gourmet-dark-chocolate-candy-no-artificial-dyes-healthy-snacks-and-treats-5oz'\n✗ chocolate_products: product 2 mismatch - expected '$1.89:B07ND598N3', got '$1.89:seattle-chocolates-popping-candy-truffle-chocolate-bar-70-gr'\n✗ chocolate_products: product 3 mismatch - expected '$2.50:B01G26DMSC', got '$2.50:urban-fruit-cherry-90g'\n✗ chocolate_sum: incorrect format - expected '$XX.XX' format, got '5.43'\n✗ tabletop_product: mismatch - expected '$169.99:B09NPX5CDP', got '$110.99:barmi-vanity-mirror-with-lights-18-x22-lighting-dimmable-led-mirror-3-color-lighting-modes-tabletop-vanity-makeup-mirror-smart-touch-control-black'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '12:93%'\n✗ price_difference: incorrect format - expected '$XX.XX' format, got '109.82'\n\nModel answer does not match expected answer\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 453.78591203689575,
       "token_usage": {
         "input_tokens": 7716098,
         "output_tokens": 15328,
-        "total_tokens": 7731426
+        "total_tokens": 7731426,
+        "reasoning_tokens": null
       },
       "turn_count": 42
     },
     "run-4": {
-      "agent_execution_time": 134.00479817390442,
-      "task_execution_time": 198.52726984024048,
-      "execution_result": {
-        "success": false,
-        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nchocolate_products: 1.04:B071954ZDC;1.89:B07ND598N3;2.50:B01G26DMSC\nchocolate_sum: 5.43\ntabletop_search_count: 73\ntabletop_product: 103.63:B083X61379\ntabletop_reviews: 12:88\ncheapest_computer_accessory: 2.31\nprice_difference: 101.32\ncomparison_count: 3\ncart_subtotal: $22.35\ncart_item_count: 2\nunder_60_budget: YES\n\n=== Answer Comparison Mismatches ===\n✗ chocolate_products: product 1 price format error - expected '$XX.XX' format, got '1.04'\n✗ chocolate_products: product 2 price format error - expected '$XX.XX' format, got '1.89'\n✗ chocolate_products: product 3 price format error - expected '$XX.XX' format, got '2.50'\n✗ chocolate_sum: incorrect format - expected '$XX.XX' format, got '5.43'\n✗ tabletop_search_count: expected '60', got '73'\n✗ tabletop_product: price format error - expected '$XX.XX' format, got '103.63'\n✗ tabletop_reviews: mismatch - expected '4:95%', got '12:88'\n✗ cheapest_computer_accessory: incorrect format - expected '$XX.XX' format, got '2.31'\n✗ price_difference: incorrect format - expected '$XX.XX' format, got '101.32'\n✗ cart_subtotal: expected '$2.21', got '$22.35'\n\nModel answer does not match expected answer\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 134.00479817390442,
       "token_usage": {
         "input_tokens": 854452,
         "output_tokens": 6403,
-        "total_tokens": 860855
+        "total_tokens": 860855,
+        "reasoning_tokens": null
       },
       "turn_count": 14
     }

@@ -1,61 +1,53 @@
 {
-  "task_name": "papers__author_folders",
-  "service": "filesystem",
   "model": "deepseek-chat",
+  "service": "filesystem",
+  "task": "papers__author_folders",
   "runs": {
     "run-1": {
-      "agent_execution_time": 1949.8998107910156,
-      "task_execution_time": 1950.321520805359,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 1949.8998107910156,
       "token_usage": {
         "input_tokens": 6348007,
         "output_tokens": 29331,
-        "total_tokens": 6377338
+        "total_tokens": 6377338,
+        "reasoning_tokens": null
       },
       "turn_count": 80
     },
     "run-2": {
-      "agent_execution_time": 1529.3876779079437,
-      "task_execution_time": 1529.8143320083618,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 1529.3876779079437,
       "token_usage": {
         "input_tokens": 3493676,
         "output_tokens": 23337,
-        "total_tokens": 3517013
+        "total_tokens": 3517013,
+        "reasoning_tokens": null
       },
       "turn_count": 91
     },
     "run-3": {
-      "agent_execution_time": 1113.7303087711334,
-      "task_execution_time": 1113.7840888500214,
-      "execution_result": {
-        "success": false,
-        "error_message": "Filesystem MCP service error"
-      },
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 260057 tokens (260057 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 129.76915168762207,
       "token_usage": {
-        "input_tokens": 3493746,
-        "output_tokens": 15821,
-        "total_tokens": 3509567
+        "input_tokens": 23211,
+        "output_tokens": 848,
+        "total_tokens": 24059,
+        "reasoning_tokens": 0
       },
-      "turn_count": 48
+      "turn_count": 5
     },
     "run-4": {
-      "agent_execution_time": 77.31378030776978,
-      "task_execution_time": 77.36545419692993,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 307557 tokens (307557 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082011003210721060110646873)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}"
-      },
+      "success": false,
+      "error_message": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 131072 tokens. However, you requested 307557 tokens (307557 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025082011003210721060110646873)\", 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_request_error'}}",
+      "execution_time": 77.31378030776978,
       "token_usage": {
         "input_tokens": 65120,
         "output_tokens": 820,
-        "total_tokens": 65940
+        "total_tokens": 65940,
+        "reasoning_tokens": null
       },
       "turn_count": 4
     }

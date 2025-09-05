@@ -1,59 +1,55 @@
 {
-  "task_name": "harmony__issue_pr_commit_workflow",
-  "service": "github",
   "model": "gemini-2-5-pro",
+  "service": "github",
+  "task": "harmony__issue_pr_commit_workflow",
   "runs": {
     "run-1": {
-      "agent_execution_time": 78.8399384021759,
-      "task_execution_time": 129.76492190361023,
-      "execution_result": {
-        "success": true,
-        "error_message": null
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 78.8399384021759,
       "token_usage": {
         "input_tokens": 153091,
         "output_tokens": 4296,
-        "total_tokens": 157387
+        "total_tokens": 157387,
+        "reasoning_tokens": null
       },
       "turn_count": 10
     },
     "run-2": {
-      "agent_execution_time": 25.608145236968994,
-      "task_execution_time": 79.36013698577881,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool create_branch: {\"body\":\"## Problem\\nThis issue addresses a race condition that occurs when multiple threads attempt to download and load HarmonyEncoding tokenizers simultaneously. The current implementation is not thread-safe, leading to corrupted tokenizer file downloads and unpredictable behavior under concurrent access.\\n\\n## Root Cause\\nThe root cause of this bug is the lack of a file locking mechanism to protect the tokenizer download and initialization process. When multiple threads execute this critical section at the same time, they can interfere with each other's file operations.\\n\\n## Expected Solution\\n- Implement a mutex-based file locking mechanism to ensure that only one thread can download and load a tokenizer at a time.\\n- Use a thread-safe initialization pattern to prevent redundant downloads and ensure the tokenizer is loaded only once.\\n- Provide an offline loading API to allow users to load tokenizers from a local file path, as requested in issue #1.\\n\\nThis bug is related to the feature request in #1 and the original race condition report in #6.\\nKeywords: \\\"multiple threads\\\", \\\"tokenizer file downloads\\\", \\\"mutex-based file locking\\\"\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\",\"title\":\"Bug: race condition in HarmonyEncoding during concurrent access\"}{\"branch\":\"fix/race-condition-tokenizer-loading\",\"from_branch\":\"main\",\"owner\":\"mcpmark-eval\",\"repo\":\"harmony\"}"
+      "success": false,
+      "error_message": null,
+      "execution_time": 74.54456877708435,
+      "token_usage": {
+        "input_tokens": 211405,
+        "output_tokens": 3358,
+        "total_tokens": 214763,
+        "reasoning_tokens": 2187
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 10
     },
     "run-3": {
-      "agent_execution_time": 16.823817253112793,
-      "task_execution_time": 62.437233209609985,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 67.97508525848389,
       "token_usage": {
-        "input_tokens": 4811,
-        "output_tokens": 0,
-        "total_tokens": 4811
+        "input_tokens": 145041,
+        "output_tokens": 3085,
+        "total_tokens": 148126,
+        "reasoning_tokens": 1916
       },
-      "turn_count": 1
+      "turn_count": 7
     },
     "run-4": {
-      "agent_execution_time": 17.65077304840088,
-      "task_execution_time": 67.38040494918823,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 84.80042099952698,
       "token_usage": {
-        "input_tokens": 4811,
-        "output_tokens": 0,
-        "total_tokens": 4811
+        "input_tokens": 213759,
+        "output_tokens": 4277,
+        "total_tokens": 218036,
+        "reasoning_tokens": 2776
       },
-      "turn_count": 1
+      "turn_count": 10
     }
   }
 }

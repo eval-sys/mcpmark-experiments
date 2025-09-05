@@ -1,0 +1,55 @@
+{
+  "model": "glm-4-5",
+  "service": "github",
+  "task": "missing-semester__find_legacy_name",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenrouterException - {\"error\":{\"message\":\"This endpoint's maximum context length is 131072 tokens. However, you requested about 157513 tokens (143221 of text input, 14292 of tool input). Please reduce the length of either one, or use the \\\"middle-out\\\" transform to compress your prompt automatically.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}",
+      "execution_time": 128.820415019989,
+      "token_usage": {
+        "input_tokens": 262898,
+        "output_tokens": 670,
+        "total_tokens": 263568,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 7
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 101.581791639328,
+      "token_usage": {
+        "input_tokens": 634394,
+        "output_tokens": 1410,
+        "total_tokens": 635804,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 10
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 24.042834281921387,
+      "token_usage": {
+        "input_tokens": 99705,
+        "output_tokens": 425,
+        "total_tokens": 100130,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 2
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.NotFoundError: NotFoundError: OpenrouterException - {\"error\":{\"message\":\"No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing\",\"code\":404}}",
+      "execution_time": 660.1289060115814,
+      "token_usage": {
+        "input_tokens": 328737,
+        "output_tokens": 891,
+        "total_tokens": 329628,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 8
+    }
+  }
+}

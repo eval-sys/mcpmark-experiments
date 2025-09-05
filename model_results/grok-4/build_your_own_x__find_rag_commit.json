@@ -1,47 +1,55 @@
 {
-  "task_name": "build_your_own_x__find_rag_commit",
-  "service": "github",
   "model": "grok-4",
+  "service": "github",
+  "task": "build_your_own_x__find_rag_commit",
   "runs": {
     "run-1": {
-      "agent_execution_time": 30.29346489906311,
-      "task_execution_time": 83.48389458656311,
-      "execution_result": {
-        "success": false,
-        "error_message": "An error occurred during streaming"
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 303528 tokens.\"}",
+      "execution_time": 402.3304126262665,
+      "token_usage": {
+        "input_tokens": 1268425,
+        "output_tokens": 897,
+        "total_tokens": 1273391,
+        "reasoning_tokens": 4069
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 14
     },
     "run-2": {
-      "agent_execution_time": 30.52477478981018,
-      "task_execution_time": 85.68671870231628,
-      "execution_result": {
-        "success": false,
-        "error_message": "An error occurred during streaming"
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 261588 tokens.\"}",
+      "execution_time": 408.2451345920563,
+      "token_usage": {
+        "input_tokens": 1571286,
+        "output_tokens": 1138,
+        "total_tokens": 1579119,
+        "reasoning_tokens": 6695
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 21
     },
     "run-3": {
-      "agent_execution_time": 30.759191513061523,
-      "task_execution_time": 84.35521411895752,
-      "execution_result": {
-        "success": false,
-        "error_message": "An error occurred during streaming"
+      "success": false,
+      "error_message": null,
+      "execution_time": 514.0351679325104,
+      "token_usage": {
+        "input_tokens": 2489397,
+        "output_tokens": 2216,
+        "total_tokens": 2503656,
+        "reasoning_tokens": 12043
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 39
     },
     "run-4": {
-      "agent_execution_time": 29.576223134994507,
-      "task_execution_time": 82.82670521736145,
-      "execution_result": {
-        "success": false,
-        "error_message": "An error occurred during streaming"
+      "success": false,
+      "error_message": "argument of type 'builtin_function_or_method' is not iterable",
+      "execution_time": 330.35911774635315,
+      "token_usage": {
+        "input_tokens": 878027,
+        "output_tokens": 920,
+        "total_tokens": 883136,
+        "reasoning_tokens": 4189
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 18
     }
   }
 }
