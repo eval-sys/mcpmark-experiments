@@ -1,61 +1,53 @@
 {
-  "task_name": "papers__author_folders",
-  "service": "filesystem",
   "model": "gemini-2-5-pro",
+  "service": "filesystem",
+  "task": "papers__author_folders",
   "runs": {
     "run-1": {
-      "agent_execution_time": 86.08965516090393,
-      "task_execution_time": 86.13496327400208,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool create_directory: {\"path\":\"frequent_authors\"}{\"path\":\"2025_authors\"}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: VertexAIException BadRequestError - {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The input token count exceeds the maximum number of tokens allowed (1048576).\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}",
+      "execution_time": 216.14879274368286,
       "token_usage": {
-        "input_tokens": 31639,
-        "output_tokens": 5019,
-        "total_tokens": 36658
+        "input_tokens": 376375,
+        "output_tokens": 15048,
+        "total_tokens": 391423,
+        "reasoning_tokens": 9395
       },
-      "turn_count": 9
+      "turn_count": 11
     },
     "run-2": {
-      "agent_execution_time": 144.2359480857849,
-      "task_execution_time": 144.66633296012878,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 144.2359480857849,
       "token_usage": {
         "input_tokens": 364092,
         "output_tokens": 9905,
-        "total_tokens": 373997
+        "total_tokens": 373997,
+        "reasoning_tokens": null
       },
       "turn_count": 17
     },
     "run-3": {
-      "agent_execution_time": 152.82125806808472,
-      "task_execution_time": 153.24922704696655,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 152.82125806808472,
       "token_usage": {
         "input_tokens": 136471,
         "output_tokens": 10537,
-        "total_tokens": 147008
+        "total_tokens": 147008,
+        "reasoning_tokens": null
       },
       "turn_count": 21
     },
     "run-4": {
-      "agent_execution_time": 180.02223777770996,
-      "task_execution_time": 180.4421088695526,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 180.02223777770996,
       "token_usage": {
         "input_tokens": 481919,
         "output_tokens": 12378,
-        "total_tokens": 494297
+        "total_tokens": 494297,
+        "reasoning_tokens": null
       },
       "turn_count": 32
     }

@@ -1,61 +1,53 @@
 {
-  "task_name": "eval_web__extraction_table",
-  "service": "playwright",
   "model": "gemini-2-5-pro",
+  "service": "playwright",
+  "task": "eval_web__extraction_table",
   "runs": {
     "run-1": {
-      "agent_execution_time": 171.01809287071228,
-      "task_execution_time": 171.05495357513428,
-      "execution_result": {
-        "success": false,
-        "error_message": "|\n| Model response (first 500 characters): Title,Rating,Likes,Views,Replies\nReact 18 New Features Deep Dive,4.8,856,12543,89\nVue 3 Composition API in Practice,4.5,743,9876,67\nAdvanced TypeScript Types Guide,4.9,924,15432,102\nNode.js Performance Optimization,4.2,567,8765,45\nFrontend Engineering Best Practices,4.7,812,11234,78\nMicroservices Architecture Patterns,4.3,634,9543,56\nDocker Containerization Deployment,4.6,789,10876,71\nKubernetes Cluster Management,4.4,698,9234,63\nGraphQL API Design Principles,4.8,876,13456,94\nWebpack 5 Configura...\n|\n| Found CSV data (first 300 characters):\n| Title,Rating,Likes,Views,Replies\nReact 18 New Features Deep Dive,4.8,856,12543,89\nVue 3 Composition API in Practice,4.5,743,9876,67\nAdvanced TypeScript Types Guide,4.9,924,15432,102\nNode.js Performance Optimization,4.2,567,8765,45\nFrontend Engineering Best Practices,4.7,812,11234,78\nMicroservices Ar...\n|\n| ✗ CSV validation failed: | Header format mismatch, expected: 'Title, Rating, Likes, Views, Replies', actual: 'Title,Rating,Likes,Views,Replies'\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 171.01809287071228,
       "token_usage": {
         "input_tokens": 704880,
         "output_tokens": 6325,
-        "total_tokens": 711205
+        "total_tokens": 711205,
+        "reasoning_tokens": null
       },
       "turn_count": 21
     },
     "run-2": {
-      "agent_execution_time": 111.71229887008667,
-      "task_execution_time": 111.73744463920593,
-      "execution_result": {
-        "success": false,
-        "error_message": "|\n| Model response (first 500 characters): Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Microservices Architecture Patterns\",4.3,634,9543,56\n\"Docker Containerization Deployment\",4.6,789,10876,71\n\"Kubernetes Cluster Management\",4.4,698,9234,63\n\"GraphQL API Design Principles\",4.8,876,13456,94\n\"...\n|\n| Found CSV data (first 300 characters):\n| Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Micro...\n|\n| ✗ CSV validation failed: | Header format mismatch, expected: 'Title, Rating, Likes, Views, Replies', actual: 'Title,Rating,Likes,Views,Replies'\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 111.71229887008667,
       "token_usage": {
         "input_tokens": 46719,
         "output_tokens": 11510,
-        "total_tokens": 58229
+        "total_tokens": 58229,
+        "reasoning_tokens": null
       },
       "turn_count": 5
     },
     "run-3": {
-      "agent_execution_time": 86.89623737335205,
-      "task_execution_time": 86.91971707344055,
-      "execution_result": {
-        "success": false,
-        "error_message": "|\n| Model response (first 500 characters): Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Microservices Architecture Patterns\",4.3,634,9543,56\n\"Docker Containerization Deployment\",4.6,789,10876,71\n\"Kubernetes Cluster Management\",4.4,698,9234,63\n\"GraphQL API Design Principles\",4.8,876,13456,94\n\"...\n|\n| Found CSV data (first 300 characters):\n| Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Micro...\n|\n| ✗ CSV validation failed: | Header format mismatch, expected: 'Title, Rating, Likes, Views, Replies', actual: 'Title,Rating,Likes,Views,Replies'\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 86.89623737335205,
       "token_usage": {
         "input_tokens": 63299,
         "output_tokens": 6979,
-        "total_tokens": 70278
+        "total_tokens": 70278,
+        "reasoning_tokens": null
       },
       "turn_count": 6
     },
     "run-4": {
-      "agent_execution_time": 153.97745871543884,
-      "task_execution_time": 154.00896692276,
-      "execution_result": {
-        "success": false,
-        "error_message": "|\n| Model response (first 500 characters): Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Microservices Architecture Patterns\",4.3,634,9543,56\n\"Docker Containerization Deployment\",4.6,789,10876,71\n\"Kubernetes Cluster Management\",4.4,698,9234,63\n\"GraphQL API Design Principles\",4.8,876,13456,94\n\"...\n|\n| Found CSV data (first 300 characters):\n| Title,Rating,Likes,Views,Replies\n\"React 18 New Features Deep Dive\",4.8,856,12543,89\n\"Vue 3 Composition API in Practice\",4.5,743,9876,67\n\"Advanced TypeScript Types Guide\",4.9,924,15432,102\n\"Node.js Performance Optimization\",4.2,567,8765,45\n\"Frontend Engineering Best Practices\",4.7,812,11234,78\n\"Micro...\n|\n| ✗ CSV validation failed: | Header format mismatch, expected: 'Title, Rating, Likes, Views, Replies', actual: 'Title,Rating,Likes,Views,Replies'\n"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 153.97745871543884,
       "token_usage": {
         "input_tokens": 739122,
         "output_tokens": 6904,
-        "total_tokens": 746026
+        "total_tokens": 746026,
+        "reasoning_tokens": null
       },
       "turn_count": 21
     }

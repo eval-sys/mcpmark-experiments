@@ -1,109 +1,59 @@
 {
-  "task_id": "legal_document__solution_tracing",
+  "task": "legal_document__solution_tracing",
+  "service": "filesystem",
   "models": {
-    "gpt-5": {
-      "runs": [
-        {
-          "run": "run-1",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 356369,
-            "output_tokens": 8792,
-            "total_tokens": 365161
-          },
-          "agent_execution_time": 147.8418209552765,
-          "turn_count": 8
-        },
-        {
-          "run": "run-2",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 266056,
-            "output_tokens": 3938,
-            "total_tokens": 269994
-          },
-          "agent_execution_time": 96.4451231956482,
-          "turn_count": 7
-        },
-        {
-          "run": "run-3",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 240507,
-            "output_tokens": 3876,
-            "total_tokens": 244383
-          },
-          "agent_execution_time": 69.77851486206055,
-          "turn_count": 7
-        },
-        {
-          "run": "run-4",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 248878,
-            "output_tokens": 3800,
-            "total_tokens": 252678
-          },
-          "agent_execution_time": 62.29092717170715,
-          "turn_count": 7
-        }
-      ],
-      "summary": {
-        "total_runs": 4,
-        "successful_runs": 0,
-        "avg_agent_execution_time": 94.09,
-        "avg_input_tokens": 277952.5,
-        "avg_output_tokens": 5101.5,
-        "avg_total_tokens": 283054.0,
-        "avg_turn_count": 7.25,
-        "pass@4": 0.0,
-        "pass^4": 0.0
-      }
-    },
     "deepseek-chat": {
       "runs": [
         {
           "run": "run-1",
           "success": false,
+          "execution_time": 203.40258979797363,
+          "agent_execution_time": 203.40258979797363,
           "token_usage": {
             "input_tokens": 411113,
             "output_tokens": 1645,
-            "total_tokens": 412758
+            "total_tokens": 412758,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 203.40258979797363,
           "turn_count": 10
         },
         {
           "run": "run-2",
           "success": false,
+          "execution_time": 243.05412602424622,
+          "agent_execution_time": 243.05412602424622,
           "token_usage": {
             "input_tokens": 1168353,
             "output_tokens": 1929,
-            "total_tokens": 1170282
+            "total_tokens": 1170282,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 243.05412602424622,
           "turn_count": 14
         },
         {
           "run": "run-3",
           "success": false,
+          "execution_time": 323.67989897727966,
+          "agent_execution_time": 323.67989897727966,
           "token_usage": {
             "input_tokens": 1430174,
             "output_tokens": 2424,
-            "total_tokens": 1432598
+            "total_tokens": 1432598,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 323.67989897727966,
           "turn_count": 17
         },
         {
           "run": "run-4",
           "success": false,
+          "execution_time": 153.13935589790344,
+          "agent_execution_time": 153.13935589790344,
           "token_usage": {
             "input_tokens": 208572,
             "output_tokens": 1554,
-            "total_tokens": 210126
+            "total_tokens": 210126,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 153.13935589790344,
           "turn_count": 6
         }
       ],
@@ -119,194 +69,86 @@
         "pass^4": 0.0
       }
     },
-    "o3": {
+    "gpt-4-1": {
       "runs": [
         {
           "run": "run-1",
           "success": false,
+          "execution_time": 8.003405332565308,
+          "agent_execution_time": 8.003405332565308,
           "token_usage": {
-            "input_tokens": 416698,
-            "output_tokens": 4661,
-            "total_tokens": 421359
+            "input_tokens": 3216,
+            "output_tokens": 76,
+            "total_tokens": 3292,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 115.37241911888123,
-          "turn_count": 10
+          "turn_count": 2
         },
         {
           "run": "run-2",
           "success": false,
+          "execution_time": 76.29800486564636,
+          "agent_execution_time": 76.29800486564636,
           "token_usage": {
-            "input_tokens": 399225,
-            "output_tokens": 3323,
-            "total_tokens": 402548
+            "input_tokens": 311645,
+            "output_tokens": 1802,
+            "total_tokens": 313447,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 79.70735001564026,
-          "turn_count": 11
-        },
-        {
-          "run": "run-3",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 298893,
-            "output_tokens": 3504,
-            "total_tokens": 302397
-          },
-          "agent_execution_time": 78.19499707221985,
           "turn_count": 8
         },
         {
-          "run": "run-4",
-          "success": true,
-          "token_usage": {
-            "input_tokens": 789476,
-            "output_tokens": 5863,
-            "total_tokens": 795339
-          },
-          "agent_execution_time": 129.77060675621033,
-          "turn_count": 15
-        }
-      ],
-      "summary": {
-        "total_runs": 4,
-        "successful_runs": 1,
-        "avg_agent_execution_time": 100.76,
-        "avg_input_tokens": 476073.0,
-        "avg_output_tokens": 4337.75,
-        "avg_total_tokens": 480410.75,
-        "avg_turn_count": 11.0,
-        "pass@4": 1.0,
-        "pass^4": 0.0
-      }
-    },
-    "qwen-3-coder": {
-      "runs": [
-        {
-          "run": "run-1",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 135162,
-            "output_tokens": 563,
-            "total_tokens": 135725
-          },
-          "agent_execution_time": 53.09629988670349,
-          "turn_count": 7
-        },
-        {
-          "run": "run-2",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 307483,
-            "output_tokens": 1787,
-            "total_tokens": 309270
-          },
-          "agent_execution_time": 96.75077700614929,
-          "turn_count": 6
-        },
-        {
           "run": "run-3",
           "success": false,
+          "execution_time": 39.41875243186951,
+          "agent_execution_time": 39.41875243186951,
           "token_usage": {
-            "input_tokens": 416561,
-            "output_tokens": 1768,
-            "total_tokens": 418329
+            "input_tokens": 213121,
+            "output_tokens": 1604,
+            "total_tokens": 214725,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 107.51872301101685,
-          "turn_count": 10
+          "turn_count": 7
         },
         {
           "run": "run-4",
           "success": false,
+          "execution_time": 33.5700147151947,
+          "agent_execution_time": 33.5700147151947,
           "token_usage": {
-            "input_tokens": 409253,
-            "output_tokens": 2526,
-            "total_tokens": 411779
+            "input_tokens": 208019,
+            "output_tokens": 1525,
+            "total_tokens": 209544,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 159.27519369125366,
-          "turn_count": 7
-        }
-      ],
-      "summary": {
-        "total_runs": 4,
-        "successful_runs": 0,
-        "avg_agent_execution_time": 104.16,
-        "avg_input_tokens": 317114.75,
-        "avg_output_tokens": 1661.0,
-        "avg_total_tokens": 318775.75,
-        "avg_turn_count": 7.5,
-        "pass@4": 0.0,
-        "pass^4": 0.0
-      }
-    },
-    "claude-4-sonnet": {
-      "runs": [
-        {
-          "run": "run-1",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 379388,
-            "output_tokens": 1606,
-            "total_tokens": 380994
-          },
-          "agent_execution_time": 143.43093752861023,
-          "turn_count": 7
-        },
-        {
-          "run": "run-2",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 336945,
-            "output_tokens": 1838,
-            "total_tokens": 338783
-          },
-          "agent_execution_time": 112.86005687713623,
-          "turn_count": 6
-        },
-        {
-          "run": "run-3",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 267711,
-            "output_tokens": 2277,
-            "total_tokens": 269988
-          },
-          "agent_execution_time": 78.46707201004028,
-          "turn_count": 6
-        },
-        {
-          "run": "run-4",
-          "success": false,
-          "token_usage": {
-            "input_tokens": 267184,
-            "output_tokens": 1676,
-            "total_tokens": 268860
-          },
-          "agent_execution_time": 88.63109278678894,
           "turn_count": 6
         }
       ],
       "summary": {
         "total_runs": 4,
         "successful_runs": 0,
-        "avg_agent_execution_time": 105.85,
-        "avg_input_tokens": 312807.0,
-        "avg_output_tokens": 1849.25,
-        "avg_total_tokens": 314656.25,
-        "avg_turn_count": 6.25,
+        "avg_agent_execution_time": 39.32,
+        "avg_input_tokens": 184000.2,
+        "avg_output_tokens": 1251.8,
+        "avg_total_tokens": 185252.0,
+        "avg_turn_count": 5.75,
         "pass@4": 0.0,
         "pass^4": 0.0
       }
     },
-    "claude-4-1-opus": {
+    "claude-opus-4-1": {
       "runs": [
         {
           "run": "run-1",
           "success": false,
+          "execution_time": 143.57952189445496,
+          "agent_execution_time": 143.57952189445496,
           "token_usage": {
             "input_tokens": 294946,
             "output_tokens": 1614,
-            "total_tokens": 296560
+            "total_tokens": 296560,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 143.57952189445496,
           "turn_count": 8
         }
       ],
@@ -320,62 +162,137 @@
         "avg_turn_count": 8.0
       }
     },
-    "k2": {
+    "glm-4-5": {
       "runs": [
         {
           "run": "run-1",
           "success": false,
+          "execution_time": 46.466644048690796,
+          "agent_execution_time": 46.466644048690796,
           "token_usage": {
-            "input_tokens": 209027,
-            "output_tokens": 1474,
-            "total_tokens": 210501
+            "input_tokens": 96272,
+            "output_tokens": 1624,
+            "total_tokens": 97896,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 120.28858709335327,
-          "turn_count": 7
+          "turn_count": 6
         },
         {
           "run": "run-2",
           "success": false,
+          "execution_time": 43.76563811302185,
+          "agent_execution_time": 43.76563811302185,
           "token_usage": {
-            "input_tokens": 708744,
-            "output_tokens": 1885,
-            "total_tokens": 710629
+            "input_tokens": 93496,
+            "output_tokens": 1418,
+            "total_tokens": 94914,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 210.22493386268616,
-          "turn_count": 13
+          "turn_count": 5
         },
         {
           "run": "run-3",
           "success": false,
+          "execution_time": 50.630874156951904,
+          "agent_execution_time": 50.630874156951904,
           "token_usage": {
-            "input_tokens": 214468,
-            "output_tokens": 1480,
-            "total_tokens": 215948
+            "input_tokens": 93517,
+            "output_tokens": 1766,
+            "total_tokens": 95283,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 135.37076997756958,
-          "turn_count": 8
+          "turn_count": 5
         },
         {
           "run": "run-4",
           "success": false,
+          "execution_time": 49.11838412284851,
+          "agent_execution_time": 49.11838412284851,
           "token_usage": {
-            "input_tokens": 309297,
-            "output_tokens": 982,
-            "total_tokens": 310279
+            "input_tokens": 93568,
+            "output_tokens": 1329,
+            "total_tokens": 94897,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 161.16886115074158,
-          "turn_count": 8
+          "turn_count": 5
         }
       ],
       "summary": {
         "total_runs": 4,
         "successful_runs": 0,
-        "avg_agent_execution_time": 156.76,
-        "avg_input_tokens": 360384.0,
-        "avg_output_tokens": 1455.25,
-        "avg_total_tokens": 361839.25,
-        "avg_turn_count": 9.0,
+        "avg_agent_execution_time": 47.5,
+        "avg_input_tokens": 94213.2,
+        "avg_output_tokens": 1534.2,
+        "avg_total_tokens": 95747.5,
+        "avg_turn_count": 5.25,
         "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "o3": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 115.37241911888123,
+          "agent_execution_time": 115.37241911888123,
+          "token_usage": {
+            "input_tokens": 416698,
+            "output_tokens": 4661,
+            "total_tokens": 421359,
+            "reasoning_tokens": null
+          },
+          "turn_count": 10
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 79.70735001564026,
+          "agent_execution_time": 79.70735001564026,
+          "token_usage": {
+            "input_tokens": 399225,
+            "output_tokens": 3323,
+            "total_tokens": 402548,
+            "reasoning_tokens": null
+          },
+          "turn_count": 11
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 78.19499707221985,
+          "agent_execution_time": 78.19499707221985,
+          "token_usage": {
+            "input_tokens": 298893,
+            "output_tokens": 3504,
+            "total_tokens": 302397,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-4",
+          "success": true,
+          "execution_time": 129.77060675621033,
+          "agent_execution_time": 129.77060675621033,
+          "token_usage": {
+            "input_tokens": 789476,
+            "output_tokens": 5863,
+            "total_tokens": 795339,
+            "reasoning_tokens": null
+          },
+          "turn_count": 15
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 1,
+        "avg_agent_execution_time": 100.76,
+        "avg_input_tokens": 476073.0,
+        "avg_output_tokens": 4337.8,
+        "avg_total_tokens": 480410.8,
+        "avg_turn_count": 11.0,
+        "pass@4": 1.0,
         "pass^4": 0.0
       }
     },
@@ -384,45 +301,53 @@
         {
           "run": "run-1",
           "success": false,
+          "execution_time": 84.90929913520813,
+          "agent_execution_time": 84.90929913520813,
           "token_usage": {
             "input_tokens": 364252,
             "output_tokens": 5398,
-            "total_tokens": 369650
+            "total_tokens": 369650,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 84.90929913520813,
           "turn_count": 9
         },
         {
           "run": "run-2",
           "success": false,
+          "execution_time": 77.87557315826416,
+          "agent_execution_time": 77.87557315826416,
           "token_usage": {
             "input_tokens": 363406,
             "output_tokens": 5477,
-            "total_tokens": 368883
+            "total_tokens": 368883,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 77.87557315826416,
           "turn_count": 9
         },
         {
           "run": "run-3",
           "success": false,
+          "execution_time": 73.24898195266724,
+          "agent_execution_time": 73.24898195266724,
           "token_usage": {
             "input_tokens": 361575,
             "output_tokens": 5190,
-            "total_tokens": 366765
+            "total_tokens": 366765,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 73.24898195266724,
           "turn_count": 8
         },
         {
           "run": "run-4",
           "success": false,
+          "execution_time": 101.89462876319885,
+          "agent_execution_time": 101.89462876319885,
           "token_usage": {
             "input_tokens": 361575,
             "output_tokens": 7781,
-            "total_tokens": 369356
+            "total_tokens": 369356,
+            "reasoning_tokens": null
           },
-          "agent_execution_time": 101.89462876319885,
           "turn_count": 8
         }
       ],
@@ -438,74 +363,876 @@
         "pass^4": 0.0
       }
     },
-    "grok-4": {
+    "qwen-3-coder-plus": {
       "runs": [
         {
           "run": "run-1",
-          "success": true,
+          "success": false,
+          "execution_time": 57.47359919548035,
+          "agent_execution_time": 57.47359919548035,
           "token_usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0
+            "input_tokens": 437127,
+            "output_tokens": 1073,
+            "total_tokens": 438200,
+            "reasoning_tokens": 0
           },
-          "agent_execution_time": 147.9791202545166,
-          "turn_count": 8
+          "turn_count": 9
         },
         {
           "run": "run-2",
           "success": false,
+          "execution_time": 102.73945879936218,
+          "agent_execution_time": 102.73945879936218,
           "token_usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0
+            "input_tokens": 437826,
+            "output_tokens": 1620,
+            "total_tokens": 439446,
+            "reasoning_tokens": 0
           },
-          "agent_execution_time": 108.66434001922607,
           "turn_count": 9
         },
         {
           "run": "run-3",
-          "success": true,
+          "success": false,
+          "execution_time": 89.55292129516602,
+          "agent_execution_time": 89.55292129516602,
           "token_usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0
+            "input_tokens": 437250,
+            "output_tokens": 1126,
+            "total_tokens": 438376,
+            "reasoning_tokens": 0
           },
-          "agent_execution_time": 160.9806592464447,
           "turn_count": 9
         },
         {
           "run": "run-4",
           "success": false,
+          "execution_time": 55.93578553199768,
+          "agent_execution_time": 55.93578553199768,
           "token_usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0
+            "input_tokens": 437038,
+            "output_tokens": 922,
+            "total_tokens": 437960,
+            "reasoning_tokens": 0
           },
-          "agent_execution_time": 122.31563186645508,
+          "turn_count": 9
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 76.43,
+        "avg_input_tokens": 437310.2,
+        "avg_output_tokens": 1185.2,
+        "avg_total_tokens": 438495.5,
+        "avg_turn_count": 9.0,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gpt-5-nano-low": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 143.3512101173401,
+          "agent_execution_time": 143.3512101173401,
+          "token_usage": {
+            "input_tokens": 460299,
+            "output_tokens": 23402,
+            "total_tokens": 483701,
+            "reasoning_tokens": null
+          },
+          "turn_count": 20
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 133.30698657035828,
+          "agent_execution_time": 133.30698657035828,
+          "token_usage": {
+            "input_tokens": 502290,
+            "output_tokens": 25027,
+            "total_tokens": 527317,
+            "reasoning_tokens": null
+          },
+          "turn_count": 13
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 126.38421583175659,
+          "agent_execution_time": 126.38421583175659,
+          "token_usage": {
+            "input_tokens": 695736,
+            "output_tokens": 20325,
+            "total_tokens": 716061,
+            "reasoning_tokens": null
+          },
+          "turn_count": 14
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 107.15380644798279,
+          "agent_execution_time": 107.15380644798279,
+          "token_usage": {
+            "input_tokens": 303954,
+            "output_tokens": 20365,
+            "total_tokens": 324319,
+            "reasoning_tokens": null
+          },
+          "turn_count": 10
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 127.55,
+        "avg_input_tokens": 490569.8,
+        "avg_output_tokens": 22279.8,
+        "avg_total_tokens": 512849.5,
+        "avg_turn_count": 14.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "claude-sonnet-4": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 143.43093752861023,
+          "agent_execution_time": 143.43093752861023,
+          "token_usage": {
+            "input_tokens": 379388,
+            "output_tokens": 1606,
+            "total_tokens": 380994,
+            "reasoning_tokens": null
+          },
+          "turn_count": 7
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 112.86005687713623,
+          "agent_execution_time": 112.86005687713623,
+          "token_usage": {
+            "input_tokens": 336945,
+            "output_tokens": 1838,
+            "total_tokens": 338783,
+            "reasoning_tokens": null
+          },
+          "turn_count": 6
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 78.46707201004028,
+          "agent_execution_time": 78.46707201004028,
+          "token_usage": {
+            "input_tokens": 267711,
+            "output_tokens": 2277,
+            "total_tokens": 269988,
+            "reasoning_tokens": null
+          },
+          "turn_count": 6
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 88.63109278678894,
+          "agent_execution_time": 88.63109278678894,
+          "token_usage": {
+            "input_tokens": 267184,
+            "output_tokens": 1676,
+            "total_tokens": 268860,
+            "reasoning_tokens": null
+          },
+          "turn_count": 6
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 105.85,
+        "avg_input_tokens": 312807.0,
+        "avg_output_tokens": 1849.2,
+        "avg_total_tokens": 314656.2,
+        "avg_turn_count": 6.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gpt-5-low": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 147.8418209552765,
+          "agent_execution_time": 147.8418209552765,
+          "token_usage": {
+            "input_tokens": 356369,
+            "output_tokens": 8792,
+            "total_tokens": 365161,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 96.4451231956482,
+          "agent_execution_time": 96.4451231956482,
+          "token_usage": {
+            "input_tokens": 266056,
+            "output_tokens": 3938,
+            "total_tokens": 269994,
+            "reasoning_tokens": null
+          },
+          "turn_count": 7
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 69.77851486206055,
+          "agent_execution_time": 69.77851486206055,
+          "token_usage": {
+            "input_tokens": 240507,
+            "output_tokens": 3876,
+            "total_tokens": 244383,
+            "reasoning_tokens": null
+          },
+          "turn_count": 7
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 62.29092717170715,
+          "agent_execution_time": 62.29092717170715,
+          "token_usage": {
+            "input_tokens": 248878,
+            "output_tokens": 3800,
+            "total_tokens": 252678,
+            "reasoning_tokens": null
+          },
+          "turn_count": 7
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 94.09,
+        "avg_input_tokens": 277952.5,
+        "avg_output_tokens": 5101.5,
+        "avg_total_tokens": 283054.0,
+        "avg_turn_count": 7.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gpt-4-1-nano": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 39.0461049079895,
+          "agent_execution_time": 39.0461049079895,
+          "token_usage": {
+            "input_tokens": 881566,
+            "output_tokens": 1293,
+            "total_tokens": 882859,
+            "reasoning_tokens": null
+          },
+          "turn_count": 10
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 8.701986312866211,
+          "agent_execution_time": 8.701986312866211,
+          "token_usage": {
+            "input_tokens": 3745,
+            "output_tokens": 191,
+            "total_tokens": 3936,
+            "reasoning_tokens": null
+          },
+          "turn_count": 2
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 15.91000247001648,
+          "agent_execution_time": 15.91000247001648,
+          "token_usage": {
+            "input_tokens": 18320,
+            "output_tokens": 565,
+            "total_tokens": 18885,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 9.833158254623413,
+          "agent_execution_time": 9.833158254623413,
+          "token_usage": {
+            "input_tokens": 6900,
+            "output_tokens": 150,
+            "total_tokens": 7050,
+            "reasoning_tokens": null
+          },
+          "turn_count": 4
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 18.37,
+        "avg_input_tokens": 227632.8,
+        "avg_output_tokens": 549.8,
+        "avg_total_tokens": 228182.5,
+        "avg_turn_count": 6.0,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "grok-code-fast-1": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 47.365883588790894,
+          "agent_execution_time": 47.365883588790894,
+          "token_usage": {
+            "input_tokens": 437264,
+            "output_tokens": 817,
+            "total_tokens": 442833,
+            "reasoning_tokens": 4752
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 34.13749313354492,
+          "agent_execution_time": 34.13749313354492,
+          "token_usage": {
+            "input_tokens": 283311,
+            "output_tokens": 621,
+            "total_tokens": 288020,
+            "reasoning_tokens": 4088
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 34.829259395599365,
+          "agent_execution_time": 34.829259395599365,
+          "token_usage": {
+            "input_tokens": 534635,
+            "output_tokens": 719,
+            "total_tokens": 538884,
+            "reasoning_tokens": 3530
+          },
+          "turn_count": 12
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 49.315690994262695,
+          "agent_execution_time": 49.315690994262695,
+          "token_usage": {
+            "input_tokens": 392864,
+            "output_tokens": 701,
+            "total_tokens": 398916,
+            "reasoning_tokens": 5351
+          },
+          "turn_count": 9
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 41.41,
+        "avg_input_tokens": 412018.5,
+        "avg_output_tokens": 714.5,
+        "avg_total_tokens": 417163.2,
+        "avg_turn_count": 9.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gemini-2-5-flash": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 78.37240958213806,
+          "agent_execution_time": 78.37240958213806,
+          "token_usage": {
+            "input_tokens": 593094,
+            "output_tokens": 10706,
+            "total_tokens": 603800,
+            "reasoning_tokens": null
+          },
+          "turn_count": 9
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 73.04293632507324,
+          "agent_execution_time": 73.04293632507324,
+          "token_usage": {
+            "input_tokens": 116213,
+            "output_tokens": 11109,
+            "total_tokens": 127322,
+            "reasoning_tokens": null
+          },
+          "turn_count": 9
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 42.01297879219055,
+          "agent_execution_time": 42.01297879219055,
+          "token_usage": {
+            "input_tokens": 32568,
+            "output_tokens": 5853,
+            "total_tokens": 38421,
+            "reasoning_tokens": null
+          },
+          "turn_count": 6
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 54.11200189590454,
+          "agent_execution_time": 54.11200189590454,
+          "token_usage": {
+            "input_tokens": 304420,
+            "output_tokens": 6930,
+            "total_tokens": 311350,
+            "reasoning_tokens": null
+          },
           "turn_count": 8
         }
       ],
       "summary": {
         "total_runs": 4,
-        "successful_runs": 2,
-        "avg_agent_execution_time": 134.98,
-        "avg_input_tokens": 0.0,
-        "avg_output_tokens": 0.0,
-        "avg_total_tokens": 0.0,
-        "avg_turn_count": 8.5,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 61.89,
+        "avg_input_tokens": 261573.8,
+        "avg_output_tokens": 8649.5,
+        "avg_total_tokens": 270223.2,
+        "avg_turn_count": 8.0,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gpt-5-mini-low": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 20.259196043014526,
+          "agent_execution_time": 20.259196043014526,
+          "token_usage": {
+            "input_tokens": 70232,
+            "output_tokens": 346,
+            "total_tokens": 70578,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 68.45176339149475,
+          "agent_execution_time": 68.45176339149475,
+          "token_usage": {
+            "input_tokens": 496630,
+            "output_tokens": 3484,
+            "total_tokens": 500114,
+            "reasoning_tokens": null
+          },
+          "turn_count": 11
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 169.9104962348938,
+          "agent_execution_time": 169.9104962348938,
+          "token_usage": {
+            "input_tokens": 7121,
+            "output_tokens": 154,
+            "total_tokens": 7275,
+            "reasoning_tokens": null
+          },
+          "turn_count": 5
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 10.697898626327515,
+          "agent_execution_time": 10.697898626327515,
+          "token_usage": {
+            "input_tokens": 5209,
+            "output_tokens": 103,
+            "total_tokens": 5312,
+            "reasoning_tokens": null
+          },
+          "turn_count": 4
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 67.33,
+        "avg_input_tokens": 144798.0,
+        "avg_output_tokens": 1021.8,
+        "avg_total_tokens": 145819.8,
+        "avg_turn_count": 7.0,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "grok-4": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 185.04280924797058,
+          "agent_execution_time": 185.04280924797058,
+          "token_usage": {
+            "input_tokens": 406644,
+            "output_tokens": 4402,
+            "total_tokens": 411046,
+            "reasoning_tokens": 3614
+          },
+          "turn_count": 9
+        },
+        {
+          "run": "run-2",
+          "success": true,
+          "execution_time": 119.78083920478821,
+          "agent_execution_time": 119.78083920478821,
+          "token_usage": {
+            "input_tokens": 258061,
+            "output_tokens": 4910,
+            "total_tokens": 262971,
+            "reasoning_tokens": 4315
+          },
+          "turn_count": 7
+        },
+        {
+          "run": "run-3",
+          "success": true,
+          "execution_time": 112.75265431404114,
+          "agent_execution_time": 112.75265431404114,
+          "token_usage": {
+            "input_tokens": 251470,
+            "output_tokens": 4039,
+            "total_tokens": 255509,
+            "reasoning_tokens": 3470
+          },
+          "turn_count": 6
+        },
+        {
+          "run": "run-4",
+          "success": true,
+          "execution_time": 149.52386450767517,
+          "agent_execution_time": 149.52386450767517,
+          "token_usage": {
+            "input_tokens": 380214,
+            "output_tokens": 5783,
+            "total_tokens": 385997,
+            "reasoning_tokens": 5080
+          },
+          "turn_count": 7
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 3,
+        "avg_agent_execution_time": 141.78,
+        "avg_input_tokens": 324097.2,
+        "avg_output_tokens": 4783.5,
+        "avg_total_tokens": 328880.8,
+        "avg_turn_count": 7.25,
         "pass@4": 1.0,
         "pass^4": 0.0
       }
+    },
+    "gpt-oss-120b": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 6.4575207233428955,
+          "agent_execution_time": 6.4575207233428955,
+          "token_usage": {
+            "input_tokens": 5669,
+            "output_tokens": 243,
+            "total_tokens": 5912,
+            "reasoning_tokens": 0
+          },
+          "turn_count": 3
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 4.194093704223633,
+          "agent_execution_time": 4.194093704223633,
+          "token_usage": {
+            "input_tokens": 1689,
+            "output_tokens": 109,
+            "total_tokens": 1798,
+            "reasoning_tokens": 0
+          },
+          "turn_count": 1
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 3.4649922847747803,
+          "agent_execution_time": 3.4649922847747803,
+          "token_usage": {
+            "input_tokens": 3556,
+            "output_tokens": 181,
+            "total_tokens": 3737,
+            "reasoning_tokens": 0
+          },
+          "turn_count": 2
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 33.46560478210449,
+          "agent_execution_time": 33.46560478210449,
+          "token_usage": {
+            "input_tokens": 135253,
+            "output_tokens": 1874,
+            "total_tokens": 137127,
+            "reasoning_tokens": 0
+          },
+          "turn_count": 7
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 11.9,
+        "avg_input_tokens": 36541.8,
+        "avg_output_tokens": 601.8,
+        "avg_total_tokens": 37143.5,
+        "avg_turn_count": 3.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "k2": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 120.28858709335327,
+          "agent_execution_time": 120.28858709335327,
+          "token_usage": {
+            "input_tokens": 209027,
+            "output_tokens": 1474,
+            "total_tokens": 210501,
+            "reasoning_tokens": null
+          },
+          "turn_count": 7
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 210.22493386268616,
+          "agent_execution_time": 210.22493386268616,
+          "token_usage": {
+            "input_tokens": 708744,
+            "output_tokens": 1885,
+            "total_tokens": 710629,
+            "reasoning_tokens": null
+          },
+          "turn_count": 13
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 135.37076997756958,
+          "agent_execution_time": 135.37076997756958,
+          "token_usage": {
+            "input_tokens": 214468,
+            "output_tokens": 1480,
+            "total_tokens": 215948,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 161.16886115074158,
+          "agent_execution_time": 161.16886115074158,
+          "token_usage": {
+            "input_tokens": 309297,
+            "output_tokens": 982,
+            "total_tokens": 310279,
+            "reasoning_tokens": null
+          },
+          "turn_count": 8
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 156.76,
+        "avg_input_tokens": 360384.0,
+        "avg_output_tokens": 1455.2,
+        "avg_total_tokens": 361839.2,
+        "avg_turn_count": 9.0,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "o4-mini": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 627.403639793396,
+          "agent_execution_time": 627.403639793396,
+          "token_usage": {
+            "input_tokens": 1051087,
+            "output_tokens": 16733,
+            "total_tokens": 1067820,
+            "reasoning_tokens": null
+          },
+          "turn_count": 21
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 918.7179627418518,
+          "agent_execution_time": 918.7179627418518,
+          "token_usage": {
+            "input_tokens": 1424891,
+            "output_tokens": 26589,
+            "total_tokens": 1451480,
+            "reasoning_tokens": null
+          },
+          "turn_count": 21
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 246.8547501564026,
+          "agent_execution_time": 246.8547501564026,
+          "token_usage": {
+            "input_tokens": 861464,
+            "output_tokens": 14990,
+            "total_tokens": 876454,
+            "reasoning_tokens": null
+          },
+          "turn_count": 18
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 284.664644241333,
+          "agent_execution_time": 284.664644241333,
+          "token_usage": {
+            "input_tokens": 1100957,
+            "output_tokens": 17205,
+            "total_tokens": 1118162,
+            "reasoning_tokens": null
+          },
+          "turn_count": 21
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 519.41,
+        "avg_input_tokens": 1109599.8,
+        "avg_output_tokens": 18879.2,
+        "avg_total_tokens": 1128479.0,
+        "avg_turn_count": 20.25,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
+    },
+    "gpt-4-1-mini": {
+      "runs": [
+        {
+          "run": "run-1",
+          "success": false,
+          "execution_time": 10.34402847290039,
+          "agent_execution_time": 10.34402847290039,
+          "token_usage": {
+            "input_tokens": 4946,
+            "output_tokens": 71,
+            "total_tokens": 5017,
+            "reasoning_tokens": null
+          },
+          "turn_count": 3
+        },
+        {
+          "run": "run-2",
+          "success": false,
+          "execution_time": 8.90747356414795,
+          "agent_execution_time": 8.90747356414795,
+          "token_usage": {
+            "input_tokens": 3216,
+            "output_tokens": 65,
+            "total_tokens": 3281,
+            "reasoning_tokens": null
+          },
+          "turn_count": 2
+        },
+        {
+          "run": "run-3",
+          "success": false,
+          "execution_time": 7.812039852142334,
+          "agent_execution_time": 7.812039852142334,
+          "token_usage": {
+            "input_tokens": 3216,
+            "output_tokens": 58,
+            "total_tokens": 3274,
+            "reasoning_tokens": null
+          },
+          "turn_count": 2
+        },
+        {
+          "run": "run-4",
+          "success": false,
+          "execution_time": 8.665311336517334,
+          "agent_execution_time": 8.665311336517334,
+          "token_usage": {
+            "input_tokens": 4946,
+            "output_tokens": 81,
+            "total_tokens": 5027,
+            "reasoning_tokens": null
+          },
+          "turn_count": 3
+        }
+      ],
+      "summary": {
+        "total_runs": 4,
+        "successful_runs": 0,
+        "avg_agent_execution_time": 8.93,
+        "avg_input_tokens": 4081.0,
+        "avg_output_tokens": 68.8,
+        "avg_total_tokens": 4149.8,
+        "avg_turn_count": 2.5,
+        "pass@4": 0.0,
+        "pass^4": 0.0
+      }
     }
-  },
-  "overview": {
-    "total_models": 9,
-    "total_runs": 33,
-    "avg_success_rate": 0.0909,
-    "avg_input_tokens": 361857.3,
-    "avg_output_tokens": 2746.39,
-    "avg_total_tokens": 364603.7,
-    "avg_agent_execution_time": 127.01,
-    "avg_turn_count": 8.7
   }
 }

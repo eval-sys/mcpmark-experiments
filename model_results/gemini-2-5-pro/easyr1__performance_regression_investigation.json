@@ -1,59 +1,55 @@
 {
-  "task_name": "easyr1__performance_regression_investigation",
-  "service": "github",
   "model": "gemini-2-5-pro",
+  "service": "github",
+  "task": "easyr1__performance_regression_investigation",
   "runs": {
     "run-1": {
-      "agent_execution_time": 76.65095162391663,
-      "task_execution_time": 179.37056636810303,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 76.65095162391663,
       "token_usage": {
         "input_tokens": 19691,
         "output_tokens": 6764,
-        "total_tokens": 26455
+        "total_tokens": 26455,
+        "reasoning_tokens": null
       },
       "turn_count": 2
     },
     "run-2": {
-      "agent_execution_time": 35.78024649620056,
-      "task_execution_time": 155.18938088417053,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool create_issue: {\"labels\":[\"bug\",\"performance\",\"investigation\"],\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Performance Regression Analysis: Data Protocol Changes\"}{\"branch\":\"investigate-protocol-changes\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"branch\":\"investigate-batch-processing\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"branch\":\"investigate-memory-usage\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"base\":\"main\",\"head\":\"investigate-protocol-changes\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Performance Analysis: Protocol Changes Investigation\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: fix multi modal data oom\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: upgrade vllm to 0.10\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: non blocking false by default\"}"
+      "success": false,
+      "error_message": null,
+      "execution_time": 59.46598553657532,
+      "token_usage": {
+        "input_tokens": 49967,
+        "output_tokens": 3594,
+        "total_tokens": 53561,
+        "reasoning_tokens": 2699
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 3
     },
     "run-3": {
-      "agent_execution_time": 63.27033972740173,
-      "task_execution_time": 157.00426650047302,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool create_or_update_file: {\"issue_number\":54,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"sub_issue_id\":3340158886}{\"issue_number\":54,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"sub_issue_id\":3340158885}{\"issue_number\":54,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"sub_issue_id\":3340158887}{\"body\":\"File `verl/protocol.py` was modified in commit `098931530606d22f867fd121b1dcb3225a43661f`.\",\"issue_number\":54,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"body\":\"File `examples/config.yaml` was modified in commit `098931530606d22f867fd121b1dcb3225a43661f`.\",\"issue_number\":54,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"branch\":\"investigate-protocol-changes\",\"content\":\"This PR is for investigating performance regressions related to protocol changes.\",\"message\":\"Add analysis placeholder\",\"owner\":\"mcpmark-eval\",\"path\":\"analysis.md\",\"repo\":\"EasyR1\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 77.30858516693115,
       "token_usage": {
-        "input_tokens": 4461,
-        "output_tokens": 4248,
-        "total_tokens": 8709
+        "input_tokens": 123395,
+        "output_tokens": 4782,
+        "total_tokens": 128177,
+        "reasoning_tokens": 3577
       },
-      "turn_count": 1
+      "turn_count": 6
     },
     "run-4": {
-      "agent_execution_time": 40.42379927635193,
-      "task_execution_time": 140.50464797019958,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool create_pull_request: {\"branch\":\"investigate-protocol-changes\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"branch\":\"investigate-batch-processing\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"branch\":\"investigate-memory-usage\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: fix multi modal data oom\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: upgrade vllm to 0.10\"}{\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Test Performance Impact: non blocking false by default\"}{\"body\":\"File change from commit `098931530606d22f867fd121b1dcb3225a43661f`: `verl/protocol.py`\",\"issue_number\":51,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"body\":\"File change from commit `098931530606d22f867fd121b1dcb3225a43661f`: `examples/config.yaml`\",\"issue_number\":51,\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\"}{\"base\":\"main\",\"head\":\"investigate-protocol-changes\",\"owner\":\"mcpmark-eval\",\"repo\":\"EasyR1\",\"title\":\"Performance Analysis: Protocol Changes Investigation\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 62.29487347602844,
       "token_usage": {
-        "input_tokens": 4461,
-        "output_tokens": 2367,
-        "total_tokens": 6828
+        "input_tokens": 119681,
+        "output_tokens": 3133,
+        "total_tokens": 122814,
+        "reasoning_tokens": 2453
       },
-      "turn_count": 1
+      "turn_count": 6
     }
   }
 }

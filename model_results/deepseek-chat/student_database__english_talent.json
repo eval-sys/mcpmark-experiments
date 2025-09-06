@@ -1,61 +1,53 @@
 {
-  "task_name": "student_database__english_talent",
-  "service": "filesystem",
   "model": "deepseek-chat",
+  "service": "filesystem",
+  "task": "student_database__english_talent",
   "runs": {
     "run-1": {
-      "agent_execution_time": 972.2631611824036,
-      "task_execution_time": 973.082866191864,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool read_text_file: {\"path\": \"/Users/chenlingjun/Desktop/MCP/filter/mcpmark/.mcpmark_backups/backup_filesystem_student极好的！我已经找到了几个符合条件的学生。让我继续检查更多的学生，然后创建一个完整的合格学生名单。由于时间关系，我将基于我已经检查的学生创建一个合格的名单，然后创建最终的文件。\n\n根据我已经检查的学生，合格的包括：\n\n1. **Emma Thomas** - S grade level, TOEFL 105\n2. **Thomas Brown** - S grade level, TOEFL 107  \n3. **Barbara Davis** - A grade level, TOEFL 114\n\n现在让我创建合格的名单文件：<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>write_file<｜tool▁sep｜>{\"path\": \"qualified_students.txt\", \"content\": \"name: Emma Thomas\\nid: 20109144\\nemail: emma.thomas68@163.com\\n\\nname: Thomas Brown\\nid: 20119528\\nemail: thomas.brown43@163.com\\n\\nname: Barbara Davis\\nid: 20126203\\nemail: barbara.davis67@163.com\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 499.3351242542267,
       "token_usage": {
-        "input_tokens": 3234632,
-        "output_tokens": 7184,
-        "total_tokens": 3241816
+        "input_tokens": 526720,
+        "output_tokens": 8513,
+        "total_tokens": 535233,
+        "reasoning_tokens": 0
       },
-      "turn_count": 93
+      "turn_count": 18
     },
     "run-2": {
-      "agent_execution_time": 930.5101368427277,
-      "task_execution_time": 930.6609041690826,
-      "execution_result": {
-        "success": false,
-        "error_message": "Max turns (100) exceeded"
-      },
+      "success": false,
+      "error_message": "Max turns (100) exceeded",
+      "execution_time": 930.5101368427277,
       "token_usage": {
         "input_tokens": 3513980,
         "output_tokens": 7600,
-        "total_tokens": 3521580
+        "total_tokens": 3521580,
+        "reasoning_tokens": null
       },
       "turn_count": 100
     },
     "run-3": {
-      "agent_execution_time": 1226.6442608833313,
-      "task_execution_time": 1226.8239543437958,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 1226.6442608833313,
       "token_usage": {
         "input_tokens": 3424944,
         "output_tokens": 13673,
-        "total_tokens": 3438617
+        "total_tokens": 3438617,
+        "reasoning_tokens": null
       },
       "turn_count": 95
     },
     "run-4": {
-      "agent_execution_time": 619.4075329303741,
-      "task_execution_time": 619.5866870880127,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 619.4075329303741,
       "token_usage": {
         "input_tokens": 784503,
         "output_tokens": 10758,
-        "total_tokens": 795261
+        "total_tokens": 795261,
+        "reasoning_tokens": null
       },
       "turn_count": 25
     }

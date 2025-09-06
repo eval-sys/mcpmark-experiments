@@ -1,63 +1,55 @@
 {
-  "task_name": "shopping__multi_category_budget_analysis",
-  "service": "playwright",
   "model": "grok-4",
+  "service": "playwright",
+  "task": "shopping__multi_category_budget_analysis",
   "runs": {
     "run-1": {
-      "agent_execution_time": 193.5408616065979,
-      "task_execution_time": 268.2756817340851,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"Product Name textbox\",\"ref\":\"e108\",\"text\":\"tabletop\"}{\"element\":\"Price from textbox\",\"ref\":\"e131\",\"text\":\"100.00\"}{\"element\":\"Price to textbox\",\"ref\":\"e135\",\"text\":\"200.00\"}{\"element\":\"Search button\",\"ref\":\"e139\"}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 258867 tokens.\"}",
+      "execution_time": 396.2811756134033,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 4981162,
+        "output_tokens": 8388,
+        "total_tokens": 4989550,
+        "reasoning_tokens": 6725
       },
-      "turn_count": 15
+      "turn_count": 39
     },
     "run-2": {
-      "agent_execution_time": 27.263485431671143,
-      "task_execution_time": 91.23591256141663,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"element\":\"Grocery & Gourmet Food menu item\",\"ref\":\"e83\"}{}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 260835 tokens.\"}",
+      "execution_time": 373.10190868377686,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 1
-    },
-    "run-3": {
-      "agent_execution_time": 40.8276047706604,
-      "task_execution_time": 109.37962317466736,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"element\":\"Grocery &amp; Gourmet Food menu item\",\"ref\":\"e83\"}{}"
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 1
-    },
-    "run-4": {
-      "agent_execution_time": 484.98085260391235,
-      "task_execution_time": 549.5461258888245,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'code': 'Client specified an invalid argument', 'error': \"This model's maximum prompt length is 256000 but the request contains 260350 tokens.\"}"
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 4117384,
+        "output_tokens": 8018,
+        "total_tokens": 4125402,
+        "reasoning_tokens": 6591
       },
       "turn_count": 35
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 256408 tokens.\"}",
+      "execution_time": 497.3858845233917,
+      "token_usage": {
+        "input_tokens": 5327271,
+        "output_tokens": 11481,
+        "total_tokens": 5338752,
+        "reasoning_tokens": 9689
+      },
+      "turn_count": 42
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 262459 tokens.\"}",
+      "execution_time": 554.1496062278748,
+      "token_usage": {
+        "input_tokens": 3802905,
+        "output_tokens": 8957,
+        "total_tokens": 3811862,
+        "reasoning_tokens": 7442
+      },
+      "turn_count": 30
     }
   }
 }

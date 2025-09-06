@@ -1,55 +1,55 @@
 {
-  "task_name": "shopping_admin__sales_inventory_analysis",
-  "service": "playwright",
   "model": "grok-4",
+  "service": "playwright",
+  "task": "shopping_admin__sales_inventory_analysis",
   "runs": {
     "run-1": {
-      "agent_execution_time": 31.944007873535156,
-      "task_execution_time": 68.45276474952698,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"Username textbox\",\"ref\":\"e15\",\"text\":\"admin\"}{\"element\":\"Password textbox\",\"ref\":\"e20\",\"text\":\"admin1234\"}{\"element\":\"Sign in button\",\"ref\":\"e23\"}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 262072 tokens.\"}",
+      "execution_time": 106.18145275115967,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 237989,
+        "output_tokens": 1989,
+        "total_tokens": 239978,
+        "reasoning_tokens": 1587
       },
-      "turn_count": 1
+      "turn_count": 10
     },
     "run-2": {
-      "agent_execution_time": 29.971054077148438,
-      "task_execution_time": 60.40117931365967,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"element\":\"Username textbox\",\"ref\":\"e15\",\"text\":\"admin\"}{\"element\":\"Password textbox\",\"ref\":\"e20\",\"text\":\"admin1234\"}{\"element\":\"Sign in button\",\"ref\":\"e23\"}{}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 264948 tokens.\"}",
+      "execution_time": 136.45228219032288,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 230910,
+        "output_tokens": 3035,
+        "total_tokens": 233945,
+        "reasoning_tokens": 2524
       },
-      "turn_count": 1
+      "turn_count": 8
     },
     "run-3": {
-      "agent_execution_time": 18.309226989746094,
-      "task_execution_time": 46.941701889038086,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"url\":\"http://localhost:7780/admin\"}{}"
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 256962 tokens.\"}",
+      "execution_time": 163.1384027004242,
+      "token_usage": {
+        "input_tokens": 64442,
+        "output_tokens": 1538,
+        "total_tokens": 65980,
+        "reasoning_tokens": 1191
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 5
     },
     "run-4": {
-      "agent_execution_time": 16.121447324752808,
-      "task_execution_time": 45.20337796211243,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"url\":\"http://localhost:7780/admin\"}{}"
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 274953 tokens.\"}",
+      "execution_time": 405.5704200267792,
+      "token_usage": {
+        "input_tokens": 2586976,
+        "output_tokens": 7803,
+        "total_tokens": 2594779,
+        "reasoning_tokens": 6738
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 26
     }
   }
 }

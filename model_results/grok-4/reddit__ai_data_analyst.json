@@ -1,63 +1,55 @@
 {
-  "task_name": "reddit__ai_data_analyst",
-  "service": "playwright",
   "model": "grok-4",
+  "service": "playwright",
+  "task": "reddit__ai_data_analyst",
   "runs": {
     "run-1": {
-      "agent_execution_time": 234.70394730567932,
-      "task_execution_time": 281.85979199409485,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"Title field\",\"ref\":\"e58\",\"text\":\"MachineLearning_Extraction\"}{\"element\":\"Body field\",\"ref\":\"e63\",\"text\":\"\\n- Deeplearning_Post_Count|25\\n- ChatGPT_Tool_Vote_Count|2655\\n- Transformer_Third_Result|[R] The Table Feature Transformation Library Release\\n- Page2_Top_Post_Title|[N] OpenAI may have benchmarked GPT-4’s coding ability on it’s own training data\\n- Page2_Top_Post_Votes|925\\n- Page2_Last_Comment_Username|joeiyoma\\n- Page2_Last_Comment_Text|There is a lot of Buzz about prompt engineering, can it cut as a skill-set going forward or is just a hype that will out with time.\\n\"}{\"element\":\"Create submission button\",\"ref\":\"e82\"}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 257131 tokens.\"}",
+      "execution_time": 181.1277072429657,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 694886,
+        "output_tokens": 3638,
+        "total_tokens": 698524,
+        "reasoning_tokens": 3031
       },
-      "turn_count": 17
+      "turn_count": 14
     },
     "run-2": {
-      "agent_execution_time": 282.0130488872528,
-      "task_execution_time": 331.238911151886,
-      "execution_result": {
-        "success": false,
-        "error_message": "Navigating to forum...\nStep 1: Verifying account creation...\nAttempting to login with AIDataAnalyst2025...\nPASSED: Successfully logged in as AIDataAnalyst2025\n\nStep 2: Verifying submission creation...\nNavigating to MachineLearning forum...\nLooking for submission with title 'MachineLearning_Extraction'...\nPASSED: Found submission 'MachineLearning_Extraction' in MachineLearning forum\n\nStep 3: Verifying submission content...\nFound submission content using selector: .submission__body\nFound submission body content\nRaw content preview: Deeplearning_Post_Count|25\nChatGPT_Tool_Vote_Count|2655\nTransformer_Third_Result|[R] The Table Feature Transformation Library Release\nPage2_Top_Post_Title|[N] OpenAI may have benchmarked GPT-4’s codin...\nExtracted data: {'Deeplearning_Post_Count': '25', 'ChatGPT_Tool_Vote_Count': '2655', 'Transformer_Third_Result': '[R] The Table Feature Transformation Library Release', 'Page2_Top_Post_Title': '[N] OpenAI may have benchmarked GPT-4’s coding ability on it’s own training data', 'Page2_Top_Post_Votes': '925', 'Page2_Last_Comment_Username': 'joeiyoma', 'Page2_Last_Comment_Text': 'There is a lot of Buzz about prompt engineering, can it cut as a skill-set going forward or is just a hype that will out with time.'}\nLoaded expected values from label.txt\nFAILED: Content validation failed with the following issues:\n  - Page2_Top_Post_Title mismatch: got '[N] OpenAI may have benchmarked GPT-4’s coding ability on it’s own training data', expected '[D]GPT-4 might be able to tell you if it hallucinated'\n  - Page2_Top_Post_Votes mismatch: got 925, expected 634\n  - Page2_Last_Comment_Username mismatch: got 'joeiyoma', expected 'Nous_AI'\n  - Page2_Last_Comment_Text mismatch: got 'There is a lot of Buzz about prompt engineering, can it cut as a skill-set going forward or is just a hype that will out with time.', expected 'Fascinating.'\n\nExpected values from label.txt:\n  Deeplearning_Post_Count: 25\n  ChatGPT_Tool_Vote_Count: 2655\n  Transformer_Third_Result: [R] The Table Feature Transformation Library Release\n  Page2_Top_Post_Title: [D]GPT-4 might be able to tell you if it hallucinated\n  Page2_Top_Post_Votes: 634\n  Page2_Last_Comment_Username: Nous_AI\n  Page2_Last_Comment_Text: Fascinating.\n"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 223.53734827041626,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 1810536,
+        "output_tokens": 5232,
+        "total_tokens": 1815768,
+        "reasoning_tokens": 4311
       },
-      "turn_count": 22
+      "turn_count": 19
     },
     "run-3": {
-      "agent_execution_time": 259.82816433906555,
-      "task_execution_time": 302.40897703170776,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"Title textbox\",\"ref\":\"e58\",\"text\":\"MachineLearning_Extraction\"}{\"element\":\"Body textbox\",\"ref\":\"e63\",\"text\":\"- Deeplearning_Post_Count|25\\n- ChatGPT_Tool_Vote_Count|2655\\n- Transformer_Third_Result|[R] The Table Feature Transformation Library Release\\n- Page2_Top_Post_Title|[D]GPT-4 might be able to tell you if it hallucinated\\n- Page2_Top_Post_Votes|634\\n- Page2_Last_Comment_Username|Nous_AI\\n- Page2_Last_Comment_Text|Fascinating.\"}{\"element\":\"Create submission button\",\"ref\":\"e82\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 327.9738893508911,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
-      },
-      "turn_count": 22
-    },
-    "run-4": {
-      "agent_execution_time": 315.46056056022644,
-      "task_execution_time": 358.7160532474518,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_click: {\"element\":\"Title textbox\",\"ref\":\"e58\",\"text\":\"MachineLearning_Extraction\"}{\"element\":\"Body textbox\",\"ref\":\"e63\",\"text\":\"- Deeplearning_Post_Count|25\\n- ChatGPT_Tool_Vote_Count|2655\\n- Transformer_Third_Result|[R] The Table Feature Transformation Library Release\\n- Page2_Top_Post_Title|[D]GPT-4 might be able to tell you if it hallucinated\\n- Page2_Top_Post_Votes|634\\n- Page2_Last_Comment_Username|Nous_AI\\n- Page2_Last_Comment_Text|Fascinating.\"}{\"element\":\"Create submission button\",\"ref\":\"e82\"}"
-      },
-      "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 1381955,
+        "output_tokens": 6957,
+        "total_tokens": 1388912,
+        "reasoning_tokens": 6051
       },
       "turn_count": 17
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 233.71028089523315,
+      "token_usage": {
+        "input_tokens": 1052788,
+        "output_tokens": 5988,
+        "total_tokens": 1058776,
+        "reasoning_tokens": 4908
+      },
+      "turn_count": 15
     }
   }
 }

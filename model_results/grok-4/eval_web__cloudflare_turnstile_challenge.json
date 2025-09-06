@@ -1,63 +1,55 @@
 {
-  "task_name": "eval_web__cloudflare_turnstile_challenge",
-  "service": "playwright",
   "model": "grok-4",
+  "service": "playwright",
+  "task": "eval_web__cloudflare_turnstile_challenge",
   "runs": {
     "run-1": {
-      "agent_execution_time": 31.047853708267212,
-      "task_execution_time": 31.049179792404175,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"time\":5}{}"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 669.3356544971466,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 2182989,
+        "output_tokens": 20233,
+        "total_tokens": 2203222,
+        "reasoning_tokens": 17484
       },
-      "turn_count": 1
+      "turn_count": 63
     },
     "run-2": {
-      "agent_execution_time": 384.0015330314636,
-      "task_execution_time": 384.00416803359985,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_wait_for: {\"element\":\"Sign In button\",\"ref\":\"e66\"}{\"time\":2}"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 1314.478488445282,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 5368705,
+        "output_tokens": 43841,
+        "total_tokens": 5412546,
+        "reasoning_tokens": 33095
       },
-      "turn_count": 46
+      "turn_count": 79
     },
     "run-3": {
-      "agent_execution_time": 30.865234375,
-      "task_execution_time": 30.866264820098877,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"time\":5}{}"
-      },
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 460275 tokens.\"}",
+      "execution_time": 2087.1937634944916,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 2519307,
+        "output_tokens": 24906,
+        "total_tokens": 2544213,
+        "reasoning_tokens": 20879
       },
-      "turn_count": 1
+      "turn_count": 55
     },
     "run-4": {
-      "agent_execution_time": 27.769078016281128,
-      "task_execution_time": 27.77009129524231,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"time\":3}{}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 920.9275131225586,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 4677852,
+        "output_tokens": 18256,
+        "total_tokens": 4696108,
+        "reasoning_tokens": 14344
       },
-      "turn_count": 1
+      "turn_count": 98
     }
   }
 }

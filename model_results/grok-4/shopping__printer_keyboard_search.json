@@ -1,59 +1,55 @@
 {
-  "task_name": "shopping__printer_keyboard_search",
-  "service": "playwright",
   "model": "grok-4",
+  "service": "playwright",
+  "task": "shopping__printer_keyboard_search",
   "runs": {
     "run-1": {
-      "agent_execution_time": 293.40596890449524,
-      "task_execution_time": 363.12191677093506,
-      "execution_result": {
-        "success": false,
-        "error_message": "Error code: 400 - {'code': 'Client specified an invalid argument', 'error': \"This model's maximum prompt length is 256000 but the request contains 268664 tokens.\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 309.0257830619812,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 1453968,
+        "output_tokens": 7211,
+        "total_tokens": 1461179,
+        "reasoning_tokens": 6471
       },
-      "turn_count": 17
+      "turn_count": 20
     },
     "run-2": {
-      "agent_execution_time": 178.23843622207642,
-      "task_execution_time": 237.013977766037,
-      "execution_result": {
-        "success": false,
-        "error_message": "Found model response, parsing answer format...\n\n=== Model Answer Parsed ===\nPrinterSKUID: B09BDR4DLY\nPrinterPrice: $7.03\nKeyboardSKUID: B098JF32PT\nKeyboardPrice: $98.99\nKeyboardReviews: 12\nKeyboardRating: 75%\n\n=== Answer Comparison Mismatches ===\n✗ PrinterSKUID: expected 'B09J8KQX6V', got 'B09BDR4DLY'\n✗ PrinterPrice: expected '$248.04', got '$7.03'\n✗ KeyboardSKUID: expected 'B08JD7F3F5', got 'B098JF32PT'\n✗ KeyboardPrice: expected '$85.99', got '$98.99'\n✗ KeyboardRating: expected '77%', got '75%'\n\nModel answer does not match expected answer\n"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 282.05025935173035,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 1471397,
+        "output_tokens": 6883,
+        "total_tokens": 1478280,
+        "reasoning_tokens": 6075
       },
-      "turn_count": 15
+      "turn_count": 19
     },
     "run-3": {
-      "agent_execution_time": 407.77663350105286,
-      "task_execution_time": 474.35239720344543,
-      "execution_result": {
-        "success": true,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 405.5797789096832,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 3446673,
+        "output_tokens": 8358,
+        "total_tokens": 3455031,
+        "reasoning_tokens": 7229
       },
-      "turn_count": 27
+      "turn_count": 32
     },
     "run-4": {
-      "agent_execution_time": 128.94197344779968,
-      "task_execution_time": 193.95071649551392,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool browser_snapshot: {\"url\":\"http://localhost:7770\"}{}"
+      "success": false,
+      "error_message": "litellm.BadRequestError: XaiException - {\"code\":\"Client specified an invalid argument\",\"error\":\"This model's maximum prompt length is 256000 but the request contains 257421 tokens.\"}",
+      "execution_time": 329.3536660671234,
+      "token_usage": {
+        "input_tokens": 2198367,
+        "output_tokens": 6497,
+        "total_tokens": 2204864,
+        "reasoning_tokens": 5475
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 23
     }
   }
 }

@@ -1,63 +1,55 @@
 {
-  "task_name": "employees__employee_performance_analysis",
-  "service": "postgres",
   "model": "grok-4",
+  "service": "postgres",
+  "task": "employees__employee_performance_analysis",
   "runs": {
     "run-1": {
-      "agent_execution_time": 57.24962258338928,
-      "task_execution_time": 59.331892013549805,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool execute_sql: {\"sql\":\"CREATE TABLE employees.employee_performance_analysis (employee_id bigint, performance_category varchar, salary_growth_rate decimal, days_of_service integer, promotion_count integer);\"}{\"sql\":\"INSERT INTO employees.employee_performance_analysis SELECT e.emp_no AS employee_id, CASE WHEN growth > 40 AND prom_count > 1 THEN 'high_achiever' WHEN growth < 15 AND days > 3650 THEN 'needs_attention' ELSE 'steady_performer' END AS performance_category, growth AS salary_growth_rate, days AS days_of_service, prom_count AS promotion_count FROM (SELECT e.emp_no, (CURRENT_DATE - e.hire_date) AS days, (SELECT COUNT(DISTINCT t.title) FROM employees.title t WHERE t.emp_no = e.emp_no) AS prom_count, (SELECT s.salary FROM employees.salary s WHERE s.emp_no = e.emp_no AND s.to_date = '9999-01-01') AS curr_sal, (SELECT s.salary FROM employees.salary s WHERE s.emp_no = e.emp_no ORDER BY s.from_date ASC LIMIT 1) AS init_sal, CASE WHEN init_sal = 0 THEN 0 ELSE ((curr_sal - init_sal)::decimal / init_sal * 100) END AS growth FROM employees.employee e WHERE EXISTS (SELECT 1 FROM employees.salary s WHERE s.emp_no = e.emp_no AND s.to_date = '9999-01-01')) AS sub;\"}{\"sql\":\"CREATE TABLE employees.department_salary_analysis (department_name varchar, avg_current_salary decimal, employee_count integer, salary_range_spread integer);\"}{\"sql\":\"INSERT INTO employees.department_salary_analysis SELECT d.dept_name AS department_name, AVG(s.salary) AS avg_current_salary, COUNT(DISTINCT de.emp_no) AS employee_count, (MAX(s.salary) - MIN(s.salary))::integer AS salary_range_spread FROM employees.department_employee de JOIN employees.department d ON d.dept_no = de.dept_no JOIN employees.salary s ON s.emp_no = de.emp_no WHERE de.to_date = '9999-01-01' AND s.to_date = '9999-01-01' GROUP BY d.dept_name;\"}"
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 132.79455184936523,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 148382,
+        "output_tokens": 4904,
+        "total_tokens": 153286,
+        "reasoning_tokens": 3723
       },
-      "turn_count": 2
+      "turn_count": 20
     },
     "run-2": {
-      "agent_execution_time": 95.91552829742432,
-      "task_execution_time": 101.34637808799744,
-      "execution_result": {
-        "success": true,
-        "error_message": null
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 128.23395490646362,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 72951,
+        "output_tokens": 4237,
+        "total_tokens": 77188,
+        "reasoning_tokens": 3289
       },
-      "turn_count": 11
+      "turn_count": 12
     },
     "run-3": {
-      "agent_execution_time": 138.87930345535278,
-      "task_execution_time": 143.6697974205017,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 132.48269081115723,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 129586,
+        "output_tokens": 5192,
+        "total_tokens": 134778,
+        "reasoning_tokens": 3703
       },
       "turn_count": 18
     },
     "run-4": {
-      "agent_execution_time": 42.61325716972351,
-      "task_execution_time": 44.69494295120239,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool get_object_details: {\"schema_name\":\"employees\",\"object_name\":\"department_employee\",\"object_type\":\"table\"}{\"schema_name\":\"employees\",\"object_name\":\"department_manager\",\"object_type\":\"table\"}"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 137.11541318893433,
       "token_usage": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "input_tokens": 91524,
+        "output_tokens": 5885,
+        "total_tokens": 97409,
+        "reasoning_tokens": 4961
       },
-      "turn_count": 2
+      "turn_count": 12
     }
   }
 }

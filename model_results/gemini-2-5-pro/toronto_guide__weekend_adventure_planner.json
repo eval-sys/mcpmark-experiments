@@ -1,57 +1,53 @@
 {
-  "task_name": "toronto_guide__weekend_adventure_planner",
-  "service": "notion",
   "model": "gemini-2-5-pro",
+  "service": "notion",
+  "task": "toronto_guide__weekend_adventure_planner",
   "runs": {
     "run-1": {
-      "agent_execution_time": 13.564817905426025,
-      "task_execution_time": 53.10730028152466,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 13.564817905426025,
       "token_usage": {
         "input_tokens": 3329,
         "output_tokens": 13,
-        "total_tokens": 3342
+        "total_tokens": 3342,
+        "reasoning_tokens": null
       },
       "turn_count": 1
     },
     "run-2": {
-      "agent_execution_time": 19.924399852752686,
-      "task_execution_time": 52.147809982299805,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool API-post-search: {\"query\":\"Toronto Guide\"}{\"query\":\"Activities\"}{\"query\":\"Food\"}{\"query\":\"Cafes\"}"
+      "success": true,
+      "error_message": null,
+      "execution_time": 58.64055132865906,
+      "token_usage": {
+        "input_tokens": 163881,
+        "output_tokens": 3432,
+        "total_tokens": 167313,
+        "reasoning_tokens": 469
       },
-      "token_usage": {},
-      "turn_count": 0
+      "turn_count": 10
     },
     "run-3": {
-      "agent_execution_time": 24.042110204696655,
-      "task_execution_time": 60.182693004608154,
-      "execution_result": {
-        "success": false,
-        "error_message": "Invalid JSON input for tool API-post-database-query: {\"database_id\":\"2562b7e8-cebd-814a-bd06-fec3124dd8c5\",\"filter\":{\"multi_select\":{\"contains\":\"Beaches\"},\"property\":\"Tags\"}}{\"database_id\":\"2562b7e8-cebd-8199-960a-fb4bc42067a7\",\"filter\":{\"or\":[{\"multi_select\":{\"contains\":\"Turkish\"},\"property\":\"Tags\"},{\"multi_select\":{\"contains\":\"Hakka\"},\"property\":\"Tags\"}]}}{\"database_id\":\"2562b7e8-cebd-811d-958a-e16b7b20eda7\"}"
-      },
+      "success": true,
+      "error_message": null,
+      "execution_time": 75.33288192749023,
       "token_usage": {
-        "input_tokens": 1955,
-        "output_tokens": 562,
-        "total_tokens": 2517
+        "input_tokens": 176091,
+        "output_tokens": 4545,
+        "total_tokens": 180636,
+        "reasoning_tokens": 3473
       },
-      "turn_count": 1
+      "turn_count": 10
     },
     "run-4": {
-      "agent_execution_time": 21.764408588409424,
-      "task_execution_time": 71.11532616615295,
-      "execution_result": {
-        "success": false,
-        "error_message": null
-      },
+      "success": false,
+      "error_message": null,
+      "execution_time": 21.764408588409424,
       "token_usage": {
         "input_tokens": 8287,
         "output_tokens": 1217,
-        "total_tokens": 9504
+        "total_tokens": 9504,
+        "reasoning_tokens": null
       },
       "turn_count": 2
     }
