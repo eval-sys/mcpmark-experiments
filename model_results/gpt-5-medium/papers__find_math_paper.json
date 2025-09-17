@@ -1,0 +1,55 @@
+{
+  "model": "gpt-5-medium",
+  "service": "filesystem",
+  "task": "papers__find_math_paper",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 148.56010150909424,
+      "token_usage": {
+        "input_tokens": 374187,
+        "output_tokens": 4657,
+        "total_tokens": 378844,
+        "reasoning_tokens": 2304
+      },
+      "turn_count": 6
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenAIException - Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 1596472 tokens. Please reduce the length of the messages. (tid: 2025091110172064087995987086713)",
+      "execution_time": 193.0051290988922,
+      "token_usage": {
+        "input_tokens": 5214,
+        "output_tokens": 4527,
+        "total_tokens": 9741,
+        "reasoning_tokens": 1152
+      },
+      "turn_count": 3
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 109.82183909416199,
+      "token_usage": {
+        "input_tokens": 367347,
+        "output_tokens": 5334,
+        "total_tokens": 372681,
+        "reasoning_tokens": 3648
+      },
+      "turn_count": 7
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenAIException - Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 1614570 tokens. Please reduce the length of the messages. (tid: 2025091208135796060183703162550)",
+      "execution_time": 159.2251431941986,
+      "token_usage": {
+        "input_tokens": 6646,
+        "output_tokens": 4183,
+        "total_tokens": 10829,
+        "reasoning_tokens": 768
+      },
+      "turn_count": 3
+    }
+  }
+}
