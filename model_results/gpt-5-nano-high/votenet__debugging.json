@@ -1,0 +1,55 @@
+{
+  "model": "gpt-5-nano-high",
+  "service": "filesystem",
+  "task": "votenet__debugging",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 55.50737190246582,
+      "token_usage": {
+        "input_tokens": 36333,
+        "output_tokens": 10676,
+        "total_tokens": 47009,
+        "reasoning_tokens": 10048
+      },
+      "turn_count": 11
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 148.57509779930115,
+      "token_usage": {
+        "input_tokens": 149459,
+        "output_tokens": 25323,
+        "total_tokens": 174782,
+        "reasoning_tokens": 24000
+      },
+      "turn_count": 24
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenAIException - Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 1263826 tokens. Please reduce the length of the messages. (tid: 2025091513535744275451699286004)",
+      "execution_time": 387.1157159805298,
+      "token_usage": {
+        "input_tokens": 1243435,
+        "output_tokens": 25883,
+        "total_tokens": 1269318,
+        "reasoning_tokens": 22912
+      },
+      "turn_count": 50
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenAIException - Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 1240948 tokens. Please reduce the length of the messages. (tid: 2025091515435032630584281971540)",
+      "execution_time": 121.88600611686707,
+      "token_usage": {
+        "input_tokens": 443925,
+        "output_tokens": 9520,
+        "total_tokens": 453445,
+        "reasoning_tokens": 8000
+      },
+      "turn_count": 29
+    }
+  }
+}
