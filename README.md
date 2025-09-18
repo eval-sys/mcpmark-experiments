@@ -1,6 +1,7 @@
 # mcpmark-release - Evaluation Results
 
 Generated: 2025-09-18T12:47:26.868861
+💸 Total Cost (so far): $12,417.45
 
 ## Overall Performance
 
