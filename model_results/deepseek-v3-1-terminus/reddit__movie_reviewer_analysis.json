@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "reddit__movie_reviewer_analysis",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 139246 tokens (139246 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 275.7007510662079,
+      "token_usage": {
+        "input_tokens": 674460,
+        "output_tokens": 2511,
+        "total_tokens": 676971,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 14
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 299.4474368095398,
+      "token_usage": {
+        "input_tokens": 800781,
+        "output_tokens": 3649,
+        "total_tokens": 804430,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 16
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 143808 exceeds the maximum length 98304. Request id: 0217589378891877fc34901b454b05ffbd36a7adad2e1996c303f (tid: 2025092701505583190905809800974)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 662.4497663974762,
+      "token_usage": {
+        "input_tokens": 692600,
+        "output_tokens": 3833,
+        "total_tokens": 696433,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 14
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 766.1712210178375,
+      "token_usage": {
+        "input_tokens": 1037160,
+        "output_tokens": 3055,
+        "total_tokens": 1040215,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 17
+    }
+  }
+}

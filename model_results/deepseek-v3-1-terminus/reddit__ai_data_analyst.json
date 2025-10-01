@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "reddit__ai_data_analyst",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 134146 tokens (134146 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 228.44413709640503,
+      "token_usage": {
+        "input_tokens": 705107,
+        "output_tokens": 1087,
+        "total_tokens": 706194,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 17
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 140966 tokens (140966 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092619075644416868899775124)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 203.9344620704651,
+      "token_usage": {
+        "input_tokens": 501001,
+        "output_tokens": 965,
+        "total_tokens": 501966,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 14
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Incorrect model ID. Please request to view the model page or you do not have permission to use this model deepseek-chat (tid: 2025092701211472386915957817128)\",\"type\":\"Aihubmix_api_error\"}}",
+      "execution_time": 36.51499533653259,
+      "token_usage": {
+        "input_tokens": 19569,
+        "output_tokens": 268,
+        "total_tokens": 19837,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 4
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 131064 exceeds the maximum length 98304. Request id: 0217589758613457a20ba5082a436aed6033d266df24c7ee241e6 (tid: 2025092712232629324735662242053)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 564.9863498210907,
+      "token_usage": {
+        "input_tokens": 674826,
+        "output_tokens": 1256,
+        "total_tokens": 676082,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 18
+    }
+  }
+}

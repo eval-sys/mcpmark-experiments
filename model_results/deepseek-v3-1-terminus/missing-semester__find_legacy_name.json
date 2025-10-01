@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "github",
+  "task": "missing-semester__find_legacy_name",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 137631 tokens (137631 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092618200112553890500668545)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 93.55011773109436,
+      "token_usage": {
+        "input_tokens": 247911,
+        "output_tokens": 263,
+        "total_tokens": 248174,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 4
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Incorrect model ID. Please request to view the model page or you do not have permission to use this model deepseek-chat (tid: 2025092622244857166092602471937)\",\"type\":\"Aihubmix_api_error\"}}",
+      "execution_time": 10.70331597328186,
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 0
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 170337 exceeds the maximum length 98304. Request id: 021758960681780096fce02f344d1557d64e35a80bc1dfd5772f0 (tid: 2025092708102537194135003863719)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 744.953742980957,
+      "token_usage": {
+        "input_tokens": 1089926,
+        "output_tokens": 790,
+        "total_tokens": 1090716,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 12
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "Extra data: line 1 column 134 (char 133)",
+      "execution_time": 118.13037371635437,
+      "token_usage": {
+        "input_tokens": 331872,
+        "output_tokens": 489,
+        "total_tokens": 332361,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    }
+  }
+}
