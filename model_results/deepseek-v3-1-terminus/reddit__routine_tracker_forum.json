@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "reddit__routine_tracker_forum",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 137670 tokens (137670 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 84.26762819290161,
+      "token_usage": {
+        "input_tokens": 108199,
+        "output_tokens": 610,
+        "total_tokens": 108809,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 9
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 133004 tokens (133004 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092619362385477492245711844)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 192.07586979866028,
+      "token_usage": {
+        "input_tokens": 456113,
+        "output_tokens": 1039,
+        "total_tokens": 457152,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 10
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 141699 exceeds the maximum length 98304. Request id: 0217589389583702dd0dd99c228a5c584388c2ba587875874d095 (tid: 2025092702083247160144345404567)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 292.9134404659271,
+      "token_usage": {
+        "input_tokens": 204877,
+        "output_tokens": 618,
+        "total_tokens": 205495,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 8
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 10.692319631576538,
+      "token_usage": {
+        "input_tokens": 4307,
+        "output_tokens": 189,
+        "total_tokens": 4496,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 1
+    }
+  }
+}

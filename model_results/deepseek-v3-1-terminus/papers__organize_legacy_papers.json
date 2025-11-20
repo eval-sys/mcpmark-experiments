@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "filesystem",
+  "task": "papers__organize_legacy_papers",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 325223 tokens (325223 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092616420022789466676635775)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 150.26462125778198,
+      "token_usage": {
+        "input_tokens": 523809,
+        "output_tokens": 1220,
+        "total_tokens": 525029,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 10
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 323499 tokens (323499 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092620420949283332608068290)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 79.78834533691406,
+      "token_usage": {
+        "input_tokens": 85858,
+        "output_tokens": 830,
+        "total_tokens": 86688,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 6.471507787704468,
+      "token_usage": {
+        "input_tokens": 3559,
+        "output_tokens": 33,
+        "total_tokens": 3592,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 1
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025092717005597117451423883734)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}",
+      "execution_time": 340.7232069969177,
+      "token_usage": {
+        "input_tokens": 11952,
+        "output_tokens": 555,
+        "total_tokens": 12507,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 3
+    }
+  }
+}

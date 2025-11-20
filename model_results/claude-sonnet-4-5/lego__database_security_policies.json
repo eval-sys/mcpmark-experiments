@@ -1,0 +1,55 @@
+{
+  "model": "claude-sonnet-4-5",
+  "service": "postgres",
+  "task": "lego__database_security_policies",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 403.9742548465729,
+      "token_usage": {
+        "input_tokens": 714649,
+        "output_tokens": 13742,
+        "total_tokens": 728391,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 43
+    },
+    "run-2": {
+      "success": true,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: AnthropicError - {\"error\":{\"type\":\"invalid_request_error\",\"message\":\"prompt is too long: 207335 tokens \\u003e 200000 maximum (tid: 2025093019124855593274627890108)\"},\"type\":\"error\"}",
+      "execution_time": 108.09306788444519,
+      "token_usage": {
+        "input_tokens": 196827,
+        "output_tokens": 3976,
+        "total_tokens": 200803,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 22
+    },
+    "run-3": {
+      "success": true,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: AnthropicError - {\"error\":{\"type\":\"invalid_request_error\",\"message\":\"prompt is too long: 200038 tokens \\u003e 200000 maximum (tid: 2025100101360313161439216047926)\"},\"type\":\"error\"}",
+      "execution_time": 111.85084342956543,
+      "token_usage": {
+        "input_tokens": 231728,
+        "output_tokens": 3763,
+        "total_tokens": 235491,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 24
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 220.7334008216858,
+      "token_usage": {
+        "input_tokens": 370627,
+        "output_tokens": 11738,
+        "total_tokens": 382365,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 26
+    }
+  }
+}

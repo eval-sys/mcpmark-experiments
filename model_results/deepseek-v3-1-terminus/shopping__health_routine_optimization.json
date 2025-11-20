@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "shopping__health_routine_optimization",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 136403 tokens (136403 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 263.12338614463806,
+      "token_usage": {
+        "input_tokens": 992238,
+        "output_tokens": 1455,
+        "total_tokens": 993693,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 17
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 139434 tokens (139434 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092619554430583018182591703)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 303.2782862186432,
+      "token_usage": {
+        "input_tokens": 1426931,
+        "output_tokens": 1563,
+        "total_tokens": 1428494,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 22
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 789.2739129066467,
+      "token_usage": {
+        "input_tokens": 1433901,
+        "output_tokens": 1234,
+        "total_tokens": 1435135,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 21
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 137254 exceeds the maximum length 98304. Request id: 0217589821049377252df8a07a29d0ed7f8728b32b20a065a53d2 (tid: 202509271407273937150386526475)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 1412.375020980835,
+      "token_usage": {
+        "input_tokens": 1635582,
+        "output_tokens": 2448,
+        "total_tokens": 1638030,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 23
+    }
+  }
+}
