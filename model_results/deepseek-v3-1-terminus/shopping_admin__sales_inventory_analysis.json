@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "shopping_admin__sales_inventory_analysis",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 152520 tokens (152520 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 110.81503748893738,
+      "token_usage": {
+        "input_tokens": 123514,
+        "output_tokens": 1171,
+        "total_tokens": 124685,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 9
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 147709 tokens (147709 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092620384858276404001113485)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 84.94838762283325,
+      "token_usage": {
+        "input_tokens": 89734,
+        "output_tokens": 616,
+        "total_tokens": 90350,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 8
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 9.45291018486023,
+      "token_usage": {
+        "input_tokens": 4690,
+        "output_tokens": 140,
+        "total_tokens": 4830,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 1
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 139598 exceeds the maximum length 98304. Request id: 021758987346534c6f82c6173ae2988dd3f2bc3d220408fa20c21 (tid: 2025092715343245793410635166774)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 383.4228253364563,
+      "token_usage": {
+        "input_tokens": 38465,
+        "output_tokens": 3474,
+        "total_tokens": 41939,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 4
+    }
+  }
+}

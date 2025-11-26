@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "filesystem",
+  "task": "papers__author_folders",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 1760651 tokens (1760651 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092616364191512760445520182)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 187.72283601760864,
+      "token_usage": {
+        "input_tokens": 65623,
+        "output_tokens": 3502,
+        "total_tokens": 69125,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 4
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 308947 tokens (308947 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092620345198190139357002282)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 63.74360632896423,
+      "token_usage": {
+        "input_tokens": 66822,
+        "output_tokens": 736,
+        "total_tokens": 67558,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 4
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 200860 exceeds the maximum length 98304. Request id: 021759027605309dd3a5faac23f0c9eed6bd811669e43cb37224f (tid: 2025092802460523882120781075485)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 266.04863381385803,
+      "token_usage": {
+        "input_tokens": 130506,
+        "output_tokens": 725,
+        "total_tokens": 131231,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025092802105831584151910886707)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}",
+      "execution_time": 259.42858505249023,
+      "token_usage": {
+        "input_tokens": 11334,
+        "output_tokens": 545,
+        "total_tokens": 11879,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 3
+    }
+  }
+}

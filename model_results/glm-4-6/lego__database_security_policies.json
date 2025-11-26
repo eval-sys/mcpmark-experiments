@@ -1,0 +1,55 @@
+{
+  "model": "glm-4-6",
+  "service": "postgres",
+  "task": "lego__database_security_policies",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenrouterException - {\"error\":{\"message\":\"This endpoint's maximum context length is 204800 tokens. However, you requested about 539499 tokens (538149 of text input, 1350 of tool input). Please reduce the length of either one, or use the \\\"middle-out\\\" transform to compress your prompt automatically.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}",
+      "execution_time": 109.89619183540344,
+      "token_usage": {
+        "input_tokens": 137413,
+        "output_tokens": 3005,
+        "total_tokens": 140418,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 20
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 489.69895696640015,
+      "token_usage": {
+        "input_tokens": 334309,
+        "output_tokens": 7466,
+        "total_tokens": 341775,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 34
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: OpenrouterException - {\"error\":{\"message\":\"This endpoint's maximum context length is 204800 tokens. However, you requested about 300753 tokens (299403 of text input, 1350 of tool input). Please reduce the length of either one, or use the \\\"middle-out\\\" transform to compress your prompt automatically.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}",
+      "execution_time": 157.25187420845032,
+      "token_usage": {
+        "input_tokens": 241924,
+        "output_tokens": 3962,
+        "total_tokens": 245886,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 31
+    },
+    "run-4": {
+      "success": true,
+      "error_message": "litellm.BadRequestError: OpenrouterException - {\"error\":{\"message\":\"This endpoint's maximum context length is 204800 tokens. However, you requested about 449023 tokens (447673 of text input, 1350 of tool input). Please reduce the length of either one, or use the \\\"middle-out\\\" transform to compress your prompt automatically.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}",
+      "execution_time": 104.91177606582642,
+      "token_usage": {
+        "input_tokens": 139041,
+        "output_tokens": 3023,
+        "total_tokens": 142064,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 21
+    }
+  }
+}
