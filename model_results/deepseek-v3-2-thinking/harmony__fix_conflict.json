@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-thinking",
+  "service": "github",
+  "task": "harmony__fix_conflict",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 516.5076529979706,
+      "token_usage": {
+        "input_tokens": 2249820,
+        "output_tokens": 11103,
+        "total_tokens": 2260923,
+        "reasoning_tokens": 7241
+      },
+      "turn_count": 32
+    },
+    "run-2": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 443.79642367362976,
+      "token_usage": {
+        "input_tokens": 1846776,
+        "output_tokens": 7632,
+        "total_tokens": 1854408,
+        "reasoning_tokens": 4537
+      },
+      "turn_count": 29
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 133421 tokens (133421 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120209553880622356881160040)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 433.7765038013458,
+      "token_usage": {
+        "input_tokens": 1678846,
+        "output_tokens": 8644,
+        "total_tokens": 1687490,
+        "reasoning_tokens": 6049
+      },
+      "turn_count": 27
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 303.93613600730896,
+      "token_usage": {
+        "input_tokens": 1354814,
+        "output_tokens": 6489,
+        "total_tokens": 1361303,
+        "reasoning_tokens": 2131
+      },
+      "turn_count": 23
+    }
+  }
+}
