@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "postgres",
+  "task": "lego__database_security_policies",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 546050 tokens (546050 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 195.53896188735962,
+      "token_usage": {
+        "input_tokens": 172815,
+        "output_tokens": 2186,
+        "total_tokens": 175001,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 26
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 802.7101278305054,
+      "token_usage": {
+        "input_tokens": 2309536,
+        "output_tokens": 10350,
+        "total_tokens": 2319886,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 60
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 301.2383608818054,
+      "token_usage": {
+        "input_tokens": 228041,
+        "output_tokens": 4329,
+        "total_tokens": 232370,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 30
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Incorrect model ID. Please request to view the model page or you do not have permission to use this model deepseek-chat (tid: 2025092623594132100573885226991)\",\"type\":\"Aihubmix_api_error\"}}",
+      "execution_time": 8.234580516815186,
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 0
+    }
+  }
+}

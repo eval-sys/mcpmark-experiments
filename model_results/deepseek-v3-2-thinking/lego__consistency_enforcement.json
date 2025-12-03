@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-thinking",
+  "service": "postgres",
+  "task": "lego__consistency_enforcement",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 459210 tokens (459210 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120218300810667817437525689)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 95.49558854103088,
+      "token_usage": {
+        "input_tokens": 195145,
+        "output_tokens": 2002,
+        "total_tokens": 197147,
+        "reasoning_tokens": 901
+      },
+      "turn_count": 13
+    },
+    "run-2": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 319.23908376693726,
+      "token_usage": {
+        "input_tokens": 762122,
+        "output_tokens": 8916,
+        "total_tokens": 771038,
+        "reasoning_tokens": 4381
+      },
+      "turn_count": 24
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 417.38714623451233,
+      "token_usage": {
+        "input_tokens": 497031,
+        "output_tokens": 10690,
+        "total_tokens": 507721,
+        "reasoning_tokens": 5101
+      },
+      "turn_count": 39
+    },
+    "run-4": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 610.8396680355072,
+      "token_usage": {
+        "input_tokens": 372378,
+        "output_tokens": 12452,
+        "total_tokens": 384830,
+        "reasoning_tokens": 6872
+      },
+      "turn_count": 31
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "postgres",
+  "task": "lego__consistency_enforcement",
+  "runs": {
+    "run-1": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 332.5333845615387,
+      "token_usage": {
+        "input_tokens": 1315257,
+        "output_tokens": 4759,
+        "total_tokens": 1320016,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 29
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 199974 tokens (199974 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025092615465284190712441372342)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 189.04312682151794,
+      "token_usage": {
+        "input_tokens": 444134,
+        "output_tokens": 1721,
+        "total_tokens": 445855,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 10
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 640.5812239646912,
+      "token_usage": {
+        "input_tokens": 1399627,
+        "output_tokens": 5161,
+        "total_tokens": 1404788,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 28
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Incorrect model ID. Please request to view the model page or you do not have permission to use this model deepseek-chat (tid: 2025092623593245679409635300235)\",\"type\":\"Aihubmix_api_error\"}}",
+      "execution_time": 8.20232081413269,
+      "token_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 0
+    }
+  }
+}

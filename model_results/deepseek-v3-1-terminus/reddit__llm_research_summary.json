@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus",
+  "service": "playwright",
+  "task": "reddit__llm_research_summary",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 133933 tokens (133933 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 236.75895142555237,
+      "token_usage": {
+        "input_tokens": 726255,
+        "output_tokens": 1749,
+        "total_tokens": 728004,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 15
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 300.7061505317688,
+      "token_usage": {
+        "input_tokens": 835872,
+        "output_tokens": 3337,
+        "total_tokens": 839209,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 18
+    },
+    "run-3": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 12.010667562484741,
+      "token_usage": {
+        "input_tokens": 4437,
+        "output_tokens": 176,
+        "total_tokens": 4613,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 1
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input length 140580 exceeds the maximum length 98304. Request id: 0217589782691326c538cdb85280b87fd1d855e8af4abb8bfaa3b (tid: 2025092713034126559409445561118)\",\"type\":\"BadRequest\",\"param\":\"\",\"code\":\"InvalidParameter\"}}",
+      "execution_time": 842.587836265564,
+      "token_usage": {
+        "input_tokens": 971342,
+        "output_tokens": 2628,
+        "total_tokens": 973970,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 17
+    }
+  }
+}

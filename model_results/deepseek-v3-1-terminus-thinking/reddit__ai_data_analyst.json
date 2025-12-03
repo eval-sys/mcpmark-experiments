@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-1-terminus-thinking",
+  "service": "playwright",
+  "task": "reddit__ai_data_analyst",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 134310 tokens (134310 in the messages, 0 in the completion). Please reduce the length of the messages or completion.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "execution_time": 227.35113620758057,
+      "token_usage": {
+        "input_tokens": 706160,
+        "output_tokens": 1251,
+        "total_tokens": 707411,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 17
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"input characters limit is 393216 (tid: 2025092620512924986416699503630)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_argument\"}}",
+      "execution_time": 265.55537009239197,
+      "token_usage": {
+        "input_tokens": 759976,
+        "output_tokens": 1161,
+        "total_tokens": 761137,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 19
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"input token limit is 98304 (tid: 2025092704030360508659047430958)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_argument\"}}",
+      "execution_time": 1014.8283731937408,
+      "token_usage": {
+        "input_tokens": 468098,
+        "output_tokens": 14526,
+        "total_tokens": 482624,
+        "reasoning_tokens": 13823
+      },
+      "turn_count": 11
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"input token limit is 98304 (tid: 202509271601262948474596930604)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_argument\"}}",
+      "execution_time": 1022.283301115036,
+      "token_usage": {
+        "input_tokens": 338388,
+        "output_tokens": 11658,
+        "total_tokens": 350046,
+        "reasoning_tokens": 10916
+      },
+      "turn_count": 11
+    }
+  }
+}
