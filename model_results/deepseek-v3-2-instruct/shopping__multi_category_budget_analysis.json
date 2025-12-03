@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-instruct",
+  "service": "playwright",
+  "task": "shopping__multi_category_budget_analysis",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 294.7621738910675,
+      "token_usage": {
+        "input_tokens": 1387726,
+        "output_tokens": 2936,
+        "total_tokens": 1390662,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 19
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 138901 tokens (138901 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120203263583162630956917591)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 215.03256630897522,
+      "token_usage": {
+        "input_tokens": 1223197,
+        "output_tokens": 2747,
+        "total_tokens": 1225944,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 18
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Model not support (tid: 2025120208191188538068570197774)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}\nNoneType: None\n",
+      "execution_time": 238.47578692436218,
+      "token_usage": {
+        "input_tokens": 1325068,
+        "output_tokens": 2591,
+        "total_tokens": 1327659,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 19
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 135597 tokens (135597 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120212453556209186974233020)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 256.6850142478943,
+      "token_usage": {
+        "input_tokens": 1611459,
+        "output_tokens": 2424,
+        "total_tokens": 1613883,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 21
+    }
+  }
+}

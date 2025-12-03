@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-instruct",
+  "service": "filesystem",
+  "task": "legal_document__individual_comments",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025120118150034904040187669960)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}",
+      "execution_time": 70.00559616088867,
+      "token_usage": {
+        "input_tokens": 24253,
+        "output_tokens": 709,
+        "total_tokens": 24962,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025120123550778039681386172086)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}",
+      "execution_time": 52.25685000419617,
+      "token_usage": {
+        "input_tokens": 15216,
+        "output_tokens": 567,
+        "total_tokens": 15783,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025120206311479605025357650617)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}",
+      "execution_time": 68.82174110412598,
+      "token_usage": {
+        "input_tokens": 24304,
+        "output_tokens": 626,
+        "total_tokens": 24930,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 5
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 162145 tokens (162145 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120213281859478620433872308)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 65.852219581604,
+      "token_usage": {
+        "input_tokens": 58370,
+        "output_tokens": 1047,
+        "total_tokens": 59417,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 6
+    }
+  }
+}

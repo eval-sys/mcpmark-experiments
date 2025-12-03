@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-instruct",
+  "service": "postgres",
+  "task": "lego__database_security_policies",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 374.33855533599854,
+      "token_usage": {
+        "input_tokens": 451886,
+        "output_tokens": 8649,
+        "total_tokens": 460535,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 41
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 414.87040090560913,
+      "token_usage": {
+        "input_tokens": 532996,
+        "output_tokens": 10831,
+        "total_tokens": 543827,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 44
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 709.6921768188477,
+      "token_usage": {
+        "input_tokens": 1076626,
+        "output_tokens": 14202,
+        "total_tokens": 1090828,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 67
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 1027695 tokens (1027695 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120306502874650877653516341)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}",
+      "execution_time": 247.56937789916992,
+      "token_usage": {
+        "input_tokens": 285520,
+        "output_tokens": 4183,
+        "total_tokens": 289703,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 30
+    }
+  }
+}
