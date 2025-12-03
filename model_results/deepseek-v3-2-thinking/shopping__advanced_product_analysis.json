@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-thinking",
+  "service": "playwright",
+  "task": "shopping__advanced_product_analysis",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 131108 tokens (131108 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120123404353537893945584941)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 321.44485449790955,
+      "token_usage": {
+        "input_tokens": 2934358,
+        "output_tokens": 3966,
+        "total_tokens": 2938324,
+        "reasoning_tokens": 1968
+      },
+      "turn_count": 35
+    },
+    "run-2": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 277.96439695358276,
+      "token_usage": {
+        "input_tokens": 1774361,
+        "output_tokens": 4065,
+        "total_tokens": 1778426,
+        "reasoning_tokens": 2318
+      },
+      "turn_count": 26
+    },
+    "run-3": {
+      "success": true,
+      "error_message": null,
+      "execution_time": 244.32753777503967,
+      "token_usage": {
+        "input_tokens": 1357300,
+        "output_tokens": 3738,
+        "total_tokens": 1361038,
+        "reasoning_tokens": 2176
+      },
+      "turn_count": 24
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 175352 tokens (175352 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120214030660341214615904386)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 228.94702672958374,
+      "token_usage": {
+        "input_tokens": 877221,
+        "output_tokens": 3698,
+        "total_tokens": 880919,
+        "reasoning_tokens": 2430
+      },
+      "turn_count": 18
+    }
+  }
+}

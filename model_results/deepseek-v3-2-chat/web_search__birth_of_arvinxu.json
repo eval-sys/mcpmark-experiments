@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-chat",
+  "service": "playwright",
+  "task": "web_search__birth_of_arvinxu",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 133313 tokens (133313 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 202512011718305889671715894709)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 357.21405386924744,
+      "token_usage": {
+        "input_tokens": 647139,
+        "output_tokens": 2191,
+        "total_tokens": 649330,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 19
+    },
+    "run-2": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 202.82207608222961,
+      "token_usage": {
+        "input_tokens": 835950,
+        "output_tokens": 3671,
+        "total_tokens": 839621,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 20
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"The input (193792 tokens) is longer than the model's context length (163840 tokens). (tid: 2025120119123775175981224100839)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}\nNoneType: None\n",
+      "execution_time": 21.248852729797363,
+      "token_usage": {
+        "input_tokens": 8370,
+        "output_tokens": 225,
+        "total_tokens": 8595,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 2
+    },
+    "run-4": {
+      "success": false,
+      "error_message": null,
+      "execution_time": 188.1974217891693,
+      "token_usage": {
+        "input_tokens": 856062,
+        "output_tokens": 2794,
+        "total_tokens": 858856,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 21
+    }
+  }
+}

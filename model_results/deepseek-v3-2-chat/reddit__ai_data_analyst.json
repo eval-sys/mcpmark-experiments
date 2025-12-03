@@ -1,0 +1,55 @@
+{
+  "model": "deepseek-v3-2-chat",
+  "service": "playwright",
+  "task": "reddit__ai_data_analyst",
+  "runs": {
+    "run-1": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 139335 tokens (139335 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120120524146488301603869993)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 459.05263781547546,
+      "token_usage": {
+        "input_tokens": 1395705,
+        "output_tokens": 3864,
+        "total_tokens": 1399569,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 24
+    },
+    "run-2": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"The input (184782 tokens) is longer than the model's context length (163840 tokens). (tid: 2025120201495827101162631072071)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}\nNoneType: None\n",
+      "execution_time": 889.375048160553,
+      "token_usage": {
+        "input_tokens": 2273453,
+        "output_tokens": 4376,
+        "total_tokens": 2277829,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 29
+    },
+    "run-3": {
+      "success": false,
+      "error_message": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Input token exceeded (tid: 2025120207131492187599652453033)\",\"type\":\"upstream_error\",\"param\":\"400\",\"code\":\"bad_response_status_code\"}}\nNoneType: None\n",
+      "execution_time": 303.8327898979187,
+      "token_usage": {
+        "input_tokens": 1498900,
+        "output_tokens": 3942,
+        "total_tokens": 1502842,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 25
+    },
+    "run-4": {
+      "success": false,
+      "error_message": "litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: DeepseekException - {\"error\":{\"message\":\"This model's maximum context length is 131072 tokens. However, you requested 208149 tokens (208149 in the messages, 0 in the completion). Please reduce the length of the messages or completion. (tid: 2025120211443289199276259509017)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"invalid_request_error\"}}\nNoneType: None\n",
+      "execution_time": 282.01912331581116,
+      "token_usage": {
+        "input_tokens": 1154218,
+        "output_tokens": 3406,
+        "total_tokens": 1157624,
+        "reasoning_tokens": 0
+      },
+      "turn_count": 23
+    }
+  }
+}
