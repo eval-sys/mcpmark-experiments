@@ -1,0 +1,322 @@
+[
+  {
+    "content": "Implement a comprehensive database security system with Row-Level Security (RLS) policies and role-based access control for the LEGO database. The system must ensure theme-based data isolation and prevent unauthorized access across different LEGO themes.\n\n## Your Tasks:\n\n1. **Create database role and permissions** — Create a new database role called `theme_analyst` with the following permissions:\n   * `SELECT` permissions on all reference tables: `lego_themes`, `lego_colors`, `lego_parts`, `lego_part_categories`\n   * `SELECT` permissions on main data tables: `lego_sets`, `lego_inventories`, `lego_inventory_parts`\n   * No `INSERT`, `UPDATE`, or `DELETE` permissions on any tables\n\n2. **Enable Row-Level Security** — Enable RLS on the following tables:\n   * `lego_sets`\n   * `lego_inventories` \n   * `lego_inventory_parts`\n\n3. **Create RLS policies** — Implement theme-based data isolation policies:\n   \n   **Policy 1: `theme_sets_policy` on `lego_sets`**\n   * Allows access only to sets where `theme_id = 18` (Star Wars theme)\n   * Policy should use a function that checks the current user's theme assignment\n   \n   **Policy 2: `theme_inventories_policy` on `lego_inventories`**\n   * Allows access only to inventories for sets with `theme_id = 18`\n   * Must join with `lego_sets` table to check theme_id\n   \n   **Policy 3: `theme_inventory_parts_policy` on `lego_inventory_parts`**\n   * Allows access only to inventory parts for sets with `theme_id = 18`\n   * Must join through `lego_inventories` and `lego_sets` to check theme_id\n\n4. **Create theme assignment function** — Create a function `get_user_theme_id()` that:\n   * Returns `18` for the `theme_analyst` role (Star Wars theme)\n   * Can be extended to support other themes in the future\n   * Uses `current_user` to determine the appropriate theme_id\n\n5. **Test the security implementation** — Execute verification queries that demonstrate:\n   * Star Wars theme (theme_id=18) returns exactly 2 sets: '65081-1' and 'K8008-1'\n   * Technic theme (theme_id=1) returns 0 sets when accessed by theme_analyst role\n   * Cross-theme data access is properly blocked\n   * Reference tables are accessible for all data\n\n6. **Create comprehensive security audit** — Generate a detailed report including:\n   * Complete SQL statements for role creation and policy implementation\n   * Expected query results for each theme\n   * Verification queries to confirm proper data isolation\n   * Documentation of the security model and access patterns\n\n## Security Requirements:\n\n- The `theme_analyst` role must only see data related to Star Wars theme (theme_id=18)\n- All other themes must be completely hidden from this role\n- Reference tables (themes, colors, parts, part_categories) must be fully accessible\n- The system must prevent any cross-theme data leakage\n- RLS policies must be active and enforced for all data access\n\n## Expected Results:\n\nWhen the `theme_analyst` role queries the database:\n- `lego_sets` should return only 2 Star Wars sets\n- `lego_inventories` should return only inventories for those 2 sets  \n- `lego_inventory_parts` should return only parts for those 2 sets\n- All reference tables should return complete data\n- Queries for other themes should return empty results\n\n\nNote: Use PostgreSQL MCP tools to complete this task. The database connection is already configured.",
+    "role": "user"
+  },
+  {
+    "id": "__fake_id__",
+    "content": [
+      {
+        "annotations": [],
+        "text": "I'll implement the comprehensive security system step by step. Let me first explore the database structure.",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  },
+  {
+    "arguments": "{}",
+    "call_id": "toolu_01KgSami5zpXowYw9Leeoz2r",
+    "name": "list_schemas",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\"}",
+    "call_id": "toolu_01UN6b5R1UFgc7BhasXdgGsC",
+    "name": "list_objects",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01KgSami5zpXowYw9Leeoz2r",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema_name': 'information_schema', 'schema_owner': 'postgres', 'schema_type': 'System Information Schema'}, {'schema_name': 'pg_catalog', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'pg_toast', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'public', 'schema_owner': 'pg_database_owner', 'schema_type': 'User Schema'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema_name': 'information_schema', 'schema_owner': 'postgres', 'schema_type': 'System Information Schema'}, {'schema_name': 'pg_catalog', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'pg_toast', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'public', 'schema_owner': 'pg_database_owner', 'schema_type': 'User Schema'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01UN6b5R1UFgc7BhasXdgGsC",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema': 'public', 'name': 'lego_colors', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_part_categories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_themes', 'type': 'BASE TABLE'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema': 'public', 'name': 'lego_colors', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_part_categories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_themes', 'type': 'BASE TABLE'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"object_name\":\"lego_sets\",\"schema_name\":\"public\"}",
+    "call_id": "toolu_01TrKB4yitWuMkWs2JPXg5nB",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"object_name\":\"lego_inventories\",\"schema_name\":\"public\"}",
+    "call_id": "toolu_01YB5W7t2Y2eLKJ5QQdtQ8vq",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"object_name\":\"lego_inventory_parts\",\"schema_name\":\"public\"}",
+    "call_id": "toolu_01DX3BHuSd7YtSEhCWJa2VFe",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01TrKB4yitWuMkWs2JPXg5nB",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_sets', 'type': 'table'}, 'columns': [{'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'name', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'year', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}, {'column': 'theme_id', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}, {'column': 'num_parts', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}], 'constraints': [{'name': 'lego_sets_pkey', 'type': 'PRIMARY KEY', 'columns': ['set_num']}, {'name': '2200_17565_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17565_2_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_sets_pkey', 'definition': 'CREATE UNIQUE INDEX lego_sets_pkey ON public.lego_sets USING btree (set_num)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_sets', 'type': 'table'}, 'columns': [{'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'name', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'year', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}, {'column': 'theme_id', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}, {'column': 'num_parts', 'data_type': 'integer', 'is_nullable': 'YES', 'default': None}], 'constraints': [{'name': 'lego_sets_pkey', 'type': 'PRIMARY KEY', 'columns': ['set_num']}, {'name': '2200_17565_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17565_2_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_sets_pkey', 'definition': 'CREATE UNIQUE INDEX lego_sets_pkey ON public.lego_sets USING btree (set_num)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01YB5W7t2Y2eLKJ5QQdtQ8vq",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventories', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_inventories_id_seq'::regclass)\\\\\\\"}, {'column': 'version', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_inventories_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17546_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17546_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17546_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_inventories_pkey', 'definition': 'CREATE UNIQUE INDEX lego_inventories_pkey ON public.lego_inventories USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventories', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_inventories_id_seq'::regclass)\\\\\\\"}, {'column': 'version', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_inventories_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17546_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17546_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17546_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_inventories_pkey', 'definition': 'CREATE UNIQUE INDEX lego_inventories_pkey ON public.lego_inventories USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01DX3BHuSd7YtSEhCWJa2VFe",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'table'}, 'columns': [{'column': 'inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'is_spare', 'data_type': 'boolean', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': '2200_17550_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_5_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': []}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'table'}, 'columns': [{'column': 'inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'is_spare', 'data_type': 'boolean', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': '2200_17550_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17550_5_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': []}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "id": "__fake_id__",
+    "content": [
+      {
+        "annotations": [],
+        "text": "Let me verify the expected data before implementing:",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT set_num, name, year, theme_id, num_parts FROM lego_sets WHERE theme_id = 18 ORDER BY set_num;\"}",
+    "call_id": "toolu_01YbLedrs6Vt8W6shq6aT3Ld",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT id, name FROM lego_themes WHERE id IN (1, 18);\"}",
+    "call_id": "toolu_01MKfcZK8A4nmKSYKUHgMMzU",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01YbLedrs6Vt8W6shq6aT3Ld",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'set_num': '65081-1', 'name': 'R2-D2 8009 / C-3PO 8007 Droid Collectors Set', 'year': 2002, 'theme_id': 18, 'num_parts': 3}, {'set_num': 'K8008-1', 'name': 'Darth Vader / Stormtrooper Kit', 'year': 2002, 'theme_id': 18, 'num_parts': 2}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'set_num': '65081-1', 'name': 'R2-D2 8009 / C-3PO 8007 Droid Collectors Set', 'year': 2002, 'theme_id': 18, 'num_parts': 3}, {'set_num': 'K8008-1', 'name': 'Darth Vader / Stormtrooper Kit', 'year': 2002, 'theme_id': 18, 'num_parts': 2}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01MKfcZK8A4nmKSYKUHgMMzU",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'id': 1, 'name': 'Technic'}, {'id': 18, 'name': 'Star Wars'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'id': 1, 'name': 'Technic'}, {'id': 18, 'name': 'Star Wars'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"DO $$\\nBEGIN\\n    IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'theme_analyst') THEN\\n        CREATE ROLE theme_analyst NOLOGIN;\\n    END IF;\\nEND $$;\\n\\n-- Grant schema usage\\nGRANT USAGE ON SCHEMA public TO theme_analyst;\\n\\n-- SELECT on reference tables\\nGRANT SELECT ON lego_themes, lego_colors, lego_parts, lego_part_categories TO theme_analyst;\\n\\n-- SELECT on main data tables\\nGRANT SELECT ON lego_sets, lego_inventories, lego_inventory_parts TO theme_analyst;\\n\\n-- Explicitly revoke any write permissions (defensive)\\nREVOKE INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public FROM theme_analyst;\"}",
+    "call_id": "toolu_01W87U9dxNrA6cqKpWqEqzB8",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01W87U9dxNrA6cqKpWqEqzB8",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "id": "__fake_id__",
+    "content": [
+      {
+        "annotations": [],
+        "text": "Role created with grants. Now the theme assignment function:",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  },
+  {
+    "arguments": "{\"sql\":\"-- Theme assignment function: maps current_user (or role membership) to a theme_id\\nCREATE OR REPLACE FUNCTION get_user_theme_id()\\nRETURNS integer\\nLANGUAGE plpgsql\\nSTABLE\\nSECURITY DEFINER\\nAS $$\\nBEGIN\\n    -- Extensible mapping: current_user -\\u003e theme_id\\n    -- theme_analyst is assigned to Star Wars (theme_id = 18)\\n    IF current_user = 'theme_analyst'\\n       OR pg_has_role(current_user, 'theme_analyst', 'member') THEN\\n        RETURN 18;  -- Star Wars theme\\n    END IF;\\n\\n    -- Future extension example:\\n    -- IF current_user = 'technic_analyst' THEN RETURN 1; END IF;\\n\\n    -- Superusers / owners: return NULL (policies below allow full access via BYPASSRLS/owner)\\n    RETURN NULL;\\nEND;\\n$$;\\n\\nGRANT EXECUTE ON FUNCTION get_user_theme_id() TO theme_analyst;\"}",
+    "call_id": "toolu_01W5r1nrNURuAfNaNDN5qsah",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01W5r1nrNURuAfNaNDN5qsah",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- Helper: check whether a set belongs to the user's assigned theme\\nCREATE OR REPLACE FUNCTION set_in_user_theme(p_set_num varchar)\\nRETURNS boolean\\nLANGUAGE sql\\nSTABLE\\nSECURITY DEFINER\\nAS $$\\n    SELECT EXISTS (\\n        SELECT 1\\n        FROM lego_sets s\\n        WHERE s.set_num = p_set_num\\n          AND s.theme_id = get_user_theme_id()\\n    );\\n$$;\\n\\n-- Helper: check whether an inventory belongs to a set in the user's assigned theme\\nCREATE OR REPLACE FUNCTION inventory_in_user_theme(p_inventory_id integer)\\nRETURNS boolean\\nLANGUAGE sql\\nSTABLE\\nSECURITY DEFINER\\nAS $$\\n    SELECT EXISTS (\\n        SELECT 1\\n        FROM lego_inventories i\\n        JOIN lego_sets s ON s.set_num = i.set_num\\n        WHERE i.id = p_inventory_id\\n          AND s.theme_id = get_user_theme_id()\\n    );\\n$$;\\n\\nGRANT EXECUTE ON FUNCTION set_in_user_theme(varchar) TO theme_analyst;\\nGRANT EXECUTE ON FUNCTION inventory_in_user_theme(integer) TO theme_analyst;\\n\\n-- ============ Enable Row-Level Security ============\\nALTER TABLE lego_sets ENABLE ROW LEVEL SECURITY;\\nALTER TABLE lego_inventories ENABLE ROW LEVEL SECURITY;\\nALTER TABLE lego_inventory_parts ENABLE ROW LEVEL SECURITY;\\n\\n-- ============ RLS Policies ============\\nDROP POLICY IF EXISTS theme_sets_policy ON lego_sets;\\nDROP POLICY IF EXISTS theme_inventories_policy ON lego_inventories;\\nDROP POLICY IF EXISTS theme_inventory_parts_policy ON lego_inventory_parts;\\n\\n-- Policy 1: sets restricted to the user's theme (18 = Star Wars for theme_analyst)\\nCREATE POLICY theme_sets_policy ON lego_sets\\n    FOR SELECT\\n    TO theme_analyst\\n    USING (theme_id = get_user_theme_id());\\n\\n-- Policy 2: inventories restricted via join with lego_sets on theme_id\\nCREATE POLICY theme_inventories_policy ON lego_inventories\\n    FOR SELECT\\n    TO theme_analyst\\n    USING (set_in_user_theme(set_num));\\n\\n-- Policy 3: inventory parts restricted via join through lego_inventories -\\u003e lego_sets\\nCREATE POLICY theme_inventory_parts_policy ON lego_inventory_parts\\n    FOR SELECT\\n    TO theme_analyst\\n    USING (inventory_in_user_theme(inventory_id));\"}",
+    "call_id": "toolu_01U9yBKWGEkrwDo6xkcpxjRU",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01U9yBKWGEkrwDo6xkcpxjRU",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- Verify RLS is enabled and policies exist\\nSELECT c.relname AS table_name, c.relrowsecurity AS rls_enabled\\nFROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace\\nWHERE n.nspname='public' AND c.relname IN ('lego_sets','lego_inventories','lego_inventory_parts');\"}",
+    "call_id": "toolu_01WAPKzBehSQRqJAoX51zXQD",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT schemaname, tablename, policyname, roles, cmd, qual FROM pg_policies WHERE schemaname='public' ORDER BY tablename;\"}",
+    "call_id": "toolu_01Y5oxX9jwRr9W2mQQfzBqbC",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01WAPKzBehSQRqJAoX51zXQD",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'table_name': 'lego_inventories', 'rls_enabled': True}, {'table_name': 'lego_inventory_parts', 'rls_enabled': True}, {'table_name': 'lego_sets', 'rls_enabled': True}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'table_name': 'lego_inventories', 'rls_enabled': True}, {'table_name': 'lego_inventory_parts', 'rls_enabled': True}, {'table_name': 'lego_sets', 'rls_enabled': True}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01Y5oxX9jwRr9W2mQQfzBqbC",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schemaname': 'public', 'tablename': 'lego_inventories', 'policyname': 'theme_inventories_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': 'set_in_user_theme(set_num)'}, {'schemaname': 'public', 'tablename': 'lego_inventory_parts', 'policyname': 'theme_inventory_parts_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': 'inventory_in_user_theme(inventory_id)'}, {'schemaname': 'public', 'tablename': 'lego_sets', 'policyname': 'theme_sets_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': '(theme_id = get_user_theme_id())'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schemaname': 'public', 'tablename': 'lego_inventories', 'policyname': 'theme_inventories_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': 'set_in_user_theme(set_num)'}, {'schemaname': 'public', 'tablename': 'lego_inventory_parts', 'policyname': 'theme_inventory_parts_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': 'inventory_in_user_theme(inventory_id)'}, {'schemaname': 'public', 'tablename': 'lego_sets', 'policyname': 'theme_sets_policy', 'roles': ['theme_analyst'], 'cmd': 'SELECT', 'qual': '(theme_id = get_user_theme_id())'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 1: As theme_analyst, query lego_sets (should return exactly 2 Star Wars sets)\\nSET ROLE theme_analyst;\\nSELECT set_num, name, year, theme_id, num_parts FROM lego_sets ORDER BY set_num;\"}",
+    "call_id": "toolu_01DPfHadDboQ6dTDRzGckuE2",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 2: As theme_analyst, try to access Technic theme (theme_id=1) - should return 0 rows\\nSET ROLE theme_analyst;\\nSELECT count(*) AS technic_sets_visible FROM lego_sets WHERE theme_id = 1;\"}",
+    "call_id": "toolu_0143ZvseBGgajShfnurKnJMt",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01DPfHadDboQ6dTDRzGckuE2",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'set_num': '65081-1', 'name': 'R2-D2 8009 / C-3PO 8007 Droid Collectors Set', 'year': 2002, 'theme_id': 18, 'num_parts': 3}, {'set_num': 'K8008-1', 'name': 'Darth Vader / Stormtrooper Kit', 'year': 2002, 'theme_id': 18, 'num_parts': 2}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'set_num': '65081-1', 'name': 'R2-D2 8009 / C-3PO 8007 Droid Collectors Set', 'year': 2002, 'theme_id': 18, 'num_parts': 3}, {'set_num': 'K8008-1', 'name': 'Darth Vader / Stormtrooper Kit', 'year': 2002, 'theme_id': 18, 'num_parts': 2}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_0143ZvseBGgajShfnurKnJMt",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'technic_sets_visible': 0}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'technic_sets_visible': 0}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 3: As theme_analyst, inventories visible (should be only for the 2 Star Wars sets)\\nSET ROLE theme_analyst;\\nSELECT id, version, set_num FROM lego_inventories ORDER BY set_num, version;\"}",
+    "call_id": "toolu_015aWS3MB9MTukcbP6x7aXEu",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 4: As theme_analyst, inventory parts visible (only parts for Star Wars sets)\\nSET ROLE theme_analyst;\\nSELECT ip.inventory_id, ip.part_num, ip.color_id, ip.quantity, ip.is_spare\\nFROM lego_inventory_parts ip ORDER BY ip.inventory_id, ip.part_num;\"}",
+    "call_id": "toolu_01WKFgj9nPHJgFcQYyvFhFmc",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 5: Reference tables fully accessible to theme_analyst\\nSET ROLE theme_analyst;\\nSELECT\\n  (SELECT count(*) FROM lego_themes) AS themes_count,\\n  (SELECT count(*) FROM lego_colors) AS colors_count,\\n  (SELECT count(*) FROM lego_parts) AS parts_count,\\n  (SELECT count(*) FROM lego_part_categories) AS part_categories_count;\"}",
+    "call_id": "toolu_0115FFzxyVWbcG9D3U9uMtwk",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_015aWS3MB9MTukcbP6x7aXEu",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'id': 14276, 'version': 1, 'set_num': '65081-1'}, {'id': 6181, 'version': 1, 'set_num': 'K8008-1'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'id': 14276, 'version': 1, 'set_num': '65081-1'}, {'id': 6181, 'version': 1, 'set_num': 'K8008-1'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_01WKFgj9nPHJgFcQYyvFhFmc",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 14276, 'part_num': '4182214', 'color_id': 9999, 'quantity': 1, 'is_spare': False}, {'inventory_id': 14276, 'part_num': '8007-1', 'color_id': 9999, 'quantity': 1, 'is_spare': False}, {'inventory_id': 14276, 'part_num': '8009-1', 'color_id': 9999, 'quantity': 1, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 14276, 'part_num': '4182214', 'color_id': 9999, 'quantity': 1, 'is_spare': False}, {'inventory_id': 14276, 'part_num': '8007-1', 'color_id': 9999, 'quantity': 1, 'is_spare': False}, {'inventory_id': 14276, 'part_num': '8009-1', 'color_id': 9999, 'quantity': 1, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_0115FFzxyVWbcG9D3U9uMtwk",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'themes_count': 614, 'colors_count': 135, 'parts_count': 25993, 'part_categories_count': 57}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'themes_count': 614, 'colors_count': 135, 'parts_count': 25993, 'part_categories_count': 57}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 6: Cross-theme leakage check - try to access a known non-Star-Wars set directly\\nSET ROLE theme_analyst;\\nSELECT count(*) AS other_theme_rows_visible FROM lego_sets WHERE theme_id \\u003c\\u003e 18;\"}",
+    "call_id": "toolu_01QSKarmawQEGVEP4M1MKidP",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 7: Verify write operations are denied for theme_analyst\\nSET ROLE theme_analyst;\\nINSERT INTO lego_sets (set_num, name, year, theme_id, num_parts) VALUES ('TEST-1', 'Hack Attempt', 2024, 18, 1);\"}",
+    "call_id": "toolu_018CQxKUjYHjkt3WvSTHBd4r",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- TEST 8: Compare full data (as superuser) vs restricted view\\nSELECT\\n  (SELECT count(*) FROM lego_sets) AS total_sets,\\n  (SELECT count(*) FROM lego_sets WHERE theme_id = 18) AS star_wars_sets,\\n  (SELECT count(*) FROM lego_inventories) AS total_inventories,\\n  (SELECT count(*) FROM lego_inventory_parts) AS total_inventory_parts;\"}",
+    "call_id": "toolu_0152qeJ4vsRm5tM1TqWFNxfA",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01QSKarmawQEGVEP4M1MKidP",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'other_theme_rows_visible': 0}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'other_theme_rows_visible': 0}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_018CQxKUjYHjkt3WvSTHBd4r",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"Error: permission denied for table lego_sets\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"Error: permission denied for table lego_sets\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_0152qeJ4vsRm5tM1TqWFNxfA",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'total_sets': 11673, 'star_wars_sets': 2, 'total_inventories': 11681, 'total_inventory_parts': 580251}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'total_sets': 11673, 'star_wars_sets': 2, 'total_inventories': 11681, 'total_inventory_parts': 580251}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"-- AUDIT: verify function output and grants\\nSET ROLE theme_analyst;\\nSELECT current_user AS role_in_effect, get_user_theme_id() AS assigned_theme_id;\"}",
+    "call_id": "toolu_01E79YxZ5MRiorTRWQLE1VSY",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"-- AUDIT: full privilege matrix for theme_analyst\\nSELECT table_name, string_agg(privilege_type, ', ' ORDER BY privilege_type) AS privileges\\nFROM information_schema.table_privileges\\nWHERE grantee = 'theme_analyst'\\nGROUP BY table_name\\nORDER BY table_name;\"}",
+    "call_id": "toolu_013LQ2w532mSvjTaTrubPaWB",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "toolu_01E79YxZ5MRiorTRWQLE1VSY",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'role_in_effect': 'theme_analyst', 'assigned_theme_id': 18}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'role_in_effect': 'theme_analyst', 'assigned_theme_id': 18}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "toolu_013LQ2w532mSvjTaTrubPaWB",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'table_name': 'lego_colors', 'privileges': 'SELECT'}, {'table_name': 'lego_inventories', 'privileges': 'SELECT'}, {'table_name': 'lego_inventory_parts', 'privileges': 'SELECT'}, {'table_name': 'lego_part_categories', 'privileges': 'SELECT'}, {'table_name': 'lego_parts', 'privileges': 'SELECT'}, {'table_name': 'lego_sets', 'privileges': 'SELECT'}, {'table_name': 'lego_themes', 'privileges': 'SELECT'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'table_name': 'lego_colors', 'privileges': 'SELECT'}, {'table_name': 'lego_inventories', 'privileges': 'SELECT'}, {'table_name': 'lego_inventory_parts', 'privileges': 'SELECT'}, {'table_name': 'lego_part_categories', 'privileges': 'SELECT'}, {'table_name': 'lego_parts', 'privileges': 'SELECT'}, {'table_name': 'lego_sets', 'privileges': 'SELECT'}, {'table_name': 'lego_themes', 'privileges': 'SELECT'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "id": "__fake_id__",
+    "content": [
+      {
+        "annotations": [],
+        "text": "All implementation and verification steps are complete. Here is the comprehensive security audit report:\n\n---\n\n# 🔒 LEGO Database Security Audit Report\n## Theme-Based Row-Level Security Implementation\n\n---\n\n## 1. Security Model Overview\n\n**Model:** Theme-based data isolation via PostgreSQL Row-Level Security (RLS) with role-based access control.\n\n```\n┌──────────────────┐     get_user_theme_id()      ┌────────────────────┐\n│  theme_analyst   │ ───────► returns 18 ───────► │  Star Wars theme   │\n│  (read-only)     │                              │  data ONLY         │\n└──────────────────┘                              └────────────────────┘\n        │\n        ├── lego_sets            → RLS: theme_id = get_user_theme_id()\n        ├── lego_inventories     → RLS: join lego_sets on theme_id\n        ├── lego_inventory_parts → RLS: join lego_inventories → lego_sets\n        └── reference tables     → full SELECT (no RLS)\n```\n\n## 2. Implemented SQL Statements\n\n### 2.1 Role Creation & Permissions\n```sql\nCREATE ROLE theme_analyst NOLOGIN;\nGRANT USAGE ON SCHEMA public TO theme_analyst;\nGRANT SELECT ON lego_themes, lego_colors, lego_parts, lego_part_categories TO theme_analyst;\nGRANT SELECT ON lego_sets, lego_inventories, lego_inventory_parts TO theme_analyst;\nREVOKE INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public FROM theme_analyst;\n```\n\n### 2.2 Theme Assignment Function (extensible)\n```sql\nCREATE OR REPLACE FUNCTION get_user_theme_id() RETURNS integer\nLANGUAGE plpgsql STABLE SECURITY DEFINER AS $$\nBEGIN\n    IF current_user = 'theme_analyst'\n       OR pg_has_role(current_user, 'theme_analyst', 'member') THEN\n        RETURN 18;  -- Star Wars\n    END IF;\n    -- Future extension: IF current_user = 'technic_analyst' THEN RETURN 1; END IF;\n    RETURN NULL;\nEND; $$;\n```\n\n### 2.3 SECURITY DEFINER Helper Functions\nBecause RLS applies recursively, the join-based policies use `SECURITY DEFINER` helpers (`set_in_user_theme(set_num)`, `inventory_in_user_theme(inventory_id)`) that safely traverse `lego_inventories → lego_sets` without recursive policy evaluation.\n\n### 2.4 RLS Enablement & Policies\n```sql\nALTER TABLE lego_sets ENABLE ROW LEVEL SECURITY;\nALTER TABLE lego_inventories ENABLE ROW LEVEL SECURITY;\nALTER TABLE lego_inventory_parts ENABLE ROW LEVEL SECURITY;\n\nCREATE POLICY theme_sets_policy ON lego_sets\n    FOR SELECT TO theme_analyst\n    USING (theme_id = get_user_theme_id());\n\nCREATE POLICY theme_inventories_policy ON lego_inventories\n    FOR SELECT TO theme_analyst\n    USING (set_in_user_theme(set_num));            -- joins lego_sets\n\nCREATE POLICY theme_inventory_parts_policy ON lego_inventory_parts\n    FOR SELECT TO theme_analyst\n    USING (inventory_in_user_theme(inventory_id)); -- joins inventories → sets\n```\n\n## 3. Verification Results — All Tests PASSED ✅\n\n| # | Test | Expected | Actual | Status |\n|---|------|----------|--------|--------|\n| 1 | `SELECT * FROM lego_sets` as theme_analyst | 2 sets: `65081-1`, `K8008-1` | 2 rows: **65081-1** (R2-D2/C-3PO Droid Collectors Set), **K8008-1** (Darth Vader/Stormtrooper Kit) | ✅ |\n| 2 | Technic theme (`theme_id=1`) query | 0 rows | 0 rows | ✅ |\n| 3 | `lego_inventories` visibility | Only inventories for the 2 sets | 2 rows: id **14276** (65081-1), id **6181** (K8008-1) | ✅ |\n| 4 | `lego_inventory_parts` visibility | Only parts for those inventories | 3 rows (inventory 14276: parts 4182214, 8007-1, 8009-1) | ✅ |\n| 5 | Reference table access | Full data | themes: 614, colors: 135, parts: 25,993, categories: 57 | ✅ |\n| 6 | Cross-theme leakage (`theme_id <> 18`) | 0 rows | 0 rows (out of 11,671 hidden sets) | ✅ |\n| 7 | Write attempt (`INSERT`) | Denied | `ERROR: permission denied for table lego_sets` | ✅ |\n| 8 | Function check | `get_user_theme_id() = 18` | Returned **18** for theme_analyst | ✅ |\n\n**Data isolation scale:** theme_analyst sees 2 of 11,673 sets (0.017%), 2 of 11,681 inventories, and 3 of 580,251 inventory parts — with zero cross-theme leakage.\n\n## 4. Privilege Matrix (verified from `information_schema.table_privileges`)\n\n| Table | theme_analyst Privileges | RLS Enabled | Policy |\n|-------|--------------------------|-------------|--------|\n| lego_sets | SELECT only | ✅ | `theme_sets_policy` |\n| lego_inventories | SELECT only | ✅ | `theme_inventories_policy` |\n| lego_inventory_parts | SELECT only | ✅ | `theme_inventory_parts_policy` |\n| lego_themes | SELECT only | — | unrestricted reference |\n| lego_colors | SELECT only | — | unrestricted reference |\n| lego_parts | SELECT only | — | unrestricted reference |\n| lego_part_categories | SELECT only | — | unrestricted reference |\n\n## 5. Verification Queries (for ongoing audits)\n\n```sql\n-- Confirm RLS status\nSELECT relname, relrowsecurity FROM pg_class\nWHERE relname IN ('lego_sets','lego_inventories','lego_inventory_parts');\n\n-- Confirm active policies\nSELECT tablename, policyname, roles, cmd, qual FROM pg_policies;\n\n-- Test isolation as theme_analyst\nSET ROLE theme_analyst;\nSELECT count(*) FROM lego_sets;                      -- expect 2\nSELECT count(*) FROM lego_sets WHERE theme_id = 1;   -- expect 0\nSELECT count(*) FROM lego_inventories;               -- expect 2\nRESET ROLE;\n```\n\n## 6. Extending to Other Themes\n\nTo onboard a new theme analyst (e.g., Technic): create the role, grant the same SELECT permissions, and add one branch to `get_user_theme_id()` (`IF current_user = 'technic_analyst' THEN RETURN 1;`). All existing policies automatically enforce the new mapping — no policy changes required.\n\n---\n\n**Conclusion:** The security system is fully operational. The `theme_analyst` role is strictly read-only, sees only Star Wars (theme_id=18) data across all three protected tables, retains complete access to reference tables, and all cross-theme access paths are blocked by enforced RLS policies.\n\nTask completed.",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
