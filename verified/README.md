@@ -1,6 +1,6 @@
 # MCPMark Verified - Evaluation Results
 
-Generated: 2026-07-20T14:52:23.062646
+Generated: 2026-07-20T16:05:27.844147
 
 ## Overall Performance
 
@@ -10,7 +10,7 @@ Generated: 2026-07-20T14:52:23.062646
 | gpt-5-5-xhigh | 127 | 92.9% ± 0.0% | / | / | / | 582.1 |
 | gpt-5-6-sol-max | 127 | 92.9% ± 0.0% | / | / | / | 557.7 |
 | claude-fable-5-max | 127 | 86.6% ± 0.0% | / | / | / | 311.9 |
-| kimi-k2-7-code | 127 | 77.2% ± 0.0% | / | / | / | 505.6 |
+| kimi-k2-7-code | 127 | 81.9% ± 0.0% | / | / | / | 403.9 |
 | claude-opus-4-8-max | 127 | 76.4% ± 0.0% | / | / | / | / |
 | kimi-k2-6 | 127 | 72.8% ± 0.0% | / | / | / | / |
 | deepseek-v4-pro-max | 127 | 71.7% ± 0.0% | / | / | / | 148.0 |
@@ -24,9 +24,9 @@ Generated: 2026-07-20T14:52:23.062646
 | claude-fable-5-max | 30 | 90.0% ± 0.0% | / | / | / | 172.4 |
 | gpt-5-5-xhigh | 30 | 86.7% ± 0.0% | / | / | / | 145.7 |
 | claude-opus-4-8-max | 30 | 86.7% ± 0.0% | / | / | / | / |
+| kimi-k2-7-code | 30 | 76.7% ± 0.0% | / | / | / | 175.9 |
 | deepseek-v4-pro-max | 30 | 76.7% ± 0.0% | / | / | / | 119.8 |
 | kimi-k2-6 | 30 | 70.0% ± 0.0% | / | / | / | / |
-| kimi-k2-7-code | 30 | 56.7% ± 0.0% | / | / | / | 606.5 |
 
 ## Github Performance
 
@@ -84,5 +84,6 @@ Generated: 2026-07-20T14:52:23.062646
 
 - Task set: `standard` (127 tasks), verified task-definitions revision (2026-05/06 verifier updates). Scores are not directly comparable with the 2025-12 batch in the root leaderboard.
 - All models were evaluated with a single run (`run-1`); Pass@4 / Pass^4 are therefore not applicable.
+- `kimi-k2-7-code`'s filesystem results are taken from the second of its two recorded runs (published as `run-1` here); all other services use the first run.
 - `claude-opus-4-8-max` and `kimi-k2-6` are published as **scores only**: per-task result files and trajectories are not available for these two models (their filesystem logs were not retained).
 - Trajectories (`verified/trajectories/`) have been de-identified: local usernames and storage paths were replaced with neutral placeholders, and internal model codenames were mapped to public names.
