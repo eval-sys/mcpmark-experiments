@@ -1,0 +1,247 @@
+[
+  {
+    "content": "Create a PostgreSQL function to handle inventory part transfers between LEGO sets with enhanced validation and audit capabilities. The LEGO warehouse management system needs to support transferring parts while maintaining data integrity and tracking transfer history.\n\n## Your Tasks:\n\n1. **Create the transfer function** — Implement a PostgreSQL function named `transfer_parts` with the following signature:\n   ```sql\n   CREATE OR REPLACE FUNCTION transfer_parts(\n       source_inventory_id INTEGER,\n       target_inventory_id INTEGER,\n       part_to_transfer_num VARCHAR,\n       color_to_transfer_id INTEGER,\n       quantity_to_transfer INTEGER,\n       transfer_reason VARCHAR DEFAULT 'manual_transfer'\n   ) RETURNS TEXT\n   ```\n\n2. **Create audit logging table** — Create a new table to track transfer history:\n   ```sql\n   CREATE TABLE inventory_transfer_log (\n       log_id SERIAL PRIMARY KEY,\n       transfer_timestamp TIMESTAMP DEFAULT NOW(),\n       source_inventory_id INTEGER NOT NULL,\n       target_inventory_id INTEGER NOT NULL,\n       part_num VARCHAR NOT NULL,\n       color_id INTEGER NOT NULL,\n       quantity_transferred INTEGER NOT NULL,\n       transfer_reason VARCHAR NOT NULL,\n       transfer_status VARCHAR NOT NULL CHECK (transfer_status IN ('success', 'failed')),\n       error_message TEXT\n   );\n   ```\n\n3. **Implement enhanced validation** — The function must perform these validations:\n   \n   **Validation A: Basic Checks**\n   - Verify both inventory IDs exist in `lego_inventories` table\n   - Verify part exists in `lego_parts` table\n   - Verify color exists in `lego_colors` table\n   - Check the source's non-spare row for this `(part_num, color_id)` has sufficient quantity\n   - Prevent self-transfers (source and target cannot be the same)\n\n   *Note: The function operates on non-spare rows only (`is_spare = false`).*\n\n   **Validation B: Business Rules**\n   - Maximum transfer quantity is 500 parts per operation\n   - Minimum transfer quantity is 1 part\n   - Source and target must be different inventories\n\n4. **Implement transactional logic** — The function must perform these operations within a single transaction:\n   \n   **Step A: Pre-validation**\n   - Lock both inventory records using `SELECT ... FOR UPDATE`\n   - Perform all validation checks\n   - Calculate transfer feasibility\n\n   **Step B: Source Inventory Update**\n   - Decrease quantity on the source's non-spare row\n   - If quantity becomes zero, delete the row\n\n   **Step C: Target Inventory Update**\n   - Check if a non-spare row for `(part_num, color_id)` exists in target inventory\n   - If exists: increase quantity\n   - If not exists: insert a new non-spare row (`is_spare = false`)\n\n   **Step D: Audit Logging**\n   - Log successful transfers with details\n   - Include transfer reason and status\n\n5. **Error handling requirements**:\n   - Use `RAISE EXCEPTION` with descriptive error messages\n   - Handle all validation failures gracefully\n   - Ensure complete rollback on any failure\n\n6. **Return value**:\n   - Return success message: `'Successfully transferred {quantity} parts ({part_num}, color_id: {color_id}) from inventory {source_id} to inventory {target_id}. Reason: {reason}'`\n   - Include transfer details and reason in the message\n\n## Function Requirements:\n\n- **Transaction Safety**: All operations wrapped in transaction block\n- **Data Integrity**: No partial updates possible\n- **Audit Trail**: Logging of successful transfer attempts\n- **Validation**: Comprehensive input and business rule validation\n- **Error Recovery**: Failed transfers leave database unchanged\n- **Performance**: Use appropriate locking to prevent race conditions\n\n## Example Usage:\n\n```sql\n-- Basic transfer with reason\nSELECT transfer_parts(14469, 14686, '3024', 15, 100, 'inventory_adjustment');\n\n-- Transfer to new inventory (should create new record)\nSELECT transfer_parts(11124, 14686, '3001', 4, 50, 'part_redistribution');\n\n-- This should fail due to insufficient quantity\nSELECT transfer_parts(14469, 14686, '3024', 15, 2000, 'large_transfer');\n\n-- This should fail due to self-transfer\nSELECT transfer_parts(14469, 14469, '3024', 15, 10, 'self_transfer');\n```\n\n## Verification Criteria:\n\n- Function handles all validation rules correctly\n- Audit logging captures successful transfer attempts\n- Self-transfers are prevented\n- Quantity limits are enforced\n- Database state remains consistent after failures\n\nNote: Use PostgreSQL MCP tools to complete this task. The database connection is already configured.",
+    "role": "user"
+  },
+  {
+    "arguments": "{}",
+    "call_id": "call_4Fuxsfvg30E3mkgl1XPQgqXg",
+    "name": "list_schemas",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_4Fuxsfvg30E3mkgl1XPQgqXg",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema_name': 'information_schema', 'schema_owner': 'postgres', 'schema_type': 'System Information Schema'}, {'schema_name': 'pg_catalog', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'pg_toast', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'public', 'schema_owner': 'pg_database_owner', 'schema_type': 'User Schema'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema_name': 'information_schema', 'schema_owner': 'postgres', 'schema_type': 'System Information Schema'}, {'schema_name': 'pg_catalog', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'pg_toast', 'schema_owner': 'postgres', 'schema_type': 'System Schema'}, {'schema_name': 'public', 'schema_owner': 'pg_database_owner', 'schema_type': 'User Schema'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_type\":\"table\"}",
+    "call_id": "call_p9C6CjSG1RUKYQnGpUVxHWaT",
+    "name": "list_objects",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_p9C6CjSG1RUKYQnGpUVxHWaT",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema': 'public', 'name': 'lego_colors', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_part_categories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_themes', 'type': 'BASE TABLE'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'schema': 'public', 'name': 'lego_colors', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_inventory_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_part_categories', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_parts', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_sets', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'lego_themes', 'type': 'BASE TABLE'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_name\":\"lego_inventories\",\"object_type\":\"table\"}",
+    "call_id": "call_84Qpg45XNL0DzDnh8q88Ev8p",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_name\":\"lego_inventory_parts\",\"object_type\":\"table\"}",
+    "call_id": "call_Mze8HeJE7MqnoRRAkIcBkEt3",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_name\":\"lego_parts\",\"object_type\":\"table\"}",
+    "call_id": "call_j93CLk7FYgGsnOxCjfW7BKLK",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_name\":\"lego_colors\",\"object_type\":\"table\"}",
+    "call_id": "call_DGouf86S0UgKm3lxtKbwUj0W",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_84Qpg45XNL0DzDnh8q88Ev8p",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventories', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_inventories_id_seq'::regclass)\\\\\\\"}, {'column': 'version', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_inventories_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17500_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17500_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17500_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_inventories_pkey', 'definition': 'CREATE UNIQUE INDEX lego_inventories_pkey ON public.lego_inventories USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventories', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_inventories_id_seq'::regclass)\\\\\\\"}, {'column': 'version', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'set_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_inventories_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17500_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17500_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17500_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_inventories_pkey', 'definition': 'CREATE UNIQUE INDEX lego_inventories_pkey ON public.lego_inventories USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "call_Mze8HeJE7MqnoRRAkIcBkEt3",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'table'}, 'columns': [{'column': 'inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'is_spare', 'data_type': 'boolean', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': '2200_17504_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_5_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': []}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_inventory_parts', 'type': 'table'}, 'columns': [{'column': 'inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'is_spare', 'data_type': 'boolean', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': '2200_17504_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17504_5_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': []}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "call_j93CLk7FYgGsnOxCjfW7BKLK",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_parts', 'type': 'table'}, 'columns': [{'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'name', 'data_type': 'text', 'is_nullable': 'NO', 'default': None}, {'column': 'part_cat_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_parts_pkey', 'type': 'PRIMARY KEY', 'columns': ['part_num']}, {'name': '2200_17514_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17514_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17514_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_parts_pkey', 'definition': 'CREATE UNIQUE INDEX lego_parts_pkey ON public.lego_parts USING btree (part_num)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_parts', 'type': 'table'}, 'columns': [{'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'name', 'data_type': 'text', 'is_nullable': 'NO', 'default': None}, {'column': 'part_cat_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_parts_pkey', 'type': 'PRIMARY KEY', 'columns': ['part_num']}, {'name': '2200_17514_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17514_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17514_3_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_parts_pkey', 'definition': 'CREATE UNIQUE INDEX lego_parts_pkey ON public.lego_parts USING btree (part_num)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "call_DGouf86S0UgKm3lxtKbwUj0W",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_colors', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_colors_id_seq'::regclass)\\\\\\\"}, {'column': 'name', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'rgb', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'is_trans', 'data_type': 'character', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_colors_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17496_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_4_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_colors_pkey', 'definition': 'CREATE UNIQUE INDEX lego_colors_pkey ON public.lego_colors USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'lego_colors', 'type': 'table'}, 'columns': [{'column': 'id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('lego_colors_id_seq'::regclass)\\\\\\\"}, {'column': 'name', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'rgb', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'is_trans', 'data_type': 'character', 'is_nullable': 'NO', 'default': None}], 'constraints': [{'name': 'lego_colors_pkey', 'type': 'PRIMARY KEY', 'columns': ['id']}, {'name': '2200_17496_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_2_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17496_4_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'lego_colors_pkey', 'definition': 'CREATE UNIQUE INDEX lego_colors_pkey ON public.lego_colors USING btree (id)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, is_spare, COUNT(*) AS row_count, SUM(quantity) AS total_quantity\\nFROM public.lego_inventory_parts\\nWHERE is_spare = false\\nGROUP BY inventory_id, part_num, color_id, is_spare\\nHAVING COUNT(*) > 1\\nLIMIT 10;\"}",
+    "call_id": "call_OkTttmuWjpQVVouCx5bxunPD",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_OkTttmuWjpQVVouCx5bxunPD",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, is_spare, COUNT(*) AS row_count\\nFROM public.lego_inventory_parts\\nGROUP BY inventory_id, part_num, color_id, is_spare\\nHAVING COUNT(*) > 1\\nLIMIT 10;\"}",
+    "call_id": "call_rzS93IcSJg7VtWmVc1BYkt4l",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_rzS93IcSJg7VtWmVc1BYkt4l",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"CREATE TABLE IF NOT EXISTS public.inventory_transfer_log (\\n    log_id SERIAL PRIMARY KEY,\\n    transfer_timestamp TIMESTAMP DEFAULT NOW(),\\n    source_inventory_id INTEGER NOT NULL,\\n    target_inventory_id INTEGER NOT NULL,\\n    part_num VARCHAR NOT NULL,\\n    color_id INTEGER NOT NULL,\\n    quantity_transferred INTEGER NOT NULL,\\n    transfer_reason VARCHAR NOT NULL,\\n    transfer_status VARCHAR NOT NULL CHECK (transfer_status IN ('success', 'failed')),\\n    error_message TEXT\\n);\\n\\nCREATE OR REPLACE FUNCTION public.transfer_parts(\\n    source_inventory_id INTEGER,\\n    target_inventory_id INTEGER,\\n    part_to_transfer_num VARCHAR,\\n    color_to_transfer_id INTEGER,\\n    quantity_to_transfer INTEGER,\\n    transfer_reason VARCHAR DEFAULT 'manual_transfer'\\n) RETURNS TEXT\\nLANGUAGE plpgsql\\nAS $$\\nDECLARE\\n    v_source_exists BOOLEAN := FALSE;\\n    v_target_exists BOOLEAN := FALSE;\\n    v_part_exists BOOLEAN := FALSE;\\n    v_color_exists BOOLEAN := FALSE;\\n    v_part_num VARCHAR := NULLIF(BTRIM(part_to_transfer_num), '');\\n    v_reason VARCHAR := COALESCE(NULLIF(BTRIM(transfer_reason), ''), 'manual_transfer');\\n    v_source_row_count INTEGER := 0;\\n    v_target_row_count INTEGER := 0;\\n    v_source_available_quantity INTEGER := 0;\\n    v_new_source_quantity INTEGER := 0;\\n    v_result TEXT;\\nBEGIN\\n    -- Basic input validation.\\n    IF source_inventory_id IS NULL THEN\\n        RAISE EXCEPTION 'Source inventory id cannot be null.' USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF target_inventory_id IS NULL THEN\\n        RAISE EXCEPTION 'Target inventory id cannot be null.' USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF v_part_num IS NULL THEN\\n        RAISE EXCEPTION 'Part number cannot be null or empty.' USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF color_to_transfer_id IS NULL THEN\\n        RAISE EXCEPTION 'Color id cannot be null.' USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF quantity_to_transfer IS NULL THEN\\n        RAISE EXCEPTION 'Transfer quantity cannot be null.' USING ERRCODE = '22023';\\n    END IF;\\n\\n    -- Business rule validation.\\n    IF quantity_to_transfer < 1 THEN\\n        RAISE EXCEPTION 'Transfer quantity must be at least 1. Requested: %.', quantity_to_transfer USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF quantity_to_transfer > 500 THEN\\n        RAISE EXCEPTION 'Transfer quantity cannot exceed 500 parts per operation. Requested: %.', quantity_to_transfer USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF source_inventory_id = target_inventory_id THEN\\n        RAISE EXCEPTION 'Self-transfers are not allowed. Source and target inventory id are both %.', source_inventory_id USING ERRCODE = '22023';\\n    END IF;\\n\\n    -- Lock both inventory rows in deterministic id order to reduce deadlock risk.\\n    SELECT\\n        COALESCE(BOOL_OR(locked_inventories.id = source_inventory_id), FALSE),\\n        COALESCE(BOOL_OR(locked_inventories.id = target_inventory_id), FALSE)\\n    INTO v_source_exists, v_target_exists\\n    FROM (\\n        SELECT li.id\\n        FROM public.lego_inventories AS li\\n        WHERE li.id IN (source_inventory_id, target_inventory_id)\\n        ORDER BY li.id\\n        FOR UPDATE\\n    ) AS locked_inventories;\\n\\n    IF NOT v_source_exists THEN\\n        RAISE EXCEPTION 'Source inventory id % does not exist in lego_inventories.', source_inventory_id USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    IF NOT v_target_exists THEN\\n        RAISE EXCEPTION 'Target inventory id % does not exist in lego_inventories.', target_inventory_id USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    -- Validate referenced part and color.\\n    SELECT EXISTS (\\n        SELECT 1\\n        FROM public.lego_parts AS lp\\n        WHERE lp.part_num = v_part_num\\n    ) INTO v_part_exists;\\n\\n    IF NOT v_part_exists THEN\\n        RAISE EXCEPTION 'Part number % does not exist in lego_parts.', v_part_num USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    SELECT EXISTS (\\n        SELECT 1\\n        FROM public.lego_colors AS lc\\n        WHERE lc.id = color_to_transfer_id\\n    ) INTO v_color_exists;\\n\\n    IF NOT v_color_exists THEN\\n        RAISE EXCEPTION 'Color id % does not exist in lego_colors.', color_to_transfer_id USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    -- Lock the source non-spare inventory-part row and confirm enough stock.\\n    SELECT COUNT(*)::INTEGER, COALESCE(SUM(source_rows.quantity), 0)::INTEGER\\n    INTO v_source_row_count, v_source_available_quantity\\n    FROM (\\n        SELECT lip.quantity\\n        FROM public.lego_inventory_parts AS lip\\n        WHERE lip.inventory_id = source_inventory_id\\n          AND lip.part_num = v_part_num\\n          AND lip.color_id = color_to_transfer_id\\n          AND lip.is_spare = FALSE\\n        FOR UPDATE\\n    ) AS source_rows;\\n\\n    IF v_source_row_count = 0 THEN\\n        RAISE EXCEPTION 'Source inventory % does not contain a non-spare row for part %, color_id %.', source_inventory_id, v_part_num, color_to_transfer_id USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    IF v_source_row_count > 1 THEN\\n        RAISE EXCEPTION 'Data integrity violation: source inventory % has % non-spare rows for part %, color_id %. Transfer aborted.', source_inventory_id, v_source_row_count, v_part_num, color_to_transfer_id USING ERRCODE = '21000';\\n    END IF;\\n\\n    IF v_source_available_quantity < quantity_to_transfer THEN\\n        RAISE EXCEPTION 'Insufficient quantity in source inventory % for non-spare part %, color_id %. Available: %, requested: %.', source_inventory_id, v_part_num, color_to_transfer_id, v_source_available_quantity, quantity_to_transfer USING ERRCODE = '22023';\\n    END IF;\\n\\n    -- Lock the target non-spare row if it exists.\\n    SELECT COUNT(*)::INTEGER\\n    INTO v_target_row_count\\n    FROM (\\n        SELECT 1\\n        FROM public.lego_inventory_parts AS lip\\n        WHERE lip.inventory_id = target_inventory_id\\n          AND lip.part_num = v_part_num\\n          AND lip.color_id = color_to_transfer_id\\n          AND lip.is_spare = FALSE\\n        FOR UPDATE\\n    ) AS target_rows;\\n\\n    IF v_target_row_count > 1 THEN\\n        RAISE EXCEPTION 'Data integrity violation: target inventory % has % non-spare rows for part %, color_id %. Transfer aborted.', target_inventory_id, v_target_row_count, v_part_num, color_to_transfer_id USING ERRCODE = '21000';\\n    END IF;\\n\\n    -- Decrease source quantity. Delete the source row if the transfer consumes all parts.\\n    UPDATE public.lego_inventory_parts AS lip\\n    SET quantity = lip.quantity - quantity_to_transfer\\n    WHERE lip.inventory_id = source_inventory_id\\n      AND lip.part_num = v_part_num\\n      AND lip.color_id = color_to_transfer_id\\n      AND lip.is_spare = FALSE\\n    RETURNING lip.quantity INTO v_new_source_quantity;\\n\\n    IF NOT FOUND THEN\\n        RAISE EXCEPTION 'Source inventory row for inventory %, part %, color_id % disappeared before update. Transfer aborted.', source_inventory_id, v_part_num, color_to_transfer_id USING ERRCODE = 'P0002';\\n    END IF;\\n\\n    IF v_new_source_quantity < 0 THEN\\n        RAISE EXCEPTION 'Source inventory % would become negative for part %, color_id %. Transfer aborted.', source_inventory_id, v_part_num, color_to_transfer_id USING ERRCODE = '22023';\\n    END IF;\\n\\n    IF v_new_source_quantity = 0 THEN\\n        DELETE FROM public.lego_inventory_parts AS lip\\n        WHERE lip.inventory_id = source_inventory_id\\n          AND lip.part_num = v_part_num\\n          AND lip.color_id = color_to_transfer_id\\n          AND lip.is_spare = FALSE\\n          AND lip.quantity = 0;\\n    END IF;\\n\\n    -- Increase the target row or create it as a non-spare row.\\n    IF v_target_row_count = 1 THEN\\n        UPDATE public.lego_inventory_parts AS lip\\n        SET quantity = lip.quantity + quantity_to_transfer\\n        WHERE lip.inventory_id = target_inventory_id\\n          AND lip.part_num = v_part_num\\n          AND lip.color_id = color_to_transfer_id\\n          AND lip.is_spare = FALSE;\\n    ELSE\\n        INSERT INTO public.lego_inventory_parts (inventory_id, part_num, color_id, quantity, is_spare)\\n        VALUES (target_inventory_id, v_part_num, color_to_transfer_id, quantity_to_transfer, FALSE);\\n    END IF;\\n\\n    -- Successful audit log entry.\\n    INSERT INTO public.inventory_transfer_log (\\n        source_inventory_id,\\n        target_inventory_id,\\n        part_num,\\n        color_id,\\n        quantity_transferred,\\n        transfer_reason,\\n        transfer_status,\\n        error_message\\n    ) VALUES (\\n        source_inventory_id,\\n        target_inventory_id,\\n        v_part_num,\\n        color_to_transfer_id,\\n        quantity_to_transfer,\\n        v_reason,\\n        'success',\\n        NULL\\n    );\\n\\n    v_result := FORMAT(\\n        'Successfully transferred %s parts (%s, color_id: %s) from inventory %s to inventory %s. Reason: %s',\\n        quantity_to_transfer,\\n        v_part_num,\\n        color_to_transfer_id,\\n        source_inventory_id,\\n        target_inventory_id,\\n        v_reason\\n    );\\n\\n    RETURN v_result;\\nEND;\\n$$;\"}",
+    "call_id": "call_hghyCX7AH8vni8T5F6hBv052",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_hghyCX7AH8vni8T5F6hBv052",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"schema_name\":\"public\",\"object_name\":\"inventory_transfer_log\",\"object_type\":\"table\"}",
+    "call_id": "call_OQUhbc7nJ33n450lckewa45s",
+    "name": "get_object_details",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT p.proname,\\n       pg_catalog.pg_get_function_arguments(p.oid) AS arguments,\\n       pg_catalog.pg_get_function_result(p.oid) AS result_type\\nFROM pg_catalog.pg_proc AS p\\nJOIN pg_catalog.pg_namespace AS n ON n.oid = p.pronamespace\\nWHERE n.nspname = 'public'\\n  AND p.proname = 'transfer_parts';\"}",
+    "call_id": "call_NphtU2Sq61MzeA7nBo9HBVVk",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_OQUhbc7nJ33n450lckewa45s",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'inventory_transfer_log', 'type': 'table'}, 'columns': [{'column': 'log_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('inventory_transfer_log_log_id_seq'::regclass)\\\\\\\"}, {'column': 'transfer_timestamp', 'data_type': 'timestamp without time zone', 'is_nullable': 'YES', 'default': 'now()'}, {'column': 'source_inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'target_inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity_transferred', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'transfer_reason', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'transfer_status', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'error_message', 'data_type': 'text', 'is_nullable': 'YES', 'default': None}], 'constraints': [{'name': 'inventory_transfer_log_transfer_status_check', 'type': 'CHECK', 'columns': []}, {'name': 'inventory_transfer_log_pkey', 'type': 'PRIMARY KEY', 'columns': ['log_id']}, {'name': '2200_17707_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_5_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_6_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_7_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_8_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_9_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'inventory_transfer_log_pkey', 'definition': 'CREATE UNIQUE INDEX inventory_transfer_log_pkey ON public.inventory_transfer_log USING btree (log_id)'}]}\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"{'basic': {'schema': 'public', 'name': 'inventory_transfer_log', 'type': 'table'}, 'columns': [{'column': 'log_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': \\\\\\\"nextval('inventory_transfer_log_log_id_seq'::regclass)\\\\\\\"}, {'column': 'transfer_timestamp', 'data_type': 'timestamp without time zone', 'is_nullable': 'YES', 'default': 'now()'}, {'column': 'source_inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'target_inventory_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'part_num', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'color_id', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'quantity_transferred', 'data_type': 'integer', 'is_nullable': 'NO', 'default': None}, {'column': 'transfer_reason', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'transfer_status', 'data_type': 'character varying', 'is_nullable': 'NO', 'default': None}, {'column': 'error_message', 'data_type': 'text', 'is_nullable': 'YES', 'default': None}], 'constraints': [{'name': 'inventory_transfer_log_transfer_status_check', 'type': 'CHECK', 'columns': []}, {'name': 'inventory_transfer_log_pkey', 'type': 'PRIMARY KEY', 'columns': ['log_id']}, {'name': '2200_17707_1_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_3_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_4_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_5_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_6_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_7_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_8_not_null', 'type': 'CHECK', 'columns': []}, {'name': '2200_17707_9_not_null', 'type': 'CHECK', 'columns': []}], 'indexes': [{'name': 'inventory_transfer_log_pkey', 'definition': 'CREATE UNIQUE INDEX inventory_transfer_log_pkey ON public.inventory_transfer_log USING btree (log_id)'}]}\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "call_id": "call_NphtU2Sq61MzeA7nBo9HBVVk",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'proname': 'transfer_parts', 'arguments': \\\\\\\"source_inventory_id integer, target_inventory_id integer, part_to_transfer_num character varying, color_to_transfer_id integer, quantity_to_transfer integer, transfer_reason character varying DEFAULT 'manual_transfer'::character varying\\\\\\\", 'result_type': 'text'}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'proname': 'transfer_parts', 'arguments': \\\\\\\"source_inventory_id integer, target_inventory_id integer, part_to_transfer_num character varying, color_to_transfer_id integer, quantity_to_transfer integer, transfer_reason character varying DEFAULT 'manual_transfer'::character varying\\\\\\\", 'result_type': 'text'}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT *\\nFROM public.lego_inventory_parts\\nWHERE inventory_id IN (14469, 14686, 11124)\\n  AND ((part_num = '3024' AND color_id = 15) OR (part_num = '3001' AND color_id = 4))\\nORDER BY inventory_id, part_num, color_id, is_spare;\"}",
+    "call_id": "call_yvKa9vlZVr32Kn69ieLDuDg9",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_yvKa9vlZVr32Kn69ieLDuDg9",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 11124, 'part_num': '3001', 'color_id': 4, 'quantity': 102, 'is_spare': False}, {'inventory_id': 14469, 'part_num': '3024', 'color_id': 15, 'quantity': 1440, 'is_spare': False}, {'inventory_id': 14686, 'part_num': '3024', 'color_id': 15, 'quantity': 1170, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 11124, 'part_num': '3001', 'color_id': 4, 'quantity': 102, 'is_spare': False}, {'inventory_id': 14469, 'part_num': '3024', 'color_id': 15, 'quantity': 1440, 'is_spare': False}, {'inventory_id': 14686, 'part_num': '3024', 'color_id': 15, 'quantity': 1170, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"BEGIN;\\nSELECT public.transfer_parts(14469, 14686, '3024', 15, 100, 'inventory_adjustment') AS transfer_result;\\nSELECT inventory_id, part_num, color_id, quantity, is_spare\\nFROM public.lego_inventory_parts\\nWHERE inventory_id IN (14469, 14686)\\n  AND part_num = '3024'\\n  AND color_id = 15\\n  AND is_spare = FALSE\\nORDER BY inventory_id;\\nSELECT source_inventory_id, target_inventory_id, part_num, color_id, quantity_transferred, transfer_reason, transfer_status\\nFROM public.inventory_transfer_log\\nORDER BY log_id DESC\\nLIMIT 1;\\nROLLBACK;\"}",
+    "call_id": "call_Z0N0nhXDDptaQHlB8Q1uMc3I",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_Z0N0nhXDDptaQHlB8Q1uMc3I",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, quantity, is_spare\\nFROM public.lego_inventory_parts\\nWHERE inventory_id IN (14469, 14686)\\n  AND part_num = '3024'\\n  AND color_id = 15\\n  AND is_spare = FALSE\\nORDER BY inventory_id;\\n\\nSELECT COUNT(*) AS transfer_log_count\\nFROM public.inventory_transfer_log;\"}",
+    "call_id": "call_qTK3A1cXeGXDydoJZWbcwoUP",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_qTK3A1cXeGXDydoJZWbcwoUP",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'transfer_log_count': 0}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'transfer_log_count': 0}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, quantity, is_spare\\nFROM public.lego_inventory_parts\\nWHERE inventory_id IN (14469, 14686)\\n  AND part_num = '3024'\\n  AND color_id = 15\\n  AND is_spare = FALSE\\nORDER BY inventory_id;\"}",
+    "call_id": "call_Xyd54EQgqNqDSMmZWSimKmwC",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_Xyd54EQgqNqDSMmZWSimKmwC",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 14469, 'part_num': '3024', 'color_id': 15, 'quantity': 1440, 'is_spare': False}, {'inventory_id': 14686, 'part_num': '3024', 'color_id': 15, 'quantity': 1170, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 14469, 'part_num': '3024', 'color_id': 15, 'quantity': 1440, 'is_spare': False}, {'inventory_id': 14686, 'part_num': '3024', 'color_id': 15, 'quantity': 1170, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"DO $$\\nBEGIN\\n    -- Self-transfer must fail.\\n    BEGIN\\n        PERFORM public.transfer_parts(14469, 14469, '3024', 15, 10, 'self_transfer');\\n        RAISE EXCEPTION 'Expected self-transfer failure did not occur.';\\n    EXCEPTION WHEN OTHERS THEN\\n        IF SQLERRM NOT LIKE 'Self-transfers are not allowed.%' THEN\\n            RAISE;\\n        END IF;\\n    END;\\n\\n    -- Quantity over 500 must fail.\\n    BEGIN\\n        PERFORM public.transfer_parts(14469, 14686, '3024', 15, 501, 'too_large');\\n        RAISE EXCEPTION 'Expected maximum-quantity failure did not occur.';\\n    EXCEPTION WHEN OTHERS THEN\\n        IF SQLERRM NOT LIKE 'Transfer quantity cannot exceed 500 parts per operation.%' THEN\\n            RAISE;\\n        END IF;\\n    END;\\nEND\\n$$;\"}",
+    "call_id": "call_99IAdyGYJt39cqrYg5342sfK",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_99IAdyGYJt39cqrYg5342sfK",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"DO $$\\nDECLARE\\n    v_message TEXT;\\n    v_source_qty INTEGER;\\n    v_target_qty INTEGER;\\n    v_log_exists BOOLEAN;\\nBEGIN\\n    BEGIN\\n        v_message := public.transfer_parts(11124, 14686, '3001', 4, 50, 'part_redistribution');\\n\\n        IF v_message <> 'Successfully transferred 50 parts (3001, color_id: 4) from inventory 11124 to inventory 14686. Reason: part_redistribution' THEN\\n            RAISE EXCEPTION 'Unexpected success message: %', v_message;\\n        END IF;\\n\\n        SELECT quantity INTO v_source_qty\\n        FROM public.lego_inventory_parts\\n        WHERE inventory_id = 11124\\n          AND part_num = '3001'\\n          AND color_id = 4\\n          AND is_spare = FALSE;\\n\\n        SELECT quantity INTO v_target_qty\\n        FROM public.lego_inventory_parts\\n        WHERE inventory_id = 14686\\n          AND part_num = '3001'\\n          AND color_id = 4\\n          AND is_spare = FALSE;\\n\\n        SELECT EXISTS (\\n            SELECT 1\\n            FROM public.inventory_transfer_log\\n            WHERE source_inventory_id = 11124\\n              AND target_inventory_id = 14686\\n              AND part_num = '3001'\\n              AND color_id = 4\\n              AND quantity_transferred = 50\\n              AND transfer_reason = 'part_redistribution'\\n              AND transfer_status = 'success'\\n              AND error_message IS NULL\\n        ) INTO v_log_exists;\\n\\n        IF v_source_qty <> 52 THEN\\n            RAISE EXCEPTION 'Source quantity assertion failed. Expected 52, got %.', v_source_qty;\\n        END IF;\\n\\n        IF v_target_qty <> 50 THEN\\n            RAISE EXCEPTION 'Target quantity assertion failed. Expected 50, got %.', v_target_qty;\\n        END IF;\\n\\n        IF NOT v_log_exists THEN\\n            RAISE EXCEPTION 'Success audit log assertion failed.';\\n        END IF;\\n\\n        -- Roll back all changes from this success-path test.\\n        RAISE EXCEPTION 'rollback_success_test';\\n    EXCEPTION WHEN OTHERS THEN\\n        IF SQLERRM <> 'rollback_success_test' THEN\\n            RAISE;\\n        END IF;\\n    END;\\nEND\\n$$;\"}",
+    "call_id": "call_Xv8MChGkuhNORBuF5Yy7NOv9",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_Xv8MChGkuhNORBuF5Yy7NOv9",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"No results\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, quantity, is_spare\\nFROM public.lego_inventory_parts\\nWHERE (inventory_id = 11124 AND part_num = '3001' AND color_id = 4 AND is_spare = FALSE)\\n   OR (inventory_id = 14686 AND part_num = '3001' AND color_id = 4 AND is_spare = FALSE)\\nORDER BY inventory_id;\\n\\nSELECT COUNT(*) AS transfer_log_count\\nFROM public.inventory_transfer_log;\"}",
+    "call_id": "call_2w3UG0TSu0wsL71lOy90NPhx",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_2w3UG0TSu0wsL71lOy90NPhx",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'transfer_log_count': 0}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'transfer_log_count': 0}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"sql\":\"SELECT inventory_id, part_num, color_id, quantity, is_spare\\nFROM public.lego_inventory_parts\\nWHERE (inventory_id = 11124 AND part_num = '3001' AND color_id = 4 AND is_spare = FALSE)\\n   OR (inventory_id = 14686 AND part_num = '3001' AND color_id = 4 AND is_spare = FALSE)\\nORDER BY inventory_id;\"}",
+    "call_id": "call_YyZbBPUV2UrzSwYTJlrbk1j7",
+    "name": "execute_sql",
+    "type": "function_call",
+    "id": "__fake_id__"
+  },
+  {
+    "call_id": "call_YyZbBPUV2UrzSwYTJlrbk1j7",
+    "output": "{\"type\": \"text\", \"text\": \"{\\\"meta\\\": null, \\\"content\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 11124, 'part_num': '3001', 'color_id': 4, 'quantity': 102, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"meta\\\": null}], \\\"structuredContent\\\": {\\\"result\\\": [{\\\"type\\\": \\\"text\\\", \\\"text\\\": \\\"[{'inventory_id': 11124, 'part_num': '3001', 'color_id': 4, 'quantity': 102, 'is_spare': False}]\\\", \\\"annotations\\\": null, \\\"_meta\\\": null}]}, \\\"isError\\\": false}\", \"annotations\": null, \"meta\": null}",
+    "type": "function_call_output"
+  },
+  {
+    "id": "__fake_id__",
+    "content": [
+      {
+        "annotations": [],
+        "text": "Task completed.\n\nCreated:\n\n- `public.inventory_transfer_log`\n- `public.transfer_parts(...) RETURNS TEXT`\n\nThe function includes:\n\n- Inventory, part, color, quantity, and self-transfer validation\n- 1–500 quantity business rule enforcement\n- `SELECT ... FOR UPDATE` locking for inventories and inventory-part rows\n- Source quantity decrement with zero-quantity row deletion\n- Target row update or non-spare row insertion\n- Successful transfer audit logging\n- Descriptive `RAISE EXCEPTION` errors with rollback behavior on failure\n\nI also ran rollback-based verification checks for successful transfer behavior, audit logging, self-transfer rejection, and max-quantity rejection, leaving existing inventory data unchanged.",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
